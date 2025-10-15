@@ -2,7 +2,7 @@
     <v-navigation-drawer app permanent color="blue-lighten-5">
         <v-list density="comfortable" nav>
             <v-list-item v-for="m in menu" :key="m.id" :to="m.to" router exact :active="activemenu === m.to"
-                @click="toggleMenu(m.to)" active-color="blue-darken-1" variant="tonal">
+                @click="toggleMenu(m.to)" active-color="light-blue-darken-4" variant="tonal">
                 <template #prepend>
                     <i :class="[m.icon, 'fa-lg']" class="mr-2"></i>
                 </template>
