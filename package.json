@@ -1,0 +1,29 @@
+{
+  "name": "nuxt-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "axios": "^1.12.2",
+    "dayjs": "^1.11.18",
+    "nodemailer": "^7.0.6",
+    "nuxt": "^4.1.2",
+    "sweetalert2": "^11.23.0",
+    "tailwindcss": "^4.1.13",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.1",
+    "typescript": "^5.9.3",
+    "vite-plugin-vuetify": "^2.1.2",
+    "vuetify": "^3.10.3"
+  }
+}
