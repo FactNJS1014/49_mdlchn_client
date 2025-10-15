@@ -5,11 +5,15 @@ import Sidebar from "~/components/sidebar.vue";
 <template>
     <v-app>
         <!-- App Bar -->
-        <v-app-bar app color="blue">
-            <v-app-bar-title style="font-weight: bold">
-                <v-img src="/blockchain.png" alt="Logo" width="25" height="25" />
-                <h1>Model Change</h1>
-            </v-app-bar-title>
+        <v-app-bar app color="blue" class="px-4">
+            <!-- ใช้ flex row, align center -->
+            <div class="flex items-center gap-3">
+                <!-- รูปโลโก้ -->
+                <v-img src="/blockchain.png" alt="Logo" width="30" height="30" contain></v-img>
+
+                <!-- ข้อความ -->
+                <span class="font-bold text-white text-lg">Model Change Record System</span>
+            </div>
         </v-app-bar>
 
         <!-- Sidebar + Main -->
