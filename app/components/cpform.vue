@@ -438,7 +438,7 @@
         <v-row no-gutters class="justify-center mt-10">
             <v-btn width="200" rounded="md" type="submit">
                 <template #prepend>
-                    <i class="fa fa-square-check fa-lg"></i>
+                    <v-icon class="mdi mdi-content-save"></v-icon>
                 </template>
                 <h1 class="text-md">Save</h1>
             </v-btn>

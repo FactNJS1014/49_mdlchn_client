@@ -117,8 +117,8 @@
                                         <div class="mt-3 font-semibold ">REV :</div> <v-text-field variant="outlined"
                                             density="compact" v-model="prog_rev" :rules="revInputRules" />
                                     </v-col> </v-row> <v-row no-gutters class="justify-center mt-10"> <v-btn
-                                        color="green" width="200" rounded="md" type="submit"> <template #prepend> <i
-                                                class="fa fa-save fa-lg"></i> </template>
+                                        color="green" width="200" rounded="md" type="submit"> <template #prepend>
+                                            <v-icon icon="mdi mdi-content-save-check"></v-icon> </template>
                                         <h1 class="text-md">Save</h1>
                                     </v-btn> </v-row>
                             </v-form>
@@ -135,7 +135,7 @@
                                 <v-text-field v-model="search" density="compact" label="Search" variant="solo-filled"
                                     flat hide-details single-line>
                                     <template #prepend-inner>
-                                        <i class="fa fa-magnifying-glass"></i>
+                                        <v-icon icon="mdi mdi-magnify"></v-icon>
                                     </template>
                                 </v-text-field>
                             </v-card-title>
@@ -148,18 +148,16 @@
                                         <td>
                                             <div class="flex justify-between ">
                                                 <div class="pa-2">
-                                                    <v-btn color="blue" rounded @click="OpenDetails(item)">
-                                                        <template #prepend>
-                                                            <i class="fa fa-book fa-lg"></i>
-                                                        </template>
-                                                        <h1 class="text-md">Details</h1>
+                                                    <v-btn color="blue" rounded="xl" @click="OpenDetails(item)"
+                                                        icon="mdi mdi-text-box" density="comfortable">
+
+
                                                     </v-btn>
-                                                    <v-btn color="red" rounded @click="DeleteData(item.OPR_HREC_ID)"
-                                                        class="ms-3">
-                                                        <template #prepend>
-                                                            <i class="fa fa-trash fa-lg"></i>
-                                                        </template>
-                                                        <h1 class="text-md">Delete</h1>
+                                                    <v-btn color="red" rounded="xl"
+                                                        @click="DeleteData(item.OPR_HREC_ID)" class=" ms-3"
+                                                        icon="mdi mdi-delete" density="comfortable">
+
+
                                                     </v-btn>
 
                                                 </div>
@@ -273,14 +271,14 @@
                     <div class="flex justify-between gap-3">
                         <v-btn rounded @click="goToEdit(details)" color="warning">
                             <template #prepend>
-                                <i class="fa fa-pencil fa-lg"></i>
+                                <v-icon icon="mdi mdi-pencil-box"></v-icon>
                             </template>
                             <h1>Edit (แก้ไข)</h1>
                         </v-btn>
 
                         <v-btn rounded @click="Approve(details.OPR_HREC_ID)" color="success">
                             <template #prepend>
-                                <i class="fa fa-circle-check fa-lg"></i>
+                                <v-icon icon="mdi mdi-check-underline-circle"></v-icon>
                             </template>
                             <h1>Submit (ยืนยัน)</h1>
                         </v-btn>
@@ -297,6 +295,7 @@
 
 
     </v-card>
+
 </template>
 
 <script setup lang="ts">
@@ -344,7 +343,7 @@ const tab = ref<string>('one')
  * TODO: เก็บค่าตัวแปรแสดงหัวข้อตาราง (Headers)
  */
 const headers = ref<any>([
-    { title: 'Actions', align: 'center' },
+    { title: 'Actions', align: 'left' },
     { title: 'วันที่บันทึก', key: 'OPR_HREC_DATEREC', align: 'left' },
     { title: 'เลขเอกสาร', key: 'OPR_HREC_ISSUENO' },
     { title: 'Process', key: 'OPR_HREC_PROCS' },

@@ -13,8 +13,11 @@
     "@tailwindcss/vite": "^4.1.13",
     "axios": "^1.12.2",
     "dayjs": "^1.11.18",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "nodemailer": "^7.0.6",
     "nuxt": "^4.1.2",
+    "pdfmake": "^0.2.20",
     "sweetalert2": "^11.23.0",
     "tailwindcss": "^4.1.13",
     "vue": "^3.5.22",
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.0.1",
+    "@mdi/font": "^7.4.47",
     "typescript": "^5.9.3",
     "vite-plugin-vuetify": "^2.1.2",
     "vuetify": "^3.10.3"

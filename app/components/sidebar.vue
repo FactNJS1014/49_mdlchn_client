@@ -2,9 +2,10 @@
     <v-navigation-drawer app permanent color="blue-lighten-5">
         <v-list density="comfortable" nav>
             <v-list-item v-for="m in menu" :key="m.id" :to="m.to" router exact :active="activemenu === m.to"
-                @click="toggleMenu(m.to)" active-color="light-blue-darken-4" variant="tonal">
+                @click="toggleMenu(m.to)" :color="activemenu === m.to ? 'light-blue-darken-4' : undefined"
+                variant="tonal">
                 <template #prepend>
-                    <i :class="[m.icon, 'fa-lg']" class="mr-2"></i>
+                    <v-icon :icon="m.icon"></v-icon>
                 </template>
                 <template #title>
                     <p class="font-semibold text-md">{{ m.label }}</p>
@@ -12,6 +13,10 @@
             </v-list-item>
         </v-list>
     </v-navigation-drawer>
+
+
+
+
 </template>
 
 <script setup>
@@ -29,12 +34,14 @@ watch(
 );
 
 const toggleMenu = (menuPath) => {
+    w
     activemenu.value = menuPath;
 };
 
 const menu = ref([
-    { id: 1, icon: "fa fa-file-alt", to: "/", label: "OPERATOR RECORD" },
-    { id: 2, icon: "fa fa-file-alt", to: "/tech_record", label: "TECHNICHIAN RECORD" },
-    { id: 3, icon: "fa fa-check-to-slot", to: "/dataApp", label: "DATA APPROVE" },
+    { id: 1, icon: "mdi mdi-numeric-1-box", to: "/", label: "แบบฟอร์ม Operator" },
+    { id: 2, icon: "mdi mdi-numeric-2-box", to: "/tech_record", label: "แบบฟอร์ม Technichian" },
+    { id: 3, icon: "mdi mdi-file-document-check", to: "/dataApp", label: "เอกสารอนุมัติ CP Process" },
+    { id: 4, icon: "mdi mdi-file-document-check", to: "/dataRf", label: "เอกสารอนุมัติ RF Process" },
 ]);
 </script>

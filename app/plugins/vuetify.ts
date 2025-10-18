@@ -1,5 +1,6 @@
 // import this after install `@mdi/font` package
-import "@fortawesome/fontawesome-free/css/all.css";
+// import "@fortawesome/fontawesome-free/css/all.css";
+import "@mdi/font/css/materialdesignicons.css";
 
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
@@ -15,11 +16,7 @@ export default defineNuxtPlugin((app) => {
     ssr: true,
     blueprint: md1,
     icons: {
-      defaultSet: "fa",
-      aliases,
-      sets: {
-        fa,
-      },
+      defaultSet: "mdi", // This is already the default value - only for display purposes
     },
   });
   app.vueApp.use(vuetify);
