@@ -1,0 +1,83 @@
+<template>
+  <v-card class="pa-4">
+    <v-card-title>สร้างสายอนุมัติ 2 ลำดับ</v-card-title>
+    <v-card-text>
+      <v-form ref="formRef" @submit.prevent="onSubmit">
+        <v-row>
+
+
+          <v-col cols="12" sm="6">
+            <v-select v-model="level1" :items="employees" item-title="MUSR_NAME" item-value="MUSR_ID"
+              label="ลำดับที่ 1 (เลือกหลายคน)" multiple chips clearable />
+          </v-col>
+
+          <v-col cols="12" sm="6">
+            <v-select v-model="level2" :items="employees" item-title="MUSR_NAME" item-value="MUSR_ID"
+              label="ลำดับที่ 2 (เลือกหลายคน)" multiple chips clearable />
+          </v-col>
+
+          <v-col cols="12" class="mt-4">
+            <v-btn color="primary" type="submit">บันทึก</v-btn>
+
+          </v-col>
+        </v-row>
+      </v-form>
+    </v-card-text>
+  </v-card>
+</template>
+
+<script setup lang="ts">
+definePageMeta({
+  layout: 'custom'
+})
+
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
+const level1 = ref<string[]>([]);
+const level2 = ref<string[]>([]);
+const employees = ref<string[]>([])
+
+/**
+ * TODO: function insert to api
+ */
+
+const onSubmit = async () => {
+  const payload = {
+    levels: [
+      { level: 1, empnos: level1.value },
+      { level: 2, empnos: level2.value },
+    ],
+  }
+
+  const res = await axios.post("http://172.22.64.11/49_modelchange/49_mdlchn_api/api/insert/master", payload)
+  console.log(res.data)
+  if (res.data.success === true) {
+    Swal.fire({
+      icon: 'success',
+      title: 'บันทึกสำเร็จ',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+    }).then(() => {
+      location.reload()
+    })
+  }
+}
+
+/**
+ * TODO: function Get api is users
+ */
+
+const GetUsersWeb = async () => {
+  const res = await axios.get("http://172.22.64.11/49_modelchange/49_mdlchn_api/api/users")
+  // console.log(res.data)
+  employees.value = res.data
+}
+
+onMounted(async () => {
+  await GetUsersWeb();
+})
+
+</script>

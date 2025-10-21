@@ -341,8 +341,8 @@
                     </v-radio-group>
                     <div class="mt-3 font-semibold ">12.4 Temperature profile</div>
                     <v-radio-group inline class="gap-4" v-model="temp_std">
-                        <v-radio label="Use" value="Use"></v-radio>
-                        <v-radio label="Not Use" value="Not Use"></v-radio>
+                        <v-radio label="Pass" value="Pass"></v-radio>
+                        <v-radio label="No pass" value="No pass"></v-radio>
                     </v-radio-group>
                 </v-col>
             </div>

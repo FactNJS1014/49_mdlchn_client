@@ -1,10 +1,10 @@
 <template>
     <!-- Template PDF hidden -->
-    <div ref="pdfTemplate" class="hidden p-2">
+    <div ref="pdfTemplate" class="hidden pa-2">
         <p class="flex justify-center text-lg font-bold align-center">
             MODEL CHANGE RECORD SMT PROCESS : {{ dataItem?.OPR_HREC_PROCS }}
         </p>
-        <div class="p-3 border border-black w-[800px] bg-white mt-3 space-y-2">
+        <div class="pa-3 border border-black w-[800px] bg-white mt-3 space-y-2">
             <div class="grid grid-cols-3 gap-4">
                 <div>
                     <strong>Line:</strong> {{ dataItem?.OPR_HREC_LINE }}
@@ -90,7 +90,7 @@
             </div>
 
         </div>
-        <div class="p-3 border border-black w-[800px] bg-white mt-3 space-y-2">
+        <div class="pa-3 border border-black w-[800px] bg-white mt-3 space-y-2">
             <div class="grid grid-cols-2">
                 <div class="flex flex-col">
                     <div class="flex items-center gap-2">
@@ -549,7 +549,214 @@
                     </div>
                 </div>
             </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong>11) Mounter Inspector: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3" :checked="dataItem?.TEC_CPHREC_MNTINSP === 'Use'" />
+                        <span>Use</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_MNTINSP === 'Not Use'" />
+                        <span>Not Use</span>
+                    </div>
+                </div>
 
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong> Program name: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_MNTINSPPROG === 'Referent Assembly chart part list for AM'" />
+                        <span>Referent Assembly chart part list for AM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong>12) Reflow: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3" :checked="dataItem?.TEC_CPHREC_REFLOW === 'Use'" />
+                        <span>Use</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_REFLOW === 'Not Use'" />
+                        <span>Not Use</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong> Program name: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_REFLPROG === 'Referent Assembly chart part list for AM'" />
+                        <span>Referent Assembly chart part list for AM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong> Oxygen: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_REFLOXYGEN === 'Use'" />
+                        <span>Use</span>
+                        <span>{{ dataItem?.TEC_CPHREC_REFLOXYGEN === 'Use' ? dataItem?.TEC_CPHREC_REFLOO : '' }}</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3 ms-3"
+                            :checked="dataItem?.TEC_CPHREC_REFLOXYGEN === 'Not Use'" />
+                        <span>Not Use</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong> PCB Supporter: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_REFLPCBSUPT === 'Use'" />
+                        <span>Use</span>
+
+                        <input type="checkbox" class="w-4 h-4 mt-3 ms-3"
+                            :checked="dataItem?.TEC_CPHREC_REFLPCBSUPT === 'Not Use'" />
+                        <span>Not Use</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong> Temperature profile: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'Pass'" />
+                        <span>Use</span>
+
+                        <input type="checkbox" class="w-4 h-4 mt-3 ms-3"
+                            :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'No pass'" />
+                        <span>Not Use</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong>13) PCB Cooling: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3" :checked="dataItem?.TEC_CPHREC_PCBCOOL === 'Use'" />
+                        <span>Use</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_PCBCOOL === 'Not Use'" />
+                        <span>Not Use</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong>14) Auto Optic Inspection: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3" :checked="dataItem?.TEC_CPHREC_AUTO === 'Use'" />
+                        <span>Use</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_AUTO === 'Not Use'" />
+                        <span>Not Use</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong> Program name: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_AUTOPROG === 'Referent Assembly chart part list for AM'" />
+                        <span>Referent Assembly chart part list for AM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong>15) NG Stocker: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3" :checked="dataItem?.TEC_CPHREC_NGSTCK === 'Use'" />
+                        <span>Use</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_NGSTCK === 'Not Use'" />
+                        <span>Not Use</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong> Pitch setting: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '10 mm.'" />
+                        <span>10 mm.</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '20 mm.'" />
+                        <span>20 mm.</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '30 mm.'" />
+                        <span>30 mm.</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="pa-3 border border-black w-[800px] bg-white mt-8 space-y-2">
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong>16) Traceability Input: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3" :checked="dataItem?.TEC_CPHREC_TRACE === 'Use'" />
+                        <span>Use</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_TRACE === 'Not Use'" />
+                        <span>Not Use</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong>17) Unloader Input: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_UNLOADER === 'Use'" />
+                        <span>Use</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_UNLOADER === 'Not Use'" />
+                        <span>Not Use</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <strong> Pitch setting: </strong>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '10 mm.'" />
+                        <span>10 mm.</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '20 mm.'" />
+                        <span>20 mm.</span>
+                        <input type="checkbox" class="w-4 h-4 mt-3"
+                            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '30 mm.'" />
+                        <span>30 mm.</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -611,9 +818,27 @@ const generatePdf = async () => {
     const imgData = canvas.toDataURL('image/jpeg', 1.0)
     const pdf = new jsPDF('p', 'mm', 'a4')
     const pdfWidth = pdf.internal.pageSize.getWidth()
-    const pdfHeight = (canvas.height / canvas.width) * pdfWidth
+    const pdfHeight = pdf.internal.pageSize.getHeight()
 
-    pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight)
+    const imgWidth = pdfWidth
+    const imgHeight = (canvas.height * pdfWidth) / canvas.width
+
+    let heightLeft = imgHeight
+    let position = 0
+
+    // เพิ่มภาพหน้าแรก
+    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight)
+    heightLeft -= pdfHeight
+
+    // ถ้ามีส่วนที่เกิน -> เพิ่มหน้าใหม่เรื่อย ๆ
+    while (heightLeft > 0) {
+        position = heightLeft - imgHeight
+        pdf.addPage()
+        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight)
+        heightLeft -= pdfHeight
+    }
+
+    // เปิด PDF ในแท็บใหม่
     window.open(pdf.output('bloburl'), '_blank')
 
     el.style.display = 'none'

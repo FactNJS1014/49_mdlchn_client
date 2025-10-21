@@ -43,5 +43,6 @@ const menu = ref([
     { id: 2, icon: "mdi mdi-numeric-2-box", to: "/tech_record", label: "แบบฟอร์ม Technichian" },
     { id: 3, icon: "mdi mdi-file-document-check", to: "/dataApp", label: "เอกสารอนุมัติ CP Process" },
     { id: 4, icon: "mdi mdi-file-document-check", to: "/dataRf", label: "เอกสารอนุมัติ RF Process" },
+    { id: 5, icon: "mdi mdi-database-cog", to: "/appMaster", label: "สายอนุมัติ" },
 ]);
 </script>

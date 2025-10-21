@@ -74,12 +74,13 @@
 
                                 <div class="px-4 d-flex justify-space-between">
                                     <div class="d-flex align-center text-caption text-medium-emphasis me-1">
-                                        <v-btn size="small" variant="tonal" class="bg-green-darken-2" rounded="lg">
+                                        <v-btn size="small" variant="tonal" class="bg-green-darken-2" rounded="lg"
+                                            @click="goAppr(item.raw)">
                                             <v-icon icon="mdi mdi-check-bold" class="mr-2"></v-icon>
-                                            อนุมัติ</v-btn>
+                                            ยืนยันส่งอนุมัติ</v-btn>
                                         <v-btn size="small" variant="tonal" class="bg-red-darken-2 ms-2" rounded="lg">
                                             <v-icon icon="mdi mdi-keyboard-return" class="mr-2"></v-icon>
-                                            ส่งกลับแก้ไข</v-btn>
+                                            กลับไปแก้ไข</v-btn>
                                     </div>
 
                                     <v-btn size="small" variant="tonal" class="bg-blue-darken-2 ms-2" rounded="lg"
@@ -118,6 +119,7 @@ import { ref, onMounted, defineExpose } from "vue";
 import axios from "axios";
 import dayjs from "dayjs";
 import cpdocs from "~/components/cpdocs.vue";
+import Swal from "sweetalert2";
 
 definePageMeta({
     layout: "custom",
@@ -149,7 +151,7 @@ const GetAllData = async () => {
         const res = await axios.get(
             "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/get/alldata"
         );
-        console.log(res.data);
+        // console.log(res.data);
         all_data.value = res.data.cp;
         // all_data_rf.value = res.data.rf;
     } catch (error) {
@@ -171,6 +173,28 @@ const togglePDF = async (item: DataItem) => {
     // console.log(selected_data_cp.value)
     // pdfGen.value?.createPdf()
 };
+
+
+/**
+ * TODO:ฟังก์ชันส่งข้อมูลอนุมัติไปยังผู้อนุมัติ
+ */
+
+const goAppr = async (data: any) => {
+    // console.log(data)
+
+    const res = await axios.post('http://172.22.64.11/49_modelchange/49_mdlchn_api/api/insert/approve', data)
+    if (res.data.success === true) {
+        Swal.fire({
+            icon: 'success',
+            title: 'ส่งอนุมัติสำเร็จ',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            location.reload()
+        })
+    }
+
+}
 
 onMounted(async () => {
     await GetAllData();
