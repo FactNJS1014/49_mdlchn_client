@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  nuxt-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nuxt4-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - "//172.22.64.11/c$/xampp/htdocs/49_modelchange:/app"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
