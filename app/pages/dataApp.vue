@@ -20,15 +20,13 @@
                                 <v-list-item class="mb-2 font-weight-bold">
                                     <template v-slot:title>
                                         <strong class="mb-2 text-h6">Document No. :{{ item.raw.OPR_HREC_ISSUENO
-                                        }}</strong>
+                                            }}</strong>
                                     </template>
                                     <template v-slot:subtitle>
                                         <table class="border border-blue-800">
                                             <tbody>
                                                 <tr class="border">
-                                                    <th class="w-40 text-left border pa-2 text-sky-800">
-                                                        LINE:
-                                                    </th>
+                                                    <th class="w-40 text-left border pa-2 text-sky-800">LINE:</th>
                                                     <td class="px-2 text-sky-800">
                                                         {{ item.raw.OPR_HREC_LINE }}
                                                     </td>
@@ -74,17 +72,15 @@
 
                                 <div class="px-4 d-flex justify-space-between">
                                     <div class="d-flex align-center text-caption text-medium-emphasis me-1">
-                                        <v-btn size="small" variant="tonal" class="bg-green-darken-2" rounded="lg"
-                                            @click="goAppr(item.raw)">
+                                        <v-btn variant="flat" color="success" rounded="lg" @click="goAppr(item.raw)">
                                             <v-icon icon="mdi mdi-check-bold" class="mr-2"></v-icon>
                                             ยืนยันส่งอนุมัติ</v-btn>
-                                        <v-btn size="small" variant="tonal" class="bg-red-darken-2 ms-2" rounded="lg">
+                                        <v-btn variant="flat" color="error" rounded="lg" class="ms-2">
                                             <v-icon icon="mdi mdi-keyboard-return" class="mr-2"></v-icon>
                                             กลับไปแก้ไข</v-btn>
                                     </div>
 
-                                    <v-btn size="small" variant="tonal" class="bg-blue-darken-2 ms-2" rounded="lg"
-                                        @click="togglePDF(item.raw)">
+                                    <v-btn variant="flat" color="primary" rounded="lg" @click="togglePDF(item.raw)">
                                         <v-icon icon="mdi mdi-file-pdf-box" class="mr-2"></v-icon>
                                         View PDF
                                     </v-btn>
@@ -103,9 +99,7 @@
                     <v-btn :disabled="page === 1" density="comfortable" icon="mdi mdi-menu-left" variant="tonal" rounded
                         @click="prevPage"></v-btn>
 
-                    <div class="mx-2 text-caption">
-                        Page {{ page }} of {{ pageCount }}
-                    </div>
+                    <div class="mx-2 text-caption">Page {{ page }} of {{ pageCount }}</div>
 
                     <v-btn :disabled="page >= pageCount" density="comfortable" icon="mdi mdi-menu-right" variant="tonal"
                         rounded @click="nextPage"></v-btn>
@@ -132,14 +126,14 @@ const search = ref<string>("");
 const all_data = ref<any>([]);
 
 interface DataItem {
-    OPR_HREC_LINE?: string
-    OPR_HREC_DATEREC?: string
-    OPR_HREC_STATUSMDL?: string
-    OPR_HREC_CURMDLNM?: string
-    OPR_HREC_CHNMDLNM?: string
+    OPR_HREC_LINE?: string;
+    OPR_HREC_DATEREC?: string;
+    OPR_HREC_STATUSMDL?: string;
+    OPR_HREC_CURMDLNM?: string;
+    OPR_HREC_CHNMDLNM?: string;
 }
 
-const selected_data_cp = ref<DataItem | null>(null)
+const selected_data_cp = ref<DataItem | null>(null);
 // const pdfGen = ref<InstanceType<typeof cpdocs> | null>(null)
 
 /**
@@ -169,11 +163,10 @@ const dateFormat = (date: string) => {
 };
 
 const togglePDF = async (item: DataItem) => {
-    selected_data_cp.value = item
+    selected_data_cp.value = item;
     // console.log(selected_data_cp.value)
     // pdfGen.value?.createPdf()
 };
-
 
 /**
  * TODO:ฟังก์ชันส่งข้อมูลอนุมัติไปยังผู้อนุมัติ
@@ -182,19 +175,21 @@ const togglePDF = async (item: DataItem) => {
 const goAppr = async (data: any) => {
     // console.log(data)
 
-    const res = await axios.post('http://172.22.64.11/49_modelchange/49_mdlchn_api/api/insert/approve', data)
+    const res = await axios.post(
+        "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/insert/approve",
+        data
+    );
     if (res.data.success === true) {
         Swal.fire({
-            icon: 'success',
-            title: 'ส่งอนุมัติสำเร็จ',
+            icon: "success",
+            title: "ส่งอนุมัติสำเร็จ",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
         }).then(() => {
-            location.reload()
-        })
+            location.reload();
+        });
     }
-
-}
+};
 
 onMounted(async () => {
     await GetAllData();

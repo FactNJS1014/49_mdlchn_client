@@ -4,21 +4,21 @@
     <v-card-text>
       <v-form ref="formRef" @submit.prevent="onSubmit">
         <v-row>
-
-
           <v-col cols="12" sm="6">
-            <v-select v-model="level1" :items="employees" item-title="MUSR_NAME" item-value="MUSR_ID"
+            <v-select v-model="level1" :items="employees" item-title="MUSR_NAME" item-value="MUSR_ID" variant="outlined"
               label="ลำดับที่ 1 (เลือกหลายคน)" multiple chips clearable />
           </v-col>
 
           <v-col cols="12" sm="6">
-            <v-select v-model="level2" :items="employees" item-title="MUSR_NAME" item-value="MUSR_ID"
+            <v-select v-model="level2" :items="employees" item-title="MUSR_NAME" item-value="MUSR_ID" variant="outlined"
               label="ลำดับที่ 2 (เลือกหลายคน)" multiple chips clearable />
           </v-col>
 
           <v-col cols="12" class="mt-4">
-            <v-btn color="primary" type="submit">บันทึก</v-btn>
-
+            <div class="flex justify-center items-center">
+              <v-btn color="primary" type="submit" rounded="lg" width="300px"
+                prepend-icon="mdi mdi-content-save-settings">บันทึก</v-btn>
+            </div>
           </v-col>
         </v-row>
       </v-form>
@@ -33,31 +33,28 @@
       </template>
     </v-data-table>
   </v-card>
-
 </template>
 
 <script setup lang="ts">
 definePageMeta({
-  layout: 'custom'
-})
+  layout: "custom",
+});
 
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const level1 = ref<string[]>([]);
 const level2 = ref<string[]>([]);
-const employees = ref<string[]>([])
-const approveUsers = ref<string[]>([])
-
+const employees = ref<string[]>([]);
+const approveUsers = ref<string[]>([]);
 
 const headers = [
-  { title: 'ลำดับ', value: 'MASTER_SEQ' },
-  { title: 'รหัสพนักงาน', value: 'MASTER_EMPID' },
-  { title: 'ชื่อพนักงาน', value: 'MASTER_NAME' },
-  { title: 'Actions', value: 'actions', sortable: false },
+  { title: "ลำดับ", value: "MASTER_SEQ" },
+  { title: "รหัสพนักงาน", value: "MASTER_EMPID" },
+  { title: "ชื่อพนักงาน", value: "MASTER_NAME" },
+  { title: "Actions", value: "actions", sortable: false },
 ];
-
 
 /**
  * TODO: function insert to api
@@ -69,63 +66,69 @@ const onSubmit = async () => {
       { level: 1, empnos: level1.value },
       { level: 2, empnos: level2.value },
     ],
-  }
+  };
 
-  const res = await axios.post("http://172.22.64.11/49_modelchange/49_mdlchn_api/api/insert/master", payload)
-  console.log(res.data)
+  const res = await axios.post(
+    "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/insert/master",
+    payload
+  );
+  console.log(res.data);
   if (res.data.success === true) {
     Swal.fire({
-      icon: 'success',
-      title: 'บันทึกสำเร็จ',
+      icon: "success",
+      title: "บันทึกสำเร็จ",
       showConfirmButton: false,
       timer: 1500,
       timerProgressBar: true,
     }).then(() => {
       location.reload();
-    })
+    });
   }
-}
+};
 
 /**
  * TODO: function Get api is users
  */
 
 const GetUsersWeb = async () => {
-  const res = await axios.get("http://172.22.64.11/49_modelchange/49_mdlchn_api/api/users")
+  const res = await axios.get(
+    "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/users"
+  );
   // console.log(res.data)
-  employees.value = res.data
-}
+  employees.value = res.data;
+};
 
 const GetApproveUsers = async () => {
-  const res = await axios.get("http://172.22.64.11/49_modelchange/49_mdlchn_api/api/approve/users")
-  console.log(res.data)
-  approveUsers.value = res.data
-}
+  const res = await axios.get(
+    "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/approve/users"
+  );
+  console.log(res.data);
+  approveUsers.value = res.data;
+};
 
 // ฟังก์ชัน map EMPID ไปหา MUSR_NAME
 const mapApproveUsersToNames = () => {
-  approveUsers.value = approveUsers.value.map(item => {
-    if (!item.MASTER_EMPID) return item
+  approveUsers.value = approveUsers.value.map((item) => {
+    if (!item.MASTER_EMPID) return item;
 
     // แยก EMPID เป็น array
-    const empIds = item.MASTER_EMPID.split(',')
+    const empIds = item.MASTER_EMPID.split(",");
     // หา MUSR_NAME ใน employees
-    const names = empIds.map(id => {
-      const emp = employees.value.find(e => e.MUSR_ID === id.trim())
-      return emp ? emp.MUSR_NAME : id
-    })
+    const names = empIds.map((id) => {
+      const emp = employees.value.find((e) => e.MUSR_ID === id.trim());
+      return emp ? emp.MUSR_NAME : id;
+    });
     // รวมเป็น string
     return {
       ...item,
-      MASTER_NAME: names.join(', ')
-    }
-  })
-}
+      MASTER_NAME: names.join(", "),
+    };
+  });
+};
 
 onMounted(async () => {
   await GetUsersWeb();
   await GetApproveUsers();
   await mapApproveUsersToNames();
-})
-
+});
 </script>

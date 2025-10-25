@@ -71,10 +71,10 @@
                     <div class="ms-3">
                         <strong>ECN Number:</strong>
                         <span>{{ dataItem?.OPR_HREC_CONTECN === 'No Have' ? 'ไม่มี' : dataItem?.OPR_HREC_HAVECONTECN_NO
-                            }}</span>
+                        }}</span>
                         <strong class="ms-3">ECN REV:</strong>
                         <span>{{ dataItem?.OPR_HREC_CONTECN === 'No Have' ? 'ไม่มี' : dataItem?.OPR_HREC_HAVECONTECN_REV
-                            }}</span>
+                        }}</span>
                     </div>
 
 
@@ -168,7 +168,7 @@
 
                     </div>
                     <span>{{ dataItem?.TEC_CPHREC_PCBCLNFUNC === 'etc' ? dataItem?.TEC_CPHREC_PCBLNETC_DTL : ''
-                    }}</span>
+                        }}</span>
                 </div>
             </div>
             <div class="grid grid-cols-2">
@@ -241,7 +241,7 @@
                         <span>Confirm OK</span>
                     </div>
                     <span>{{ dataItem?.TEC_CPHREC_GLUESTDOK === null ? dataItem?.TEC_CPHREC_GLUESTDNOT : ''
-                    }}</span>
+                        }}</span>
                 </div>
             </div>
             <div class="grid grid-cols-2">
@@ -314,7 +314,7 @@
                         <span>Confirm OK</span>
                     </div>
                     <span>{{ dataItem?.TEC_CPHREC_GLUESNDOK === null ? dataItem?.TEC_CPHREC_GLUESNDNOT : ''
-                    }}</span>
+                        }}</span>
                 </div>
             </div>
             <div class="grid grid-cols-2">
@@ -549,6 +549,12 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+        </div>
+        <div class="pa-3 border border-black w-[800px] bg-white mt-8 space-y-2">
             <div class="grid grid-cols-2">
                 <div class="flex flex-col">
                     <div class="flex items-center gap-2">
@@ -711,10 +717,6 @@
                 </div>
             </div>
 
-
-
-        </div>
-        <div class="pa-3 border border-black w-[800px] bg-white mt-8 space-y-2">
             <div class="grid grid-cols-2">
                 <div class="flex flex-col">
                     <div class="flex items-center gap-2">

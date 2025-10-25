@@ -19,8 +19,7 @@
               <v-card class="pb-3" border flat>
                 <v-list-item class="mb-2 font-weight-bold">
                   <template v-slot:title>
-                    <strong class="mb-2 text-h6">Document No. :{{ item.raw.OPR_HREC_ISSUENO
-                      }}</strong>
+                    <strong class="mb-2 text-h6">Document No. :{{ item.raw.OPR_HREC_ISSUENO }}</strong>
                   </template>
                   <template v-slot:subtitle>
                     <table class="border border-blue-800">
@@ -47,7 +46,6 @@
                           </td>
                         </tr>
 
-
                         <tr class="border">
                           <th class="text-left border pa-2 text-sky-800 w-30">
                             Technichian ID:
@@ -64,27 +62,21 @@
                             {{ item.raw.OPR_HREC_CHNMDLNM }}
                           </td>
                         </tr>
-
-
-
                       </tbody>
                     </table>
                   </template>
                 </v-list-item>
-
                 <div class="px-4 d-flex justify-space-between">
                   <div class="d-flex align-center text-caption text-medium-emphasis me-1">
-                    <v-btn size="small" variant="tonal" class="bg-green-darken-2" rounded="lg">
+                    <v-btn variant="flat" color="green" rounded="lg" @click="goAppr(item.raw)">
                       <v-icon icon="mdi mdi-check-bold" class="mr-2"></v-icon>
                       ยืนยันส่งอนุมัติ</v-btn>
-                    <v-btn size="small" variant="tonal" class="bg-red-darken-2 ms-2" rounded="lg">
+                    <v-btn variant="flat" color="error" rounded="lg" class="ms-2">
                       <v-icon icon="mdi mdi-keyboard-return" class="mr-2"></v-icon>
                       กลับไปแก้ไข</v-btn>
                   </div>
 
-                  <!-- ส่งข้อมูลไป component -->
-                  <v-btn size="small" variant="tonal" class="bg-blue-darken-2 ms-2" rounded="lg"
-                    @click="togglePDF(item.raw)">
+                  <v-btn variant="flat" color="indigo" rounded="lg" @click="togglePDF(item.raw)">
                     <v-icon icon="mdi mdi-file-pdf-box" class="mr-2"></v-icon>
                     View PDF
                   </v-btn>
@@ -113,8 +105,8 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: 'custom'
-})
+  layout: "custom",
+});
 
 import { ref, onMounted, defineExpose } from "vue";
 import axios from "axios";
@@ -125,13 +117,13 @@ const all_data_rf = ref<any>([]);
 const search_rf = ref<string>("");
 
 interface DataItem {
-  OPR_HREC_LINE?: string
-  OPR_HREC_DATEREC?: string
-  OPR_HREC_STATUSMDL?: string
-  OPR_HREC_CURMDLNM?: string
-  OPR_HREC_CHNMDLNM?: string
+  OPR_HREC_LINE?: string;
+  OPR_HREC_DATEREC?: string;
+  OPR_HREC_STATUSMDL?: string;
+  OPR_HREC_CURMDLNM?: string;
+  OPR_HREC_CHNMDLNM?: string;
 }
-const selected_data_rf = ref<DataItem | null>(null)
+const selected_data_rf = ref<DataItem | null>(null);
 
 const GetAllData = async () => {
   try {
@@ -156,14 +148,12 @@ const dateFormat = (date: string) => {
 };
 
 const togglePDF = async (item: DataItem) => {
-  selected_data_rf.value = item
+  selected_data_rf.value = item;
   // console.log(selected_data_cp.value)
   // pdfGen.value?.createPdf()
 };
 
-
 onMounted(() => {
-  GetAllData()
-})
-
+  GetAllData();
+});
 </script>
