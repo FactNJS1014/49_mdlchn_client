@@ -18,6 +18,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
     );
 
     // ล้าง query ออกจาก URL (เพื่อความปลอดภัย)
-    return navigateTo("/49_modelchange/frontend", { replace: true });
+    return navigateTo("/", { replace: true });
   }
 });
