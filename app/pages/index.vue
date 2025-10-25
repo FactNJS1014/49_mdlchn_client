@@ -339,22 +339,6 @@ definePageMeta({
     layout: "custom",
 });
 
-const { public: config } = useRuntimeConfig();
-console.log(config.apiBase);
-
-const user = ref<any>(null);
-
-/**
- *  TODO: เรียกข้อมูล session ผู้ใช้งาน
- */
-const sessionUser = async () => {
-    const res = await axios.get(`${config.apiBase}/session/user`, {
-        withCredentials: true, // ต้องใส่ เพื่อส่ง laravel_session cookie
-    });
-
-    console.log("Session User: ", res.data);
-};
-
 /**
  * TODO: สร้างตัวแปรรับค่าจาก Input
  */
@@ -383,6 +367,25 @@ const dialog = ref<boolean>(false);
 const id = ref<string>("");
 
 const tab = ref<string>("one");
+
+const { public: config } = useRuntimeConfig();
+console.log(config.apiBase);
+
+const user = ref<any>(null);
+
+/**
+ *  TODO: เรียกข้อมูล session ผู้ใช้งาน
+ */
+const sessionUser = async () => {
+    const res = await axios.get(`${config.apiBase}/session/user`, {
+        withCredentials: true, // ต้องใส่ เพื่อส่ง laravel_session cookie
+    });
+
+    user.value = res.data;
+    console.log("user session:", user.value);
+    empno.value = user.value.empno;
+};
+
 /**
  * TODO: เก็บค่าตัวแปรแสดงหัวข้อตาราง (Headers)
  */

@@ -1,13 +1,7 @@
 <template>
     <v-card class="pa-4">
-
         <v-tabs v-model="tab" class="text-grey-darken-1 bg-blue-lighten-5" color="light-blue-darken-1">
-            <v-tab value="one" class=" font-weight-medium">TECHNICHIAN FORM</v-tab>
-
-
-
-
-
+            <v-tab value="one" class="font-weight-medium">TECHNICHIAN FORM</v-tab>
         </v-tabs>
         <v-card-text>
             <v-virtual-scroll :items="[1]" height="530" item-height="auto">
@@ -24,38 +18,33 @@
                                 </v-btn>
                             </div>
                             <div class="mt-3">
-                                <h1 class="text-xl text-red-500"><i
-                                        class="mr-2 fa-solid fa-circle-info"></i>ส่วนนี้จะเป็นของ
-                                    Technichian
-                                    หรือ
-                                    Model Change ที่จะต้องบันทึก
-                                    <span class="font-semibold "><mark
-                                            class="text-red-500 ">(ข้อมูลที่ได้รับในการมาบันทึกนั้น
-                                            ต้องหลังจาก
-                                            Operator กรอกข้อมูลเสร็จสิ้นเท่านั้น)</mark>
+                                <h1 class="text-xl text-red-500">
+                                    <i class="mr-2 fa-solid fa-circle-info"></i>ส่วนนี้จะเป็นของ Technichian
+                                    หรือ Model Change ที่จะต้องบันทึก
+                                    <span class="font-semibold"><mark
+                                            class="text-red-500">(ข้อมูลที่ได้รับในการมาบันทึกนั้น ต้องหลังจาก Operator
+                                            กรอกข้อมูลเสร็จสิ้นเท่านั้น)</mark>
                                     </span>
-                                    โดยกดปุ่มข้อมูลจาก Operator เพื่อทำการคลิกเลือกข้อมูลมากรอกข้อมูลด้านล่างนี้
+                                    โดยกดปุ่มข้อมูลจาก Operator
+                                    เพื่อทำการคลิกเลือกข้อมูลมากรอกข้อมูลด้านล่างนี้
                                 </h1>
-                                <p class="text-lg text-amber-500"><i
-                                        class="mr-2 fa-solid fa-circle-info"></i>ตรวจสอบชื่อโปรแกรมบนหน้าจอเครื่องจักร
-                                    ต้องตรงกับ Assembly
-                                    chart
-                                    part list
-                                    เท่านั้น</p>
+                                <p class="text-lg text-amber-500">
+                                    <i class="mr-2 fa-solid fa-circle-info"></i>ตรวจสอบชื่อโปรแกรมบนหน้าจอเครื่องจักร
+                                    ต้องตรงกับ Assembly chart part
+                                    list เท่านั้น
+                                </p>
                             </div>
                             <v-switch v-model="prs" :label="`Process: ${prs}`" false-value="CP" true-value="RF"
                                 hide-details color="blue"></v-switch>
                             <cpform v-if="prs === 'CP'" :id="id_select" :won_chn="won_select"
-                                :model_chn="model_chn_select" />
-                            <refform v-else :id="id_select" :won_chn="won_select" :model_chn="model_chn_select" />
+                                :model_chn="model_chn_select" :empno="empno" />
+                            <refform v-else :id="id_select" :won_chn="won_select" :model_chn="model_chn_select"
+                                :empno="empno" />
                         </v-tabs-window-item>
-
                     </v-tabs-window>
                 </template>
             </v-virtual-scroll>
         </v-card-text>
-
-
 
         <v-dialog v-model="dialog" width="auto">
             <v-card min-width="1000">
@@ -66,8 +55,7 @@
                     <h1>All Data From Operator</h1>
                 </template>
                 <v-card-title class="d-flex align-center pe-2">
-                    <i class="fa fa-box fa-lg"></i> &nbsp;
-                    ค้นหาข้อมูล Model Change
+                    <i class="fa fa-box fa-lg"></i> &nbsp; ค้นหาข้อมูล Model Change
 
                     <v-spacer></v-spacer>
 
@@ -92,26 +80,19 @@
                                             </template>
                                             <h1 class="text-md">เลือก</h1>
                                         </v-btn>
-
-
                                     </div>
-
                                 </div>
                             </td>
-                            <td style="min-width: 200px;">{{ item.OPR_HREC_ISSUENO }}</td>
-                            <td style="min-width: 100px;">{{ item.OPR_HREC_PROCS }}</td>
-                            <td style="min-width: 100px;">{{ item.OPR_HREC_LINE }}</td>
-                            <td style="min-width: 200px;">{{ item.OPR_HREC_WON_CURRENT }}</td>
-                            <td style="min-width: 200px;">{{ item.OPR_HREC_CURMDLNM }}</td>
-                            <td style="min-width: 200px;">{{ item.OPR_HREC_WON_CHANGE }}</td>
-                            <td style="min-width: 200px;">{{ item.OPR_HREC_CHNMDLNM }}</td>
-
-
+                            <td style="min-width: 200px">{{ item.OPR_HREC_ISSUENO }}</td>
+                            <td style="min-width: 100px">{{ item.OPR_HREC_PROCS }}</td>
+                            <td style="min-width: 100px">{{ item.OPR_HREC_LINE }}</td>
+                            <td style="min-width: 200px">{{ item.OPR_HREC_WON_CURRENT }}</td>
+                            <td style="min-width: 200px">{{ item.OPR_HREC_CURMDLNM }}</td>
+                            <td style="min-width: 200px">{{ item.OPR_HREC_WON_CHANGE }}</td>
+                            <td style="min-width: 200px">{{ item.OPR_HREC_CHNMDLNM }}</td>
                         </tr>
                     </template>
-
                 </v-data-table>
-
 
                 <template v-slot:actions>
                     <v-btn class="ms-auto" text="Close" @click="dialog = false"></v-btn>
@@ -119,82 +100,93 @@
             </v-card>
         </v-dialog>
     </v-card>
-
-
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
-import cpform from "~/components/cpform.vue"
-import refform from "~/components/refform.vue"
-import axios from "axios"
-
+import { ref, onMounted } from "vue";
+import cpform from "~/components/cpform.vue";
+import refform from "~/components/refform.vue";
+import axios from "axios";
 
 definePageMeta({
-    layout: 'custom'
-})
+    layout: "custom",
+});
+
+const { public: config } = useRuntimeConfig();
+console.log(config.apiBase);
+
+const user = ref<any>(null);
 
 /**
- * TODO: สร้างตัวแปรรับค่าจาก v-model on template   
+ *  TODO: เรียกข้อมูล session ผู้ใช้งาน
+ */
+const sessionUser = async () => {
+    const res = await axios.get(`${config.apiBase}/session/user`, {
+        withCredentials: true, // ต้องใส่ เพื่อส่ง laravel_session cookie
+    });
+
+    user.value = res.data;
+    console.log("user session:", user.value);
+    empno.value = user.value.empno;
+};
+
+/**
+ * TODO: สร้างตัวแปรรับค่าจาก v-model on template
  */
 
-const prs = ref<string>('CP')
-const dialog = ref<boolean>(false)
-const tab = ref<string>('one')
-const search = ref<string>('')
-const won_select = ref<string>('')
-const model_chn_select = ref<string>('')
-const id_select = ref<string>('')
+const prs = ref<string>("CP");
+const dialog = ref<boolean>(false);
+const tab = ref<string>("one");
+const search = ref<string>("");
+const won_select = ref<string>("");
+const model_chn_select = ref<string>("");
+const id_select = ref<string>("");
+const empno = ref<string>("");
 
-
-const data = ref<any>([])
+const data = ref<any>([]);
 
 /**
  * TODO: สร้าง function เรียกข้อมูลจาก api
  */
 const GetRecordFromOperator = async () => {
     try {
-        const res = await axios.get('http://172.22.64.11/49_modelchange/49_mdlchn_api/api/get/oprform')
-        data.value = res.data
-
+        const res = await axios.get(
+            "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/get/oprform"
+        );
+        data.value = res.data;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
-
-
-
+};
 
 /**
  * TODO: สร้างฟังก์ชันจากการกดปุ่ม
  */
 const ChooseData = (obj: any) => {
-    prs.value = obj.OPR_HREC_PROCS
-    won_select.value = obj.OPR_HREC_WON_CHANGE
-    model_chn_select.value = obj.OPR_HREC_CHNMDLNM
-    id_select.value = obj.OPR_HREC_ID
+    prs.value = obj.OPR_HREC_PROCS;
+    won_select.value = obj.OPR_HREC_WON_CHANGE;
+    model_chn_select.value = obj.OPR_HREC_CHNMDLNM;
+    id_select.value = obj.OPR_HREC_ID;
 
-    dialog.value = false
-}
-
+    dialog.value = false;
+};
 
 /**
  * TODO:สร้าง array ทำหัวตาราง
  */
 const headers = ref<any>([
-    { title: 'Actions', align: 'center' },
-    { title: 'เลขเอกสาร', key: 'OPR_HREC_ISSUENO' },
-    { title: 'Process', key: 'OPR_HREC_PROCS' },
-    { title: 'Line', key: 'OPR_HREC_LINE' },
-    { title: 'WO# เดิม', key: 'OPR_HREC_WON_CURRENT' },
-    { title: 'Model เดิม', key: 'OPR_HREC_CURMDLNM' },
-    { title: 'WO# ใหม่', key: 'OPR_HREC_WON_CHANGE' },
-    { title: 'Model ใหม่', key: 'OPR_HREC_CHNMDLNM' },
-
-])
-
+    { title: "Actions", align: "center" },
+    { title: "เลขเอกสาร", key: "OPR_HREC_ISSUENO" },
+    { title: "Process", key: "OPR_HREC_PROCS" },
+    { title: "Line", key: "OPR_HREC_LINE" },
+    { title: "WO# เดิม", key: "OPR_HREC_WON_CURRENT" },
+    { title: "Model เดิม", key: "OPR_HREC_CURMDLNM" },
+    { title: "WO# ใหม่", key: "OPR_HREC_WON_CHANGE" },
+    { title: "Model ใหม่", key: "OPR_HREC_CHNMDLNM" },
+]);
 
 onMounted(() => {
     GetRecordFromOperator();
-})
+    sessionUser();
+});
 </script>
