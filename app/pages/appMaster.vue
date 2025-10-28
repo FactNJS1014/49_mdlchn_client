@@ -5,19 +5,56 @@
       <v-form ref="formRef" @submit.prevent="onSubmit">
         <v-row>
           <v-col cols="12" sm="6">
-            <v-select v-model="level1" :items="employees" item-title="MUSR_NAME" item-value="MUSR_ID" variant="outlined"
-              label="ลำดับที่ 1 (เลือกหลายคน)" multiple chips clearable />
+            <v-select
+              v-model="level1"
+              :items="employees"
+              item-title="MUSR_NAME"
+              item-value="MUSR_ID"
+              variant="outlined"
+              label="ลำดับที่ 1 (เลือกหลายคน)"
+              multiple
+              chips
+              clearable
+            />
           </v-col>
 
           <v-col cols="12" sm="6">
-            <v-select v-model="level2" :items="employees" item-title="MUSR_NAME" item-value="MUSR_ID" variant="outlined"
-              label="ลำดับที่ 2 (เลือกหลายคน)" multiple chips clearable />
+            <v-select
+              v-model="level2"
+              :items="employees"
+              item-title="MUSR_NAME"
+              item-value="MUSR_ID"
+              variant="outlined"
+              label="ลำดับที่ 2 (เลือกหลายคน)"
+              multiple
+              chips
+              clearable
+            />
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-select
+              v-model="level3"
+              :items="employees"
+              item-title="MUSR_NAME"
+              item-value="MUSR_ID"
+              variant="outlined"
+              label="ลำดับที่ 2 (เลือกหลายคน)"
+              multiple
+              chips
+              clearable
+            />
           </v-col>
 
           <v-col cols="12" class="mt-4">
             <div class="flex justify-center items-center">
-              <v-btn color="primary" type="submit" rounded="lg" width="300px"
-                prepend-icon="mdi mdi-content-save-settings">บันทึก</v-btn>
+              <v-btn
+                color="primary"
+                type="submit"
+                rounded="lg"
+                width="300px"
+                prepend-icon="mdi mdi-content-save-settings"
+                >บันทึก</v-btn
+              >
             </div>
           </v-col>
         </v-row>
@@ -27,7 +64,13 @@
   <v-card class="mt-4 pa-4">
     <v-data-table :items="approveUsers" :headers="headers" class="mt-4">
       <template #item.actions="{ item }">
-        <v-btn icon color="red" @click="removeMaster(item.MASTER_ID)" size="small" rounded="lg">
+        <v-btn
+          icon
+          color="red"
+          @click="removeMaster(item.MASTER_ID)"
+          size="small"
+          rounded="lg"
+        >
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </template>
@@ -46,6 +89,7 @@ import Swal from "sweetalert2";
 
 const level1 = ref<string[]>([]);
 const level2 = ref<string[]>([]);
+const level3 = ref<string[]>([]);
 const employees = ref<string[]>([]);
 const approveUsers = ref<string[]>([]);
 
@@ -65,6 +109,7 @@ const onSubmit = async () => {
     levels: [
       { level: 1, empnos: level1.value },
       { level: 2, empnos: level2.value },
+      { level: 3, empnos: level3.value },
     ],
   };
 

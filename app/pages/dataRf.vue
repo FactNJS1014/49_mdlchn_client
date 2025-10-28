@@ -56,7 +56,15 @@
                         </tr>
                         <tr class="border">
                           <th class="text-left border pa-2 text-sky-800 w-30">
-                            Model ที่ต้องเปลี่ยน:
+                            Work Order ที่จะเปลี่ยน:
+                          </th>
+                          <td class="px-2 text-sky-800">
+                            {{ item.raw.OPR_HREC_WON_CHANGE }}
+                          </td>
+                        </tr>
+                        <tr class="border">
+                          <th class="text-left border pa-2 text-sky-800 w-30">
+                            Model ที่จะเปลี่ยน:
                           </th>
                           <td class="px-2 text-sky-800">
                             {{ item.raw.OPR_HREC_CHNMDLNM }}

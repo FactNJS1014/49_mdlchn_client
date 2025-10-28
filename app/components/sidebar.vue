@@ -13,15 +13,12 @@
             </v-list-item>
         </v-list>
     </v-navigation-drawer>
-
-
-
-
 </template>
 
-<script setup>
-import { ref, watch } from "vue";
+<script setup lang="ts">
+import { ref, watch, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import axios from "axios";
 
 const route = useRoute();
 const activemenu = ref(route.path);
@@ -33,16 +30,51 @@ watch(
     }
 );
 
-const toggleMenu = (menuPath) => {
-    w
+const toggleMenu = (menuPath: string) => {
     activemenu.value = menuPath;
 };
 
 const menu = ref([
     { id: 1, icon: "mdi mdi-numeric-1-box", to: "/", label: "แบบฟอร์ม Operator" },
-    { id: 2, icon: "mdi mdi-numeric-2-box", to: "/tech_record", label: "แบบฟอร์ม Technichian" },
-    { id: 3, icon: "mdi mdi-file-document-check", to: "/dataApp", label: "เอกสารอนุมัติ CP Process" },
-    { id: 4, icon: "mdi mdi-file-document-check", to: "/dataRf", label: "เอกสารอนุมัติ RF Process" },
+    {
+        id: 2,
+        icon: "mdi mdi-numeric-2-box",
+        to: "/tech_record",
+        label: "แบบฟอร์ม Technichian",
+    },
+    {
+        id: 3,
+        icon: "mdi mdi-file-document-check",
+        to: "/dataApp",
+        label: "เอกสารอนุมัติ CP Process",
+    },
+    {
+        id: 4,
+        icon: "mdi mdi-file-document-check",
+        to: "/dataRf",
+        label: "เอกสารอนุมัติ RF Process",
+    },
     { id: 5, icon: "mdi mdi-database-cog", to: "/appMaster", label: "สายอนุมัติ" },
 ]);
+
+const { public: config } = useRuntimeConfig();
+console.log(config.apiBase);
+
+const user = ref<any>(null);
+
+/**
+ *  TODO: เรียกข้อมูล session ผู้ใช้งาน
+ */
+const sessionUser = async () => {
+    const res = await axios.get(`${config.apiBase}/session/user`, {
+        withCredentials: true, // ต้องใส่ เพื่อส่ง laravel_session cookie
+    });
+
+    user.value = res.data;
+    console.log("user session:", user.value);
+};
+
+onMounted(() => {
+    sessionUser();
+});
 </script>
