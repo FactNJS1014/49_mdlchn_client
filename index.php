@@ -1,9 +1,8 @@
 <?php
 // frontend/index.php
-// Loader สำหรับ Nuxt SPA - forward params ไป Laravel เพื่อให้ browser ได้ cookie session
+// Loader สำหรับ Nuxt SPA - forward params ไป Laravel เพื่อให้ browser ได้ cookie session  
 
 $laravelBase = 'http://172.22.64.11/49_modelchange/49_mdlchn_api/session/user';
-
 $frontendBase = 'http://web-server/49_modelchange/frontend/';
 
 // ชื่อ cookie Laravel
@@ -42,14 +41,21 @@ if ($hasLoginParams && !$hasLaravelCookie) {
 
     curl_close($ch);
 
-    // ส่ง Set-Cookie ที่ Laravel ส่งกลับ browser
+
+    // ✅ ตรวจว่ามี Laravel session cookie แล้วหรือไม่
     if (preg_match_all('/Set-Cookie:\s*([^;]*)/mi', $header, $matches)) {
         foreach ($matches[1] as $cookie) {
             header('Set-Cookie: ' . trim($cookie), false);
         }
     }
 
-    // ส่ง body กลับ browser
+    // ✅ ถ้ามี cookie แล้ว → redirect กลับ frontendBase
+    if (isset($_COOKIE[$laravelSessionCookieName]) || !empty($matches[1])) {
+        header('Location: ' . $frontendBase);
+        exit;
+    }
+
+    // ถ้าไม่มี cookie → แสดงผลตามปกติ
     header('Content-Type: text/html; charset=UTF-8');
     echo $body;
     exit;
@@ -59,7 +65,20 @@ if ($hasLoginParams && !$hasLaravelCookie) {
 $indexFile = __DIR__ . '/dist/index.html';
 if (file_exists($indexFile)) {
     header('Content-Type: text/html; charset=UTF-8');
-    readfile($indexFile);
+    $html = file_get_contents($indexFile);
+
+    // ✅ เพิ่ม favicon และ title แบบอัตโนมัติ
+    $faviconUrl = $frontendBase . '/public/Model Change v3.png'; // หรือเปลี่ยนเป็น .png ได้ เช่น favicon.png
+    $customTitle = 'Model Change System';
+
+    // แทรกเข้าใน <head> ถ้ามี
+    $html = preg_replace(
+        '/<head(.*?)>/i',
+        '<head$1>' . PHP_EOL . '    <title>' . htmlspecialchars($customTitle) . '</title>' . PHP_EOL . '    <link rel="icon" type="image/x-icon" href="' . htmlspecialchars($faviconUrl) . '">' . PHP_EOL,
+        $html
+    );
+
+    echo $html;
     exit;
 }
 

@@ -406,6 +406,7 @@ const props = defineProps({
     won_chn: String,
     model_chn: String,
     empno: String,
+    data_edit: Object,
 });
 
 const hrec_cp_id = ref<string>("");
@@ -489,6 +490,11 @@ const ng_stock_std_use = computed<boolean>(() => ng_stock_std.value === "Use");
 const unloader_std_use = computed<boolean>(() => unloader_std.value === "Use");
 const empno = computed<string>(() => props.empno || "");
 
+const obj = props.data_edit || {};
+
+id_cp.value = obj.TEC_CPHREC_ID || "";
+// console.log(obj.TEC_CPHREC_ID);
+
 /**
  * TODO: สร้างฟังก์ชันส่งข้อมูลไปยัง api
  */
@@ -551,21 +557,96 @@ const handleCPSubmit = async () => {
             id: props.id,
         };
 
-        const res = await axios.post(
-            "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/cpinsert",
-            payload
-        );
+        if (id_cp.value === "") {
+            const res = await axios.post(
+                "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/cpinsert",
+                payload
+            );
 
-        if (res.data.status === true) {
-            Swal.fire({
-                icon: "success",
-                title: "บันทึกข้อมูลสำเร็จ",
-                showConfirmButton: false,
-                timer: 1500,
-            });
+            if (res.data.status === true) {
+                Swal.fire({
+                    icon: "success",
+                    title: "บันทึกข้อมูลสำเร็จ",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
+        } else {
+            const res = await axios.put(
+                "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/cpupdate/" + id_cp.value,
+                payload
+            );
+
+            if (res.data.status === true) {
+                Swal.fire({
+                    icon: "success",
+                    title: "อัปเดตข้อมูลสำเร็จ",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
         }
     } catch (error) {
         console.log(error);
     }
 };
+const dataEdit = (obj: any) => {
+    load_inp.value = obj.TEC_CPHREC_LOADINP || "";
+    pitch.value = obj.TEC_CPHREC_LOADINPPITCH || "";
+    stack_inp.value = obj.TEC_CPHREC_STACK || "";
+    trace_inp.value = obj.TEC_CPHREC_TRACEINP || "";
+    cln_inp.value = obj.TEC_CPHREC_PCBCLEAN || "";
+    func.value = obj.TEC_CPHREC_PCBCLNFUNC || "";
+    glu_inp.value = obj.TEC_CPHREC_GLUE || "";
+    prg_nm.value = obj.TEC_CPHREC_GLUEPROG || "";
+    glu_num.value = obj.TEC_CPHREC_GLUENUM || "";
+    headunit.value = obj.TEC_CPHREC_GLUEHUNIT || "";
+    bpst_detail.value = obj.TEC_CPHREC_GLUESTDNOT || "";
+    confirm_bpst.value = obj.TEC_CPHREC_GLUESTDOK || "";
+    glu2_inp.value = obj.TEC_CPHREC_GLUESND || "";
+    prg2_nm.value = obj.TEC_CPHREC_GLUESNDPROG || "";
+    glu2_num.value = obj.TEC_CPHREC_GLUESNDNUM || "";
+    headunit2.value = obj.TEC_CPHREC_GLUESNDHUNIT || "";
+    bpst2_detail.value = obj.TEC_CPHREC_GLUESNDNOT || "";
+    confirm_bpst2.value = obj.TEC_CPHREC_GLUESNDOK || "";
+    mounter_inp.value = obj.TEC_CPHREC_MNTF || "";
+    prg_mount1.value = obj.TEC_CPHREC_MNTFPROG || "";
+    noz_mount1.value = obj.TEC_CPHREC_MNTFNOZ || "";
+    sup_mount1.value = obj.TEC_CPHREC_MNTFSUPT || "";
+    mounter2_inp.value = obj.TEC_CPHREC_MNTSN || "";
+    prg_mount2.value = obj.TEC_CPHREC_MNTSNPROG || "";
+    noz_mount2.value = obj.TEC_CPHREC_MNTSNNOZ || "";
+    sup_mount2.value = obj.TEC_CPHREC_MNTSNSUPT || "";
+    mounter3_inp.value = obj.TEC_CPHREC_MNTTR || "";
+    prg_mount3.value = obj.TEC_CPHREC_MNTTRPROG || "";
+    noz_mount3.value = obj.TEC_CPHREC_MNTTRNOZ || "";
+    sup_mount3.value = obj.TEC_CPHREC_MNTTRSUPT || "";
+    mounter4_inp.value = obj.TEC_CPHREC_MNTFO || "";
+    prg_mount4.value = obj.TEC_CPHREC_MNTFOPROG || "";
+    noz_mount4.value = obj.TEC_CPHREC_MNTFONOZ || "";
+    sup_mount4.value = obj.TEC_CPHREC_MNTFOSUPT || "";
+    mount_inps.value = obj.TEC_CPHREC_MNTINSP || "";
+    prg_inspct.value = obj.TEC_CPHREC_MNTINSPPROG || "";
+    reflow_std.value = obj.TEC_CPHREC_REFLOW || "";
+    prg_reflow.value = obj.TEC_CPHREC_REFLPROG || "";
+    oxygen_reflow_std.value = obj.TEC_CPHREC_REFLOXYGEN || "";
+    oxygen_use.value = obj.TEC_CPHREC_REFLUSEOO || "";
+    sup_reflow_std.value = obj.TEC_CPHREC_REFLPCBSUPT || "";
+    temp_std.value = obj.TEC_CPHREC_REFLTEMP || "";
+    cooling_std.value = obj.TEC_CPHREC_PCBCOOL || "";
+    auto_inps.value = obj.TEC_CPHREC_AUTO || "";
+    prg_auto.value = obj.TEC_CPHREC_AUTOPROG || "";
+    ng_stock_std.value = obj.TEC_CPHREC_NGSTCK || "";
+    ng_stock_pitch.value = obj.TEC_CPHREC_NGSTCKPITCH || "";
+    trace_inp_std.value = obj.TEC_CPHREC_TRACE || "";
+    unloader_std.value = obj.TEC_CPHREC_UNLOADER || "";
+    unloader_pitch.value = obj.TEC_CPHREC_UNLOADERPITCH || "";
+    etc_details.value = obj.TEC_CPHREC_PCBLNETC_DL || "";
+};
+
+onMounted(() => {
+    /**   TODO: กำหนดค่าเริ่มต้นให้กับตัวแปรจาก props.data_edit เมื่อมีการแก้ไขข้อมูล
+     */
+    dataEdit(obj);
+});
 </script>

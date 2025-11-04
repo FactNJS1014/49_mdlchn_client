@@ -14,6 +14,24 @@ export default defineNuxtConfig({
     baseURL: "/49_modelchange/frontend/",
     buildAssetsDir: "_nuxt/", // โฟลเดอร์เก็บ assets
     cdnURL: "", // ต้องว่าง ถ้าใช้ภายใน server
+    head: {
+      title: "Model Change System",
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          name: "description",
+          content: "ระบบบันทึกการเปลี่ยนโมเดลในสายการผลิต",
+        },
+      ],
+      link: [
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/49_modelchange/frontend/public/Model Change v3.png",
+        },
+      ],
+    },
   },
 
   nitro: {
