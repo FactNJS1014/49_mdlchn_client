@@ -1,27 +1,69 @@
 <template>
   <v-card class="pa-4">
-    <v-card-title>สร้างสายอนุมัติ 2 ลำดับ</v-card-title>
+    <v-card-title>สร้างสายอนุมัติ 3 ลำดับ</v-card-title>
     <v-card-text>
       <v-form ref="formRef" @submit.prevent="onSubmit">
         <v-row>
           <v-col cols="12" sm="6">
-            <v-select v-model="level1" :items="employees_AM" item-title="MUSR_NAME" item-value="MUSR_ID"
-              variant="outlined" label="ลำดับที่ 1 (เลือกหลายคน)" multiple chips clearable />
+            <div class="mt-3 font-semibold text-xl bg-cyan-lighten-3 pa-1">
+              ลำดับที่ 1: AM Sub Leader
+            </div>
+            <v-select
+              v-model="level1"
+              :items="employees_AM"
+              item-title="MUSR_NAME"
+              item-value="MUSR_ID"
+              variant="outlined"
+              label="ลำดับที่ 1 (เลือกหลายคน)"
+              multiple
+              chips
+              clearable
+            />
           </v-col>
 
           <v-col cols="12" sm="6">
-            <v-select v-model="level2" :items="employees_AM" item-title="MUSR_NAME" item-value="MUSR_ID"
-              variant="outlined" label="ลำดับที่ 2 (เลือกหลายคน)" multiple chips clearable />
+            <div class="mt-3 font-semibold text-xl bg-cyan-lighten-1 pa-1">
+              ลำดับที่ 2: AM Leader
+            </div>
+            <v-select
+              v-model="level2"
+              :items="employees_AM"
+              item-title="MUSR_NAME"
+              item-value="MUSR_ID"
+              variant="outlined"
+              label="ลำดับที่ 2 (เลือกหลายคน)"
+              multiple
+              chips
+              clearable
+            />
           </v-col>
           <v-col cols="12" sm="6">
-            <v-select v-model="level3" :items="employees_QC" item-title="MUSR_NAME" item-value="MUSR_ID"
-              variant="outlined" label="ลำดับที่ 3 (เลือกหลายคน)" multiple chips clearable />
+            <div class="mt-3 font-semibold text-xl bg-teal-accent-3 pa-1">
+              ลำดับที่ 3: QC
+            </div>
+            <v-select
+              v-model="level3"
+              :items="employees_QC"
+              item-title="MUSR_NAME"
+              item-value="MUSR_ID"
+              variant="outlined"
+              label="ลำดับที่ 3 (เลือกหลายคน)"
+              multiple
+              chips
+              clearable
+            />
           </v-col>
 
           <v-col cols="12" class="mt-4">
             <div class="flex justify-center items-center">
-              <v-btn color="primary" type="submit" rounded="lg" width="300px"
-                prepend-icon="mdi mdi-content-save-settings">บันทึก</v-btn>
+              <v-btn
+                color="primary"
+                type="submit"
+                rounded="lg"
+                width="300px"
+                prepend-icon="mdi mdi-content-save-settings"
+                >บันทึก</v-btn
+              >
             </div>
           </v-col>
         </v-row>
@@ -31,7 +73,13 @@
   <v-card class="mt-4 pa-4">
     <v-data-table :items="approveUsers" :headers="headers" class="mt-4">
       <template #item.actions="{ item }">
-        <v-btn icon color="red" @click="removeMaster(item.MASTER_ID)" size="small" rounded="lg">
+        <v-btn
+          icon
+          color="red"
+          @click="removeMaster(item.MASTER_ID)"
+          size="small"
+          rounded="lg"
+        >
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </template>

@@ -24,14 +24,22 @@
                 </div>
               </div>
 
-              <v-switch
-                v-model="prs"
-                :label="`Process: ${prs}`"
-                false-value="CP"
-                true-value="RF"
-                hide-details
-                color="blue"
-              ></v-switch>
+              <div class="flex align-center">
+                <h1
+                  class="font-semibold text-lg bg-light-blue-accent-1 pa-1 rounded-l-md"
+                >
+                  เอกสาร Process:
+                </h1>
+                <v-switch
+                  v-model="prs"
+                  :label="`Process: ${prs}`"
+                  false-value="CP"
+                  true-value="RF"
+                  hide-details
+                  color="blue"
+                  class="ms-3"
+                ></v-switch>
+              </div>
 
               <!-- ✅ เพิ่ม v-virtual-scroll -->
 
@@ -133,6 +141,18 @@
                       :rules="LotsRules"
                     />
                   </v-col>
+                  <v-col cols="6" md="3" v-if="!prs_check">
+                    <div class="mt-3 font-semibold">Process: (CP) เดิม</div>
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="procs_cp"
+                      :rules="ProcessRules"
+                    >
+                      <v-radio label="CP" value="CP" color="info"></v-radio>
+                      <v-radio label="RF" value="RF" color="info"></v-radio>
+                    </v-radio-group>
+                  </v-col>
                   <v-col cols="6" md="3" v-if="prs_check">
                     <div class="mt-3 font-semibold">Process: (RF) เดิม</div>
                     <v-radio-group
@@ -144,6 +164,7 @@
                       <v-radio label="CP" value="CP" color="info"></v-radio>
                       <v-radio label="RF1" value="RF1" color="info"></v-radio>
                       <v-radio label="RF2" value="RF2" color="info"></v-radio>
+                      <v-radio label="RF" value="RF" color="info"></v-radio>
                     </v-radio-group>
                   </v-col>
                 </v-row>
@@ -181,6 +202,18 @@
                       :rules="LotsRules"
                     />
                   </v-col>
+                  <v-col cols="6" md="3" v-if="!prs_check">
+                    <div class="mt-3 font-semibold">Process: (CP) เปลี่ยน</div>
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="procs_cp_chn"
+                      :rules="ProcessRules"
+                    >
+                      <v-radio label="CP" value="CP" color="info"></v-radio>
+                      <v-radio label="RF" value="RF" color="info"></v-radio>
+                    </v-radio-group>
+                  </v-col>
                   <v-col cols="6" md="3" v-if="prs_check">
                     <div class="mt-3 font-semibold">Process: (RF) เปลี่ยน</div>
                     <v-radio-group
@@ -192,6 +225,7 @@
                       <v-radio label="CP" value="CP" color="info"></v-radio>
                       <v-radio label="RF1" value="RF1" color="info"></v-radio>
                       <v-radio label="RF2" value="RF2" color="info"></v-radio>
+                      <v-radio label="RF" value="RF" color="info"></v-radio>
                     </v-radio-group>
                   </v-col>
                 </v-row>
@@ -239,13 +273,26 @@
                     />
                   </v-col>
                   <v-col cols="6" md="5">
-                    <div class="mt-3 font-semibold">REV :</div>
+                    <div class="mt-3 font-semibold">PCB No.:</div>
                     <v-text-field
                       variant="outlined"
                       density="compact"
                       v-model="prog_rev"
                       :rules="revInputRules"
                     />
+                  </v-col>
+                </v-row>
+                <v-row no-gutters class="gap-3">
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">Customer Name :</div>
+                    <v-select
+                      v-model="customer"
+                      variant="outlined"
+                      rounded="md"
+                      :items="customer_list"
+                      item-title="BGCD"
+                      :rules="customerRules"
+                    ></v-select>
                   </v-col>
                 </v-row>
                 <v-row no-gutters class="justify-center mt-10">
@@ -418,6 +465,10 @@
               <th class="px-2 py-1 text-left border">Revision:</th>
               <td class="px-2 py-1 border">{{ details.OPR_HREC_PRGMREV }}</td>
             </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Customer:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_CUS }}</td>
+            </tr>
           </tbody>
         </table>
 
@@ -482,9 +533,14 @@ const search = ref<string>("");
 const lots_chn = ref<number>(0);
 const procs_rf_chn = ref<string>("");
 const dialog = ref<boolean>(false);
+const customer = ref<string>("");
 const id = ref<string>("");
+const procs_cp = ref<string>("");
+const procs_cp_chn = ref<string>("");
 
 const tab = ref<string>("one");
+
+const issue_num = ref<string>("");
 
 const { public: config } = useRuntimeConfig();
 console.log(config.apiBase);
@@ -534,6 +590,7 @@ const line_list = ref<any>([]);
 const check_model = ref<any>([]);
 const get_rec = ref<any>([]);
 const details = ref<any>([]);
+const customer_list = ref<any>([]);
 
 /**
  * TODO: สร้างสถานะการเลือกแสดงข้อมูลบันทึก
@@ -571,7 +628,11 @@ const handleSubmitForm = async () => {
         won_cur: won_cur.value,
         won_chn: won_chn.value,
         lots_chn: lots_chn.value,
+        customer: customer.value,
+        procs_cp: procs_cp.value,
+        procs_cp_chn: procs_cp_chn.value,
       };
+      console.log(payload);
 
       if (id.value === "") {
         const insert = await axios.post(
@@ -640,6 +701,7 @@ const handleSubmitForm = async () => {
         won_chn: won_chn.value,
         lots_chn: lots_chn.value,
         procs_rf_chn: procs_rf_chn.value,
+        customer: customer.value,
       };
       // console.log(payload)
       if (id.value === "") {
@@ -717,7 +779,9 @@ const goToEdit = (obj: any) => {
   ecn_rev.value = obj.OPR_HREC_HAVECONTECN_REV;
   prog_name.value = obj.OPR_HREC_PRGMNM;
   prog_rev.value = obj.OPR_HREC_PRGMREV;
-
+  customer.value = obj.OPR_HREC_CUS;
+  procs_cp.value = obj.OPR_HREC_PROCSCP;
+  procs_cp_chn.value = obj.OPR_HREC_PROCSCP_CHN;
   dialog.value = false;
 };
 
@@ -841,6 +905,31 @@ const fetchApiLine = async () => {
   }
 };
 
+const fetchApiCustomer = async () => {
+  try {
+    const res = await axios.get(
+      "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/get/cus"
+    );
+    customer_list.value = res.data;
+    // console.log(customer_list.value);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchApiIssueNo = async () => {
+  try {
+    const res = await axios.get(
+      "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/get/issueno"
+    );
+    issue_num.value = res.data;
+    issue_no.value = (issue_num.value.split("-").pop() ?? "").slice(-3);
+    // console.log(customer_list.value);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const GetRecordForm = async () => {
   try {
     const res = await axios.get(
@@ -933,6 +1022,13 @@ const revInputRules: ((value: string) => true | string)[] = [
   },
 ];
 
+const customerRules: ((value: string) => true | string)[] = [
+  (value) => {
+    if (value && value.length > 0) return true;
+    return "Please input revision.";
+  },
+];
+
 /**
  * TODO: เรียกใช้งานฟังก์ชัน api
  */
@@ -942,5 +1038,7 @@ onMounted(async () => {
   await fetchApiLine();
   await GetRecordForm();
   await sessionUser();
+  await fetchApiCustomer();
+  await fetchApiIssueNo();
 });
 </script>

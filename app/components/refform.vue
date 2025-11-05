@@ -1,6 +1,12 @@
 <template>
   <v-form @submit.prevent="handleRFSubmit">
-    <div class="flex gap-3 align-center">
+    <!-- <v-btn width="200" rounded="md" @click="clearForm" color="teal" class="mt-1">
+      <template #prepend>
+        <v-icon class="mdi mdi-format-clear"></v-icon>
+      </template>
+<h1 class="text-md">Clear Form</h1>
+</v-btn> -->
+    <div class="flex gap-3 align-center mt-2">
       <div class="flex gap-2 align-center">
         <h1>Employee ID :</h1>
         <span>
@@ -117,10 +123,7 @@
           </v-radio-group>
           <div class="mt-3 font-semibold">5.5 Solder plate number</div>
           <v-radio-group inline class="gap-4" v-model="solder">
-            <v-radio
-              label="Referent Assembly chart part list for AM"
-              value="Referent Assembly chart part list for AM"
-            ></v-radio>
+            <v-radio :label="props.cus" :value="props.cus"></v-radio>
           </v-radio-group>
         </v-col>
       </div>
@@ -184,10 +187,7 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">8.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_ref_mount1">
-            <v-radio
-              label="Referent Assembly chart part list for AM"
-              value="Referent Assembly chart part list for AM"
-            ></v-radio>
+            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
           </v-radio-group>
           <div class="mt-3 font-semibold">8.2 Nozzle setting</div>
           <v-radio-group inline class="gap-4" v-model="noz_ref_mount1">
@@ -215,10 +215,7 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">9.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_ref_mount2">
-            <v-radio
-              label="Referent Assembly chart part list for AM"
-              value="Referent Assembly chart part list for AM"
-            ></v-radio>
+            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
           </v-radio-group>
           <div class="mt-3 font-semibold">9.2 Nozzle setting</div>
           <v-radio-group inline class="gap-4" v-model="noz_ref_mount2">
@@ -246,10 +243,7 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">10.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_ref_mount3">
-            <v-radio
-              label="Referent Assembly chart part list for AM"
-              value="Referent Assembly chart part list for AM"
-            ></v-radio>
+            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
           </v-radio-group>
           <div class="mt-3 font-semibold">10.2 Nozzle setting</div>
           <v-radio-group inline class="gap-4" v-model="noz_ref_mount3">
@@ -277,10 +271,7 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">11.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_ref_mount4">
-            <v-radio
-              label="Referent Assembly chart part list for AM"
-              value="Referent Assembly chart part list for AM"
-            ></v-radio>
+            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
           </v-radio-group>
           <div class="mt-3 font-semibold">11.2 Nozzle setting</div>
           <v-radio-group inline class="gap-4" v-model="noz_ref_mount4">
@@ -308,10 +299,7 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">12.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_ref_inspct">
-            <v-radio
-              label="Referent Assembly chart part list for AM"
-              value="Referent Assembly chart part list for AM"
-            ></v-radio>
+            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
             <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
           </v-radio-group>
         </v-col>
@@ -329,10 +317,7 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">13.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_rf_reflow">
-            <v-radio
-              label="Referent Assembly chart part list for AM"
-              value="Referent Assembly chart part list for AM"
-            ></v-radio>
+            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
             <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
           </v-radio-group>
           <div class="mt-3 font-semibold">13.2 Oxygen</div>
@@ -380,10 +365,7 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_rf_auto">
-            <v-radio
-              label="Referent Assembly chart part list for AM"
-              value="Referent Assembly chart part list for AM"
-            ></v-radio>
+            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
             <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
           </v-radio-group>
         </v-col>
@@ -447,7 +429,7 @@
   </v-form>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -457,6 +439,8 @@ const props = defineProps({
   model_chn: String,
   empno: String,
   data_edit: Object,
+  cus: String,
+  prgnm: String,
 });
 
 /**
@@ -626,12 +610,124 @@ const handleRFSubmit = async () => {
           title: "อัปเดตข้อมูลสำเร็จ",
           showConfirmButton: false,
           timer: 1500,
+        }).then(() => {
+          localStorage.removeItem("data");
+          location.reload();
+          //   // ✅ ล้างค่าทั้งหมด
+          //   load_inp.value = "";
+          //   pitch_rf.value = "";
+          //   cln_inp.value = "";
+          //   func.value = "";
+          //   stack_inp.value = "";
+          //   trace_inp.value = "";
+          //   etc_details.value = "";
+          //   printer_std.value = "";
+          //   printer_prg.value = "";
+          //   metalmask.value = "";
+          //   ref_mm.value = "";
+          //   squee.value = "";
+          //   sup_rf.value = "";
+          //   solder.value = "";
+          //   glue_rf.value = "";
+          //   glue_prg.value = "";
+          //   glue_num.value = "";
+          //   solder_use.value = "";
+          //   solder_prgnm.value = "";
+          //   mounter_ref_inp.value = "";
+          //   prg_ref_mount1.value = "";
+          //   noz_ref_mount1.value = "";
+          //   sup_ref_mount1.value = "";
+          //   mounter2_ref_inp.value = "";
+          //   prg_ref_mount2.value = "";
+          //   noz_ref_mount2.value = "";
+          //   sup_ref_mount2.value = "";
+          //   mounter3_ref_inp.value = "";
+          //   prg_ref_mount3.value = "";
+          //   noz_ref_mount3.value = "";
+          //   sup_ref_mount3.value = "";
+          //   mounter4_ref_inp.value = "";
+          //   prg_ref_mount4.value = "";
+          //   noz_ref_mount4.value = "";
+          //   sup_ref_mount4.value = "";
+          //   mounter_ref_inps.value = "";
+          //   prg_ref_inspct.value = "";
+          //   reflow_rf_std.value = "";
+          //   prg_rf_reflow.value = "";
+          //   oxygen_rf_reflow_std.value = "";
+          //   oxyen_rf_use.value = "";
+          //   sup_rf_reflow_std.value = "";
+          //   temp_rf_std.value = "";
+          //   cooling_rf_std.value = "";
+          //   auto_rf_inps.value = "";
+          //   prg_rf_auto.value = "";
+          //   ng_stock_rf_std.value = "";
+          //   ng_stock_rf_pitch.value = "";
+          //   trace_rf_inp_std.value = "";
+          //   unloader_rf_std.value = "";
+          //   unloader_rf_pitch.value = "";
+          //   id_rf.value = ""; // ถ้ามีตัวนี้ใช้เช็ค mode insert/update
         });
       }
     }
   } catch (error) {
     console.log(error);
   }
+};
+
+const clearForm = () => {
+  // ✅ ล้างค่าทั้งหมด
+  load_inp.value = "";
+  pitch_rf.value = "";
+  cln_inp.value = "";
+  func.value = "";
+  stack_inp.value = "";
+  trace_inp.value = "";
+  etc_details.value = "";
+  printer_std.value = "";
+  printer_prg.value = "";
+  metalmask.value = "";
+  ref_mm.value = "";
+  squee.value = "";
+  sup_rf.value = "";
+  solder.value = "";
+  glue_rf.value = "";
+  glue_prg.value = "";
+  glue_num.value = "";
+  solder_use.value = "";
+  solder_prgnm.value = "";
+  mounter_ref_inp.value = "";
+  prg_ref_mount1.value = "";
+  noz_ref_mount1.value = "";
+  sup_ref_mount1.value = "";
+  mounter2_ref_inp.value = "";
+  prg_ref_mount2.value = "";
+  noz_ref_mount2.value = "";
+  sup_ref_mount2.value = "";
+  mounter3_ref_inp.value = "";
+  prg_ref_mount3.value = "";
+  noz_ref_mount3.value = "";
+  sup_ref_mount3.value = "";
+  mounter4_ref_inp.value = "";
+  prg_ref_mount4.value = "";
+  noz_ref_mount4.value = "";
+  sup_ref_mount4.value = "";
+  mounter_ref_inps.value = "";
+  prg_ref_inspct.value = "";
+  reflow_rf_std.value = "";
+  prg_rf_reflow.value = "";
+  oxygen_rf_reflow_std.value = "";
+  oxyen_rf_use.value = "";
+  sup_rf_reflow_std.value = "";
+  temp_rf_std.value = "";
+  cooling_rf_std.value = "";
+  auto_rf_inps.value = "";
+  prg_rf_auto.value = "";
+  ng_stock_rf_std.value = "";
+  ng_stock_rf_pitch.value = "";
+  trace_rf_inp_std.value = "";
+  unloader_rf_std.value = "";
+  unloader_rf_pitch.value = "";
+  id_rf.value = ""; // ถ้ามีตัวนี้ใช้เช็ค mode insert/update
 };
 
 const data_rf_edit = (obj: any) => {
@@ -685,8 +781,109 @@ const data_rf_edit = (obj: any) => {
   trace_rf_inp_std.value = obj.TEC_RFHREC_TRACE || "";
   unloader_rf_std.value = obj.TEC_RFHREC_UNLOADER || "";
   unloader_rf_pitch.value = obj.TEC_RFHREC_UNLOADERPITCH || "";
+  etc_details.value = obj.TEC_RFHREC_PCBLNETC || "";
 };
 
+watch(load_inp, (newVal) => {
+  if (newVal === "Not Use") {
+    pitch_rf.value = "";
+  }
+});
+
+watch(cln_inp, (newVal) => {
+  if (newVal === "Not Use") {
+    func.value = "";
+    etc_details.value = "";
+  }
+});
+
+watch(printer_std, (newVal) => {
+  if (newVal === "Not User") {
+    printer_prg.value = "";
+    metalmask.value = "";
+    ref_mm.value = "";
+    squee.value = "";
+    sup_rf.value = "";
+    solder.value = "";
+  }
+});
+
+watch(glue_rf, (newVal) => {
+  if (newVal === "Not User") {
+    glue_prg.value = "";
+    glue_num.value = "";
+  }
+});
+
+watch(solder_use, (newVal) => {
+  if (newVal === "Not Use") {
+    solder_prgnm.value = "";
+  }
+});
+
+watch(mounter_ref_inp, (newVal) => {
+  if (newVal === "Not Use") {
+    prg_ref_mount1.value = "";
+    noz_ref_mount1.value = "";
+    sup_ref_mount1.value = "";
+  }
+});
+watch(mounter2_ref_inp, (newVal) => {
+  if (newVal === "Not Use") {
+    prg_ref_mount2.value = "";
+    noz_ref_mount2.value = "";
+    sup_ref_mount2.value = "";
+  }
+});
+watch(mounter3_ref_inp, (newVal) => {
+  if (newVal === "Not Use") {
+    prg_ref_mount3.value = "";
+    noz_ref_mount3.value = "";
+    sup_ref_mount3.value = "";
+  }
+});
+
+watch(mounter4_ref_inp, (newVal) => {
+  if (newVal === "Not Use") {
+    prg_ref_mount4.value = "";
+    noz_ref_mount4.value = "";
+    sup_ref_mount4.value = "";
+  }
+});
+
+watch(mounter_ref_inps, (newVal) => {
+  if (newVal === "Not Use") {
+    prg_ref_inspct.value = "";
+  }
+});
+
+watch(reflow_rf_std, (newVal) => {
+  if (newVal === "Not Use") {
+    prg_rf_reflow.value = "";
+    oxygen_rf_reflow_std.value = "";
+    oxyen_rf_use.value = "";
+    sup_rf_reflow_std.value = "";
+    temp_rf_std.value = "";
+  }
+});
+
+watch(auto_rf_inps, (newVal) => {
+  if (newVal === "Not Use") {
+    prg_rf_auto.value = "";
+  }
+});
+
+watch(ng_stock_rf_std, (newVal) => {
+  if (newVal === "Not Use") {
+    ng_stock_rf_pitch.value = "";
+  }
+});
+
+watch(unloader_rf_std, (newVal) => {
+  if (newVal === "Not Use") {
+    unloader_rf_pitch.value = "";
+  }
+});
 onMounted(() => {
   data_rf_edit(obj);
 });

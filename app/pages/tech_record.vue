@@ -67,6 +67,8 @@
                 :won_chn="won_select"
                 :data_edit="_data"
                 :model_chn="model_chn_select"
+                :prgnm="prog_name_select"
+                :cus="customer_select"
                 :empno="empno"
               />
               <refform
@@ -76,6 +78,8 @@
                 :model_chn="model_chn_select"
                 :empno="empno"
                 :data_edit="_data"
+                :prgnm="prog_name_select"
+                :cus="customer_select"
               />
             </v-tabs-window-item>
           </v-tabs-window>
@@ -191,6 +195,8 @@ const won_select = ref<string>("");
 const model_chn_select = ref<string>("");
 const id_select = ref<string>("");
 const empno = ref<string>("");
+const customer_select = ref<string>("");
+const prog_name_select = ref<string>("");
 
 const data = ref<any>([]);
 const data_count = ref<number>(0);
@@ -234,6 +240,8 @@ const ChooseData = (obj: any) => {
   won_select.value = obj.OPR_HREC_WON_CHANGE;
   model_chn_select.value = obj.OPR_HREC_CHNMDLNM;
   id_select.value = obj.OPR_HREC_ID;
+  customer_select.value = obj.OPR_HREC_CUS;
+  prog_name_select.value = obj.OPR_HREC_PRGMNM;
 
   dialog.value = false;
 };
