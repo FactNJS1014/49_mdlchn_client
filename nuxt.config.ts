@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 
   app: {
     // 👇 ต้องตรงกับ path จริงของคุณใน server
-    baseURL: "/49_modelchange/frontend/",
+    baseURL: "/49_modelchange/49_mdlchn_frontend/",
     buildAssetsDir: "_nuxt/", // โฟลเดอร์เก็บ assets
     cdnURL: "", // ต้องว่าง ถ้าใช้ภายใน server
     head: {
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         {
           rel: "icon",
           type: "image/png",
-          href: "/49_modelchange/frontend/public/Model Change v3.png",
+          href: "/49_modelchange/49_mdlchn_frontend/public/Model Change v3.png",
         },
       ],
     },
