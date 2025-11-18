@@ -1,6 +1,10 @@
 <template>
   <v-card class="pa-4">
-    <v-tabs v-model="tab" class="text-grey-darken-1 bg-blue-lighten-5" color="light-blue-darken-1">
+    <v-tabs
+      v-model="tab"
+      class="text-grey-darken-1 bg-blue-lighten-5"
+      color="light-blue-darken-1"
+    >
       <v-tab value="one" class="font-weight-medium">TECHNICHIAN FORM</v-tab>
     </v-tabs>
     <v-card-text>
@@ -8,36 +12,76 @@
         <template #default>
           <v-tabs-window v-model="tab">
             <v-tabs-window-item value="one">
-              <div class="flex justify-between px-2 py-3 bg-blue-500 rounded-sm align-center">
+              <div
+                class="flex justify-between px-2 py-3 bg-blue-500 rounded-sm align-center"
+              >
                 <span class="font-semibold">FORM FOR TECHNICHIAN</span>
-                <v-btn rounded="xl" class="text-blue-darken-4 bg-cyan-accent-1" @click="dialog = true">
-                  <template #prepend>
-                    <i class="fa fa-file-alt fa-lg"></i>
-                  </template>
-                  <h1>ข้อมูลจาก Operator</h1>
-                </v-btn>
+                <v-badge
+                  location="top left"
+                  color="error"
+                  :content="data_count"
+                  rounded="lg"
+                >
+                  <v-btn
+                    rounded="xl"
+                    class="text-blue-darken-4 bg-cyan-accent-1"
+                    @click="dialog = true"
+                  >
+                    <template #prepend>
+                      <i class="fa fa-file-alt fa-lg"></i>
+                    </template>
+                    <h1>ข้อมูลจาก Operator</h1>
+                  </v-btn>
+                </v-badge>
               </div>
               <div class="mt-3">
                 <h1 class="text-xl text-red-500">
                   <i class="mr-2 fa-solid fa-circle-info"></i>ส่วนนี้จะเป็นของ Technichian
                   หรือ Model Change ที่จะต้องบันทึก
-                  <span class="font-semibold"><mark class="text-red-500">(ข้อมูลที่ได้รับในการมาบันทึกนั้น ต้องหลังจาก
-                      Operator
-                      กรอกข้อมูลเสร็จสิ้นเท่านั้น)</mark>
+                  <span class="font-semibold"
+                    ><mark class="text-red-500"
+                      >(ข้อมูลที่ได้รับในการมาบันทึกนั้น ต้องหลังจาก Operator
+                      กรอกข้อมูลเสร็จสิ้นเท่านั้น)</mark
+                    >
                   </span>
                   โดยกดปุ่มข้อมูลจาก Operator
                   เพื่อทำการคลิกเลือกข้อมูลมากรอกข้อมูลด้านล่างนี้
                 </h1>
                 <p class="text-lg text-amber-500">
-                  <i class="mr-2 fa-solid fa-circle-info"></i>ตรวจสอบชื่อโปรแกรมบนหน้าจอเครื่องจักร ต้องตรงกับ Assembly
-                  chart part
+                  <i class="mr-2 fa-solid fa-circle-info"></i
+                  >ตรวจสอบชื่อโปรแกรมบนหน้าจอเครื่องจักร ต้องตรงกับ Assembly chart part
                   list เท่านั้น
                 </p>
               </div>
-              <v-switch v-model="prs" :label="`Process: ${prs}`" false-value="CP" true-value="RF" hide-details
-                color="blue"></v-switch>
-              <cpform v-if="prs === 'CP'" :id="id_select" :won_chn="won_select" :model_chn="model_chn_select" />
-              <refform v-else :id="id_select" :won_chn="won_select" :model_chn="model_chn_select" />
+              <v-switch
+                v-model="prs"
+                :label="`Process: ${prs}`"
+                false-value="CP"
+                true-value="RF"
+                hide-details
+                color="blue"
+              ></v-switch>
+              <cpform
+                v-if="prs === 'CP'"
+                :id="id_select"
+                :won_chn="won_select"
+                :data_edit="_data"
+                :model_chn="model_chn_select"
+                :prgnm="prog_name_select"
+                :cus="customer_select"
+                :empno="empno"
+              />
+              <refform
+                v-else
+                :id="id_select"
+                :won_chn="won_select"
+                :model_chn="model_chn_select"
+                :empno="empno"
+                :data_edit="_data"
+                :prgnm="prog_name_select"
+                :cus="customer_select"
+                :pcbno="pcbno_select"
+              />
             </v-tabs-window-item>
           </v-tabs-window>
         </template>
@@ -57,16 +101,28 @@
 
           <v-spacer></v-spacer>
 
-          <v-text-field v-model="search" density="compact" label="Search" variant="solo-filled" flat hide-details
-            single-line>
+          <v-text-field
+            v-model="search"
+            density="compact"
+            label="Search"
+            variant="solo-filled"
+            flat
+            hide-details
+            single-line
+          >
             <template #prepend-inner>
               <i class="fa fa-magnifying-glass"></i>
             </template>
           </v-text-field>
         </v-card-title>
         <v-divider></v-divider>
-        <v-data-table :headers="headers" v-model:search="search" :filter-keys="['OPR_HREC_LINE']" density="compact"
-          :items="data">
+        <v-data-table
+          :headers="headers"
+          v-model:search="search"
+          :filter-keys="['OPR_HREC_LINE']"
+          density="compact"
+          :items="data"
+        >
           <template v-slot:item="{ item }">
             <tr class="text-no-wrap">
               <td>
@@ -81,7 +137,9 @@
                   </div>
                 </div>
               </td>
-              <td style="min-width: 200px">{{ item.OPR_HREC_ISSUENO }}</td>
+              <td style="min-width: 200px">
+                {{ item.OPR_HREC_ISSUENO.split("-").pop().slice(3) }}
+              </td>
               <td style="min-width: 100px">{{ item.OPR_HREC_PROCS }}</td>
               <td style="min-width: 100px">{{ item.OPR_HREC_LINE }}</td>
               <td style="min-width: 200px">{{ item.OPR_HREC_WON_CURRENT }}</td>
@@ -139,6 +197,10 @@ const search = ref<string>("");
 const won_select = ref<string>("");
 const model_chn_select = ref<string>("");
 const id_select = ref<string>("");
+const empno = ref<string>("");
+const customer_select = ref<string>("");
+const prog_name_select = ref<string>("");
+const pcbno_select = ref<string>("");
 
 const data = ref<any>([]);
 const data_count = ref<number>(0);
@@ -182,6 +244,9 @@ const ChooseData = (obj: any) => {
   won_select.value = obj.OPR_HREC_WON_CHANGE;
   model_chn_select.value = obj.OPR_HREC_CHNMDLNM;
   id_select.value = obj.OPR_HREC_ID;
+  customer_select.value = obj.OPR_HREC_CUS;
+  prog_name_select.value = obj.OPR_HREC_PRGMNM;
+  pcbno_select.value = obj.OPR_HREC_PRGMREV;
 
   dialog.value = false;
 };

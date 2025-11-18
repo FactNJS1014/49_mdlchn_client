@@ -1,6 +1,10 @@
 <template>
   <v-card>
-    <v-tabs v-model="tab" class="text-grey-darken-1 bg-blue-lighten-5" color="light-blue-darken-1">
+    <v-tabs
+      v-model="tab"
+      class="text-grey-darken-1 bg-blue-lighten-5"
+      color="light-blue-darken-1"
+    >
       <v-tab value="one" class="font-weight-medium">OPERATOR FORM</v-tab>
       <v-badge inline location="top right" color="red" :content="get_rec.length">
         <v-tab value="two" class="font-weight-medium"> ตรวจสอบข้อมูลบันทึก </v-tab>
@@ -21,11 +25,20 @@
               </div>
 
               <div class="flex align-center">
-                <h1 class="font-semibold text-lg bg-light-blue-accent-1 pa-1 rounded-l-md">
+                <h1
+                  class="font-semibold text-lg bg-light-blue-accent-1 pa-1 rounded-l-md"
+                >
                   เอกสาร Process:
                 </h1>
-                <v-switch v-model="prs" :label="`Process: ${prs}`" false-value="CP" true-value="RF" hide-details
-                  color="blue" class="ms-3"></v-switch>
+                <v-switch
+                  v-model="prs"
+                  :label="`Process: ${prs}`"
+                  false-value="CP"
+                  true-value="RF"
+                  hide-details
+                  color="blue"
+                  class="ms-3"
+                ></v-switch>
               </div>
 
               <!-- ✅ เพิ่ม v-virtual-scroll -->
@@ -34,33 +47,57 @@
                 <div class="flex gap-2 align-center">
                   <h1>Employee ID :</h1>
                   <span>
-                    <input type="text" class="w-full px-3 py-2 border border-gray-800 rounded-lg focus:outline-none"
-                      v-model="empno" required />
+                    <input
+                      type="text"
+                      class="w-full px-3 py-2 border border-gray-800 rounded-lg focus:outline-none"
+                      v-model="empno"
+                      required
+                    />
                   </span>
                 </div>
                 <v-row no-gutters class="gap-3">
                   <v-col cols="4">
                     <div class="mt-3 font-semibold">Line No. :</div>
-                    <v-select v-model="line" variant="outlined" rounded="md" :items="line_list" item-title="LINE_NAME"
-                      :rules="LineRules">
+                    <v-select
+                      v-model="line"
+                      variant="outlined"
+                      rounded="md"
+                      :items="line_list"
+                      item-title="LINE_NAME"
+                      :rules="LineRules"
+                    >
                     </v-select>
                   </v-col>
                   <v-col cols="4">
                     <div class="mt-3 font-semibold">Issue No. :</div>
-                    <v-text-field variant="outlined" rounded="md" v-model="issue_no" :rules="IssueNoRules">
+                    <v-text-field
+                      variant="outlined"
+                      rounded="md"
+                      v-model="issue_no"
+                      :rules="IssueNoRules"
+                    >
                     </v-text-field>
                   </v-col>
                   <v-col cols="3" md="3">
                     <div class="mt-3 font-semibold">Issue Date :</div>
-                    <input type="date"
+                    <input
+                      type="date"
                       class="w-full px-3 py-4 text-base placeholder-gray-400 transition-colors bg-white border border-gray-300 rounded focus:outline-none"
-                      v-model="date_rec" required readonly />
+                      v-model="date_rec"
+                      required
+                      readonly
+                    />
                   </v-col>
                 </v-row>
                 <v-row no-gutters>
                   <div class="mt-3 font-semibold">Status :</div>
                   <span class="mt-1">
-                    <v-radio-group inline class="gap-4" v-model="status" :rules="StatusRules">
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="status"
+                      :rules="StatusRules"
+                    >
                       <v-radio label="Urgent" value="Urgent" color="info"></v-radio>
                       <v-radio label="Normal" value="Normal" color="info"></v-radio>
                       <v-radio label="New line" value="New line" color="info"></v-radio>
@@ -69,81 +106,204 @@
                     </v-radio-group>
                   </span>
                 </v-row>
-                <v-row no-gutters class="gap-3">
-                  <v-col cols="4" md="5">
-                    <div class="mt-3 font-semibold">WO# (เดิม):</div>
-                    <v-autocomplete variant="outlined" rounded="md" :items="won_list" item-title="WON" item-value="WON"
-                      v-model="won_cur" :rules="WorkOrderRules" @update:modelValue="SelectWonCur"></v-autocomplete>
-                  </v-col>
-                  <v-col cols="6" md="5">
-                    <div class="mt-3 font-semibold">Current Model Code :</div>
-                    <v-text-field variant="outlined" rounded="md" v-model="cur_modelname" :rules="CurrentModelRules">
-                    </v-text-field>
-                    <!-- <v-autocomplete variant="outlined" rounded="md" :items="model_name_list" item-title="MDLNM" item-value="MDLNM" v-model="cur_modelname" :rules="CurrentModelRules"></v-autocomplete> -->
-                  </v-col>
-                  <v-col cols="6" md="5">
-                    <div class="mt-3 font-semibold">Lot Size เดิม:</div>
-                    <v-number-input variant="outlined" rounded="md" v-model="lots" :min="0" :rules="LotsRules" />
-                  </v-col>
-                  <v-col cols="6" md="3" v-if="prs_check">
-                    <div class="mt-3 font-semibold">Process: (RF) เดิม</div>
-                    <v-radio-group inline class="gap-4" v-model="procs_rf" :rules="ProcessRules">
-                      <v-radio label="CP" value="CP" color="info"></v-radio>
-                      <v-radio label="RF1" value="RF1" color="info"></v-radio>
-                      <v-radio label="RF2" value="RF2" color="info"></v-radio>
-                    </v-radio-group>
-                  </v-col>
-                </v-row>
-                <v-row no-gutters class="gap-3">
-                  <v-col cols="4" md="5">
-                    <div class="mt-3 font-semibold">WO# (เปลี่ยน):</div>
-                    <v-autocomplete variant="outlined" rounded="md" :items="won_list" item-title="WON" item-value="WON"
-                      v-model="won_chn" :rules="WorkOrderRules" @update:modelValue="SelectWonChn"></v-autocomplete>
-                  </v-col>
-                  <v-col cols="6" md="5">
-                    <div class="mt-3 font-semibold">Change Model Code :</div>
-                    <v-text-field variant="outlined" rounded="md" v-model="chn_modelname" :rules="ChangeModelRules" />
-                    <!-- <v-autocomplete variant="outlined" rounded="md" :items="model_name_list" item-title="MDLNM" item-value="MDLNM" v-model="chn_modelname" :rules="ChangeModelRules" s></v-autocomplete> -->
-                  </v-col>
-                  <v-col cols="6" md="5">
-                    <div class="mt-3 font-semibold">Lot Size เปลี่ยน:</div>
-                    <v-number-input variant="outlined" rounded="md" v-model="lots_chn" :min="0" :rules="LotsRules" />
-                  </v-col>
-                  <v-col cols="6" md="3" v-if="prs_check">
-                    <div class="mt-3 font-semibold">Process: (RF) เปลี่ยน</div>
-                    <v-radio-group inline class="gap-4" v-model="procs_rf_chn" :rules="ProcessRules">
-                      <v-radio label="CP" value="CP" color="info"></v-radio>
-                      <v-radio label="RF1" value="RF1" color="info"></v-radio>
-                      <v-radio label="RF2" value="RF2" color="info"></v-radio>
-                    </v-radio-group>
-                  </v-col>
-                </v-row>
+
+                <v-card variant="flat" class="bg-blue-grey-lighten-5 w-[100%] pa-2">
+                  <div class="mb-3 text-center font-bold text-2xl underline">
+                    Current Model
+                  </div>
+                  <v-row no-gutters class="gap-3">
+                    <v-col cols="4" md="5">
+                      <div class="mt-3 font-semibold">WO# (เดิม):</div>
+                      <v-autocomplete
+                        variant="outlined"
+                        rounded="md"
+                        :items="won_list"
+                        item-title="WON"
+                        item-value="WON"
+                        v-model="won_cur"
+                        :rules="WorkOrderRules"
+                        @update:modelValue="SelectWonCur"
+                      ></v-autocomplete>
+                    </v-col>
+                    <v-col cols="6" md="5">
+                      <div class="mt-3 font-semibold">Current Model Code :</div>
+                      <v-text-field
+                        variant="outlined"
+                        rounded="md"
+                        v-model="cur_modelname"
+                        :rules="CurrentModelRules"
+                      >
+                      </v-text-field>
+                      <!-- <v-autocomplete variant="outlined" rounded="md" :items="model_name_list" item-title="MDLNM" item-value="MDLNM" v-model="cur_modelname" :rules="CurrentModelRules"></v-autocomplete> -->
+                    </v-col>
+                    <v-col cols="6" md="5">
+                      <div class="mt-3 font-semibold">Lot Size เดิม:</div>
+                      <v-number-input
+                        variant="outlined"
+                        rounded="md"
+                        v-model="lots"
+                        :min="0"
+                        :rules="LotsRules"
+                      />
+                    </v-col>
+                    <v-col cols="6" md="3" v-if="!prs_check">
+                      <div class="mt-3 font-semibold">Process: (CP) เดิม</div>
+                      <v-radio-group
+                        inline
+                        class="gap-4"
+                        v-model="procs_cp"
+                        :rules="ProcessRules"
+                      >
+                        <v-radio label="CP" value="CP" color="info"></v-radio>
+                        <v-radio label="RF" value="RF" color="info"></v-radio>
+                      </v-radio-group>
+                    </v-col>
+                    <v-col cols="6" md="3" v-if="prs_check">
+                      <div class="mt-3 font-semibold">Process: (RF) เดิม</div>
+                      <v-radio-group
+                        inline
+                        class="gap-4"
+                        v-model="procs_rf"
+                        :rules="ProcessRules"
+                      >
+                        <v-radio label="CP" value="CP" color="info"></v-radio>
+                        <v-radio label="RF1" value="RF1" color="info"></v-radio>
+                        <v-radio label="RF2" value="RF2" color="info"></v-radio>
+                        <v-radio label="RF" value="RF" color="info"></v-radio>
+                      </v-radio-group>
+                    </v-col>
+                  </v-row>
+                </v-card>
+                <v-card variant="flat" class="bg-green-accent-1 w-[100%] pa-2 mt-3">
+                  <div class="mb-3 text-center font-bold text-2xl underline">
+                    Next Model
+                  </div>
+                  <v-row no-gutters class="gap-3">
+                    <v-col cols="4" md="5">
+                      <div class="mt-3 font-semibold">WO# (เปลี่ยน):</div>
+                      <v-autocomplete
+                        variant="outlined"
+                        rounded="md"
+                        :items="won_list"
+                        item-title="WON"
+                        item-value="WON"
+                        v-model="won_chn"
+                        :rules="WorkOrderRules"
+                        @update:modelValue="SelectWonChn"
+                      ></v-autocomplete>
+                    </v-col>
+                    <v-col cols="6" md="5">
+                      <div class="mt-3 font-semibold">Change Model Code :</div>
+                      <v-text-field
+                        variant="outlined"
+                        rounded="md"
+                        v-model="chn_modelname"
+                        :rules="ChangeModelRules"
+                      />
+                      <!-- <v-autocomplete variant="outlined" rounded="md" :items="model_name_list" item-title="MDLNM" item-value="MDLNM" v-model="chn_modelname" :rules="ChangeModelRules" s></v-autocomplete> -->
+                    </v-col>
+                    <v-col cols="6" md="5">
+                      <div class="mt-3 font-semibold">Lot Size เปลี่ยน:</div>
+                      <v-number-input
+                        variant="outlined"
+                        rounded="md"
+                        v-model="lots_chn"
+                        :min="0"
+                        :rules="LotsRules"
+                      />
+                    </v-col>
+                    <v-col cols="6" md="3" v-if="!prs_check">
+                      <div class="mt-3 font-semibold">Process: (CP) เปลี่ยน</div>
+                      <v-radio-group
+                        inline
+                        class="gap-4"
+                        v-model="procs_cp_chn"
+                        :rules="ProcessRules"
+                      >
+                        <v-radio label="CP" value="CP" color="info"></v-radio>
+                        <v-radio label="RF" value="RF" color="info"></v-radio>
+                      </v-radio-group>
+                    </v-col>
+                    <v-col cols="6" md="3" v-if="prs_check">
+                      <div class="mt-3 font-semibold">Process: (RF) เปลี่ยน</div>
+                      <v-radio-group
+                        inline
+                        class="gap-4"
+                        v-model="procs_rf_chn"
+                        :rules="ProcessRules"
+                      >
+                        <v-radio label="CP" value="CP" color="info"></v-radio>
+                        <v-radio label="RF1" value="RF1" color="info"></v-radio>
+                        <v-radio label="RF2" value="RF2" color="info"></v-radio>
+                        <v-radio label="RF" value="RF" color="info"></v-radio>
+                      </v-radio-group>
+                    </v-col>
+                  </v-row>
+                </v-card>
                 <v-row no-gutters class="gap-6"> </v-row>
                 <v-row no-gutters class="gap-3">
                   <v-col cols="4" md="5">
                     <div class="mt-3 font-semibold">ECN Control :</div>
-                    <v-radio-group inline class="gap-4" v-model="ecn" :rules="ecnContolRules">
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="ecn"
+                      :rules="ecnContolRules"
+                    >
                       <v-radio label="No Have" value="No Have" color="info"></v-radio>
                       <v-radio label="Have" value="Have" color="info"></v-radio>
                     </v-radio-group>
                   </v-col>
                   <v-col cols="4" md="3">
                     <div class="mt-3 font-semibold" v-if="have_ecn">ECN Number :</div>
-                    <v-text-field v-if="have_ecn" variant="outlined" density="compact" v-model="ecn_num" />
+                    <v-text-field
+                      v-if="have_ecn"
+                      variant="outlined"
+                      density="compact"
+                      v-model="ecn_num"
+                    />
                   </v-col>
                   <v-col cols="4" md="3">
                     <div class="mt-3 font-semibold" v-if="have_ecn">REV :</div>
-                    <v-text-field v-if="have_ecn" variant="outlined" density="compact" v-model="ecn_rev" />
+                    <v-text-field
+                      v-if="have_ecn"
+                      variant="outlined"
+                      density="compact"
+                      v-model="ecn_rev"
+                    />
                   </v-col>
                 </v-row>
                 <v-row no-gutters class="gap-3">
                   <v-col cols="6" md="5">
                     <div class="mt-3 font-semibold">Program Name :</div>
-                    <v-text-field variant="outlined" density="compact" v-model="prog_name" :rules="programNameRules" />
+                    <v-text-field
+                      variant="outlined"
+                      density="compact"
+                      v-model="prog_name"
+                      :rules="programNameRules"
+                    />
                   </v-col>
                   <v-col cols="6" md="5">
-                    <div class="mt-3 font-semibold">REV :</div>
-                    <v-text-field variant="outlined" density="compact" v-model="prog_rev" :rules="revInputRules" />
+                    <div class="mt-3 font-semibold">PCB No.:</div>
+                    <v-text-field
+                      variant="outlined"
+                      density="compact"
+                      v-model="prog_rev"
+                      :rules="revInputRules"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row no-gutters class="gap-3">
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">Customer Name :</div>
+                    <v-select
+                      v-model="customer"
+                      variant="outlined"
+                      rounded="md"
+                      :items="customer_list"
+                      item-title="BGCD"
+                      :rules="customerRules"
+                    ></v-select>
                   </v-col>
                 </v-row>
                 <v-row no-gutters class="justify-center mt-10">
@@ -163,26 +323,51 @@
 
                 <v-spacer></v-spacer>
 
-                <v-text-field v-model="search" density="compact" label="Search" variant="solo-filled" flat hide-details
-                  single-line>
+                <v-text-field
+                  v-model="search"
+                  density="compact"
+                  label="Search"
+                  variant="solo-filled"
+                  flat
+                  hide-details
+                  single-line
+                >
                   <template #prepend-inner>
                     <v-icon icon="mdi mdi-magnify"></v-icon>
                   </template>
                 </v-text-field>
               </v-card-title>
               <v-divider></v-divider>
-              <v-data-table-virtual :headers="headers" :items="get_rec" v-model:search="search"
-                :filter-keys="['OPR_HREC_WON_CHANGE']" density="compact" height="550" fixed-header>
+              <v-data-table-virtual
+                :headers="headers"
+                :items="get_rec"
+                v-model:search="search"
+                :filter-keys="['OPR_HREC_WON_CHANGE']"
+                density="compact"
+                height="550"
+                fixed-header
+              >
                 <template #item="{ item }">
                   <tr class="text-no-wrap">
                     <td>
                       <div class="flex justify-between">
                         <div class="pa-2">
-                          <v-btn color="blue" rounded="xl" @click="OpenDetails(item)" icon="mdi mdi-text-box"
-                            density="comfortable">
+                          <v-btn
+                            color="blue"
+                            rounded="xl"
+                            @click="OpenDetails(item)"
+                            icon="mdi mdi-text-box"
+                            density="comfortable"
+                          >
                           </v-btn>
-                          <v-btn color="red" rounded="xl" @click="DeleteData(item.OPR_HREC_ID)" class="ms-3"
-                            icon="mdi mdi-delete" density="comfortable">
+                          <v-btn
+                            color="red"
+                            rounded="xl"
+                            @click="DeleteData(item.OPR_HREC_ID)"
+                            class="ms-3"
+                            icon="mdi mdi-delete"
+                            density="comfortable"
+                          >
                           </v-btn>
                         </div>
                       </div>
@@ -224,17 +409,10 @@
               <td class="px-2 py-1 border">{{ details.OPR_HREC_ISSUENO }}</td>
             </tr>
             <tr>
-              <th class="px-2 py-1 text-left border">Process:</th>
+              <th class="px-2 py-1 text-left border">เอกสาร Process:</th>
               <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS }}</td>
             </tr>
-            <tr v-if="details.OPR_HREC_PROCS === 'RF'">
-              <th class="px-2 py-1 text-left border">Process RF ของเดิม:</th>
-              <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS_RF }}</td>
-            </tr>
-            <tr v-if="details.OPR_HREC_PROCS === 'RF'">
-              <th class="px-2 py-1 text-left border">Process RF ของใหม่:</th>
-              <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS_RF_CHN }}</td>
-            </tr>
+
             <tr>
               <th class="px-2 py-1 text-left border">สถานะการเปลี่ยน Model:</th>
               <td class="px-2 py-1 border">{{ details.OPR_HREC_STATUSMDL }}</td>
@@ -245,9 +423,24 @@
                 {{ details.OPR_HREC_WON_CURRENT }}
               </td>
             </tr>
+
             <tr>
               <th class="px-2 py-1 text-left border">Model เดิม:</th>
               <td class="px-2 py-1 bg-red-200 border">{{ details.OPR_HREC_CURMDLNM }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Lot Size เดิม:</th>
+              <td class="px-2 py-1 bg-red-200 border">{{ details.OPR_HREC_LOTS }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Process CP เดิม:</th>
+              <td class="px-2 py-1 bg-red-200 border">
+                {{ details.OPR_HREC_PROCSCP }}
+              </td>
+            </tr>
+            <tr v-if="details.OPR_HREC_PROCS === 'RF'">
+              <th class="px-2 py-1 text-left border">Process RF ของเดิม:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS_RF }}</td>
             </tr>
             <tr>
               <th class="px-2 py-1 text-left border">WO# ใหม่:</th>
@@ -255,21 +448,29 @@
                 {{ details.OPR_HREC_WON_CHANGE }}
               </td>
             </tr>
+
             <tr>
               <th class="px-2 py-1 text-left border">Model ใหม่:</th>
               <td class="px-2 py-1 bg-green-200 border">
                 {{ details.OPR_HREC_CHNMDLNM }}
               </td>
             </tr>
+
             <tr>
-              <th class="px-2 py-1 text-left border">Lot Size เดิม:</th>
-              <td class="px-2 py-1 bg-red-200 border">{{ details.OPR_HREC_LOTS }}</td>
-            </tr>
-            <tr>
-              <th class="px-2 py-1 text-left border">Lot Size ใหม่:</th>
+              <th class="px-2 py-1 text-left border">Lot Size เปลี่ยน:</th>
               <td class="px-2 py-1 bg-green-200 border">
                 {{ details.OPR_HREC_LOTS_CHN }}
               </td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Process CP เปลี่ยน:</th>
+              <td class="px-2 py-1 bg-green-200 border">
+                {{ details.OPR_HREC_PROCSCP_CHN }}
+              </td>
+            </tr>
+            <tr v-if="details.OPR_HREC_PROCS === 'RF'">
+              <th class="px-2 py-1 text-left border">Process RF ของใหม่:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS_RF_CHN }}</td>
             </tr>
             <tr>
               <th class="px-2 py-1 text-left border">ECN Control (Have or No Have):</th>
@@ -290,6 +491,10 @@
             <tr>
               <th class="px-2 py-1 text-left border">Revision:</th>
               <td class="px-2 py-1 border">{{ details.OPR_HREC_PRGMREV }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Customer:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_CUS }}</td>
             </tr>
           </tbody>
         </table>
@@ -443,14 +648,18 @@ const handleSubmitForm = async () => {
         status: status.value,
         lots: lots.value,
         prog_name: prog_name.value,
-        prog_rev: prog_name.value,
+        prog_rev: prog_rev.value,
         empno: empno.value,
         cur_modelname: cur_modelname.value,
         chn_modelname: chn_modelname.value,
         won_cur: won_cur.value,
         won_chn: won_chn.value,
         lots_chn: lots_chn.value,
+        customer: customer.value,
+        procs_cp: procs_cp.value,
+        procs_cp_chn: procs_cp_chn.value,
       };
+      console.log(payload);
 
       if (id.value === "") {
         const insert = await axios.post(
@@ -472,7 +681,7 @@ const handleSubmitForm = async () => {
       } else {
         const update = await axios.put(
           "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/oprform/update/" +
-          id.value,
+            id.value,
           payload
         );
         // console.log(update.data)
@@ -511,7 +720,7 @@ const handleSubmitForm = async () => {
         status: status.value,
         lots: lots.value,
         prog_name: prog_name.value,
-        prog_rev: prog_name.value,
+        prog_rev: prog_rev.value,
         empno: empno.value,
         cur_modelname: cur_modelname.value,
         chn_modelname: chn_modelname.value,
@@ -519,6 +728,7 @@ const handleSubmitForm = async () => {
         won_chn: won_chn.value,
         lots_chn: lots_chn.value,
         procs_rf_chn: procs_rf_chn.value,
+        customer: customer.value,
       };
       // console.log(payload)
       if (id.value === "") {
@@ -540,7 +750,7 @@ const handleSubmitForm = async () => {
       } else {
         const update_rf = await axios.put(
           "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/oprform/rf/update/" +
-          id.value,
+            id.value,
           payload
         );
         if (update_rf.data.status === true) {
@@ -682,6 +892,8 @@ const SelectWonChn = async (value: string) => {
     // console.log('Select Won and Model: ', check_model.value)
     res.data.map((mo: any) => {
       chn_modelname.value = mo.MDLCD;
+      const model = chn_modelname.value.trim();
+      prog_name.value = `${model}_`;
     });
   } catch (error) {
     console.log(error);

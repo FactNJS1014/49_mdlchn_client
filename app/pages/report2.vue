@@ -1,6 +1,11 @@
 <template>
   <v-container>
-    <v-data-table :headers="headers" :items="tableItems" item-key="OPR_HREC_ID" class="elevation-1">
+    <v-data-table
+      :headers="headers"
+      :items="tableItems"
+      item-key="OPR_HREC_ID"
+      class="elevation-1"
+    >
       <template #item.timeline="{ item }">
         <v-btn @click="openTimeline(item)" class="rounded-xl" color="teal darken-3">
           <v-icon icon="mdi mdi-timeline-check" size="24"></v-icon>
@@ -23,8 +28,12 @@
         </v-card-title>
         <v-card-text>
           <v-timeline align="start" side="end">
-            <v-timeline-item v-for="level in 3" :key="level"
-              :dot-color="selected?.levels[level].empapp != 0 ? 'green' : 'red'" size="small">
+            <v-timeline-item
+              v-for="level in 3"
+              :key="level"
+              :dot-color="selected?.levels[level].empapp != 0 ? 'green' : 'red'"
+              size="small"
+            >
               <div class="d-flex">
                 <strong class="me-4">ผู้อนุมัติลำดับที่ {{ level }}</strong>
                 <div>
