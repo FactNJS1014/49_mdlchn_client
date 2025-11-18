@@ -119,8 +119,9 @@
         </v-radio-group>
       </v-col>
       <div v-if="glue_ref_use">
-        <v-col cols="12" md="20">
+        <v-col cols="12" lg="20">
           <div class="mt-3 font-semibold">6.1 Program name</div>
+
           <v-text-field variant="outlined" density="compact" v-model="glue_prg" :label="props.prgnm"
             :value="props.prgnm" />
           <!-- <v-radio-group inline class="gap-4" v-model="glue_prg">
