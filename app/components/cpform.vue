@@ -1,12 +1,6 @@
 <template>
   <v-form @submit.prevent="handleCPSubmit">
-    <!-- <v-btn width="200" rounded="md" @click="clearForm" color="teal" class="mt-1">
-      <template #prepend>
-        <v-icon class="mdi mdi-format-clear"></v-icon>
-      </template>
-<h1 class="text-md">Clear Form</h1>
-</v-btn> -->
-    <div class="flex gap-3 align-center mt-2">
+    <div class="flex gap-3 align-center">
       <div class="flex gap-2 align-center">
         <h1>Employee ID :</h1>
         <span>
@@ -91,11 +85,14 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">5.1 Prgram name</div>
           <v-radio-group inline class="gap-4" v-model="prg_nm">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
           </v-radio-group>
           <div class="mt-1 font-semibold">5.2 Glue Number</div>
-          <v-select v-model="glu_num" variant="outlined" rounded="md" :items="db_glue" item-title="SAG_SUBMATNUM">
-          </v-select>
+          <v-radio-group inline class="gap-4" v-model="glu_num">
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
+          </v-radio-group>
           <div class="mt-1 font-semibold">5.3 Head Unit</div>
           <v-radio-group inline class="gap-4" v-model="headunit">
             <v-radio label="Head no.1" value="Head no.1"></v-radio>
@@ -120,11 +117,14 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">6.1 Prgram name</div>
           <v-radio-group inline class="gap-4" v-model="prg2_nm">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
           </v-radio-group>
           <div class="mt-1 font-semibold">6.2 Glue Number</div>
-          <v-select v-model="glu2_num" variant="outlined" rounded="md" :items="db_glue" item-title="SAG_SUBMATNUM">
-          </v-select>
+          <v-radio-group inline class="gap-4" v-model="glu2_num">
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
+          </v-radio-group>
           <div class="mt-1 font-semibold">6.3 Head Unit</div>
           <v-radio-group inline class="gap-4" v-model="headunit2">
             <v-radio label="Head no.1" value="Head no.1"></v-radio>
@@ -149,7 +149,8 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">7.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_mount1">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
           </v-radio-group>
           <div class="mt-3 font-semibold">7.2 Nozzle setting</div>
           <v-radio-group inline class="gap-4" v-model="noz_mount1">
@@ -178,7 +179,8 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">8.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_mount2">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
           </v-radio-group>
           <div class="mt-3 font-semibold">8.2 Nozzle setting</div>
           <v-radio-group inline class="gap-4" v-model="noz_mount2">
@@ -206,7 +208,8 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">9.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_mount3">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
           </v-radio-group>
           <div class="mt-3 font-semibold">9.2 Nozzle setting</div>
           <v-radio-group inline class="gap-4" v-model="noz_mount3">
@@ -234,7 +237,8 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">10.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_mount4">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
           </v-radio-group>
           <div class="mt-3 font-semibold">10.2 Nozzle setting</div>
           <v-radio-group inline class="gap-4" v-model="noz_mount4">
@@ -262,7 +266,8 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">11.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_inspct">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
             <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
           </v-radio-group>
         </v-col>
@@ -280,7 +285,8 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">12.1 Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_reflow">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
             <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
           </v-radio-group>
           <div class="mt-3 font-semibold">12.2 Oxygen</div>
@@ -323,7 +329,8 @@
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">Program name</div>
           <v-radio-group inline class="gap-4" v-model="prg_auto">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
+            <v-radio label="Referent Assembly chart part list for AM"
+              value="Referent Assembly chart part list for AM"></v-radio>
             <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
           </v-radio-group>
         </v-col>
@@ -571,176 +578,17 @@ const handleCPSubmit = async () => {
 
       if (res.data.status === true) {
         Swal.fire({
-          icon: "success",
-          title: "อัปเดตข้อมูลสำเร็จ",
+          icon: 'success',
+          title: 'บันทึกข้อมูลสำเร็จ',
           showConfirmButton: false,
           timer: 1500,
-        }).then(() => {
-          localStorage.removeItem("data");
-          location.reload();
-          //   clearForm();
-        });
+        })
       }
+
+
+    } catch (error) {
+      console.log(error)
     }
-  } catch (error) {
-    console.log(error);
-  }
-};
 
-const dataEdit = (obj: any) => {
-  load_inp.value = obj.TEC_CPHREC_LOADINP || "";
-  pitch.value = obj.TEC_CPHREC_LOADINPPITCH;
-  stack_inp.value = obj.TEC_CPHREC_STACK || "";
-  trace_inp.value = obj.TEC_CPHREC_TRACEINP || "";
-  cln_inp.value = obj.TEC_CPHREC_PCBCLEAN || "";
-  func.value = obj.TEC_CPHREC_PCBCLNFUNC || "";
-  etc_details.value = obj.TEC_CPHREC_PCBLNETC_DL || "";
-  glu_inp.value = obj.TEC_CPHREC_GLUE || "";
-  prg_nm.value = obj.TEC_CPHREC_GLUEPROG || "";
-  glu_num.value = obj.TEC_CPHREC_GLUENUM || "";
-  headunit.value = obj.TEC_CPHREC_GLUEHUNIT || "";
-  bpst_detail.value = obj.TEC_CPHREC_GLUESTDNOT || "";
-  confirm_bpst.value = obj.TEC_CPHREC_GLUESTDOK || "";
-  glu2_inp.value = obj.TEC_CPHREC_GLUESND || "";
-  prg2_nm.value = obj.TEC_CPHREC_GLUESNDPROG || "";
-  glu2_num.value = obj.TEC_CPHREC_GLUESNDNUM || "";
-  headunit2.value = obj.TEC_CPHREC_GLUESNDHUNIT || "";
-  bpst2_detail.value = obj.TEC_CPHREC_GLUESNDNOT || "";
-  confirm_bpst2.value = obj.TEC_CPHREC_GLUESNDOK || "";
-  mounter_inp.value = obj.TEC_CPHREC_MNTF || "";
-  prg_mount1.value = obj.TEC_CPHREC_MNTFPROG || "";
-  noz_mount1.value = obj.TEC_CPHREC_MNTFNOZ || "";
-  sup_mount1.value = obj.TEC_CPHREC_MNTFSUPT || "";
-  mounter2_inp.value = obj.TEC_CPHREC_MNTSN || "";
-  prg_mount2.value = obj.TEC_CPHREC_MNTSNPROG || "";
-  noz_mount2.value = obj.TEC_CPHREC_MNTSNNOZ || "";
-  sup_mount2.value = obj.TEC_CPHREC_MNTSNSUPT || "";
-  mounter3_inp.value = obj.TEC_CPHREC_MNTTR || "";
-  prg_mount3.value = obj.TEC_CPHREC_MNTTRPROG || "";
-  noz_mount3.value = obj.TEC_CPHREC_MNTTRNOZ || "";
-  sup_mount3.value = obj.TEC_CPHREC_MNTTRSUPT || "";
-  mounter4_inp.value = obj.TEC_CPHREC_MNTFO || "";
-  prg_mount4.value = obj.TEC_CPHREC_MNTFOPROG || "";
-  noz_mount4.value = obj.TEC_CPHREC_MNTFONOZ || "";
-  sup_mount4.value = obj.TEC_CPHREC_MNTFOSUPT || "";
-  mount_inps.value = obj.TEC_CPHREC_MNTINSP || "";
-  prg_inspct.value = obj.TEC_CPHREC_MNTINSPPROG || "";
-  reflow_std.value = obj.TEC_CPHREC_REFLOW || "";
-  prg_reflow.value = obj.TEC_CPHREC_REFLPROG || "";
-  oxygen_reflow_std.value = obj.TEC_CPHREC_REFLOXYGEN || "";
-  oxygen_use.value = obj.TEC_CPHREC_REFLUSEOO || "";
-  sup_reflow_std.value = obj.TEC_CPHREC_REFLPCBSUPT || "";
-  temp_std.value = obj.TEC_CPHREC_REFLTEMP || "";
-  cooling_std.value = obj.TEC_CPHREC_PCBCOOL || "";
-  auto_inps.value = obj.TEC_CPHREC_AUTO || "";
-  prg_auto.value = obj.TEC_CPHREC_AUTOPROG || "";
-  ng_stock_std.value = obj.TEC_CPHREC_NGSTCK || "";
-  ng_stock_pitch.value = obj.TEC_CPHREC_NGSTCKPITCH || "";
-  trace_inp_std.value = obj.TEC_CPHREC_TRACE || "";
-  unloader_std.value = obj.TEC_CPHREC_UNLOADER || "";
-  unloader_pitch.value = obj.TEC_CPHREC_UNLOADERPITCH || "";
-};
-watch(load_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    pitch.value = "";
   }
-});
-watch(cln_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    func.value = "";
-    etc_details.value = "";
-  }
-});
-watch(glu_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_nm.value = "";
-    glu_num.value = "";
-    headunit.value = "";
-    bpst_detail.value = "";
-    confirm_bpst.value = "";
-  }
-});
-watch(glu2_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg2_nm.value = "";
-    glu2_num.value = "";
-    headunit2.value = "";
-    bpst2_detail.value = "";
-    confirm_bpst2.value = "";
-  }
-});
-watch(mounter_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_mount1.value = "";
-    noz_mount1.value = "";
-    sup_mount1.value = "";
-  }
-});
-watch(mounter2_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_mount2.value = "";
-    noz_mount2.value = "";
-    sup_mount2.value = "";
-  }
-});
-watch(mounter3_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_mount3.value = "";
-    noz_mount3.value = "";
-    sup_mount3.value = "";
-  }
-});
-watch(mounter4_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_mount4.value = "";
-    noz_mount4.value = "";
-    sup_mount4.value = "";
-  }
-});
-watch(mount_inps, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_inspct.value = "";
-  }
-});
-watch(reflow_std, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_reflow.value = "";
-    oxygen_reflow_std.value = "";
-    oxygen_use.value = "";
-    sup_reflow_std.value = "";
-    temp_std.value = "";
-  }
-});
-watch(ng_stock_std, (newVal) => {
-  if (newVal === "Not Use") {
-    ng_stock_pitch.value = "";
-  }
-});
-
-watch(auto_inps, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_auto.value = "";
-  }
-});
-watch(unloader_std, (newVal) => {
-  if (newVal === "Not Use") {
-    unloader_pitch.value = "";
-  }
-});
-
-const fetchDB = async () => {
-  const res = await axios.get(
-    "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/get/settings"
-  );
-  db_glue.value = res.data.glue;
-  db_solder.value = res.data.solder;
-  console.log(res.data.glue);
-  console.log(res.data.solder);
-};
-
-onMounted(() => {
-  /**   TODO: กำหนดค่าเริ่มต้นให้กับตัวแปรจาก props.data_edit เมื่อมีการแก้ไขข้อมูล
-   */
-  dataEdit(obj);
-});
 </script>

@@ -106,6 +106,7 @@
                     </v-radio-group>
                   </span>
                 </v-row>
+<<<<<<< HEAD
 
                 <v-card variant="flat" class="bg-blue-grey-lighten-5 w-[100%] pa-2">
                   <div class="mb-3 text-center font-bold text-2xl underline">
@@ -323,6 +324,214 @@
 
                 <v-spacer></v-spacer>
 
+=======
+                <v-row no-gutters class="gap-3">
+                  <v-col cols="4" md="5">
+                    <div class="mt-3 font-semibold">WO# (เดิม):</div>
+                    <v-autocomplete
+                      variant="outlined"
+                      rounded="md"
+                      :items="won_list"
+                      item-title="WON"
+                      item-value="WON"
+                      v-model="won_cur"
+                      :rules="WorkOrderRules"
+                      @update:modelValue="SelectWonCur"
+                    ></v-autocomplete>
+                  </v-col>
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">Current Model Code :</div>
+                    <v-text-field
+                      variant="outlined"
+                      rounded="md"
+                      v-model="cur_modelname"
+                      :rules="CurrentModelRules"
+                    >
+                    </v-text-field>
+                    <!-- <v-autocomplete variant="outlined" rounded="md" :items="model_name_list" item-title="MDLNM" item-value="MDLNM" v-model="cur_modelname" :rules="CurrentModelRules"></v-autocomplete> -->
+                  </v-col>
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">Lot Size เดิม:</div>
+                    <v-number-input
+                      variant="outlined"
+                      rounded="md"
+                      v-model="lots"
+                      :min="0"
+                      :rules="LotsRules"
+                    />
+                  </v-col>
+                  <v-col cols="6" md="3" v-if="!prs_check">
+                    <div class="mt-3 font-semibold">Process: (CP) เดิม</div>
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="procs_cp"
+                      :rules="ProcessRules"
+                    >
+                      <v-radio label="CP" value="CP" color="info"></v-radio>
+                      <v-radio label="RF" value="RF" color="info"></v-radio>
+                    </v-radio-group>
+                  </v-col>
+                  <v-col cols="6" md="3" v-if="prs_check">
+                    <div class="mt-3 font-semibold">Process: (RF) เดิม</div>
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="procs_rf"
+                      :rules="ProcessRules"
+                    >
+                      <v-radio label="CP" value="CP" color="info"></v-radio>
+                      <v-radio label="RF1" value="RF1" color="info"></v-radio>
+                      <v-radio label="RF2" value="RF2" color="info"></v-radio>
+                      <v-radio label="RF" value="RF" color="info"></v-radio>
+                    </v-radio-group>
+                  </v-col>
+                </v-row>
+                <v-row no-gutters class="gap-3">
+                  <v-col cols="4" md="5">
+                    <div class="mt-3 font-semibold">WO# (เปลี่ยน):</div>
+                    <v-autocomplete
+                      variant="outlined"
+                      rounded="md"
+                      :items="won_list"
+                      item-title="WON"
+                      item-value="WON"
+                      v-model="won_chn"
+                      :rules="WorkOrderRules"
+                      @update:modelValue="SelectWonChn"
+                    ></v-autocomplete>
+                  </v-col>
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">Change Model Code :</div>
+                    <v-text-field
+                      variant="outlined"
+                      rounded="md"
+                      v-model="chn_modelname"
+                      :rules="ChangeModelRules"
+                    />
+                    <!-- <v-autocomplete variant="outlined" rounded="md" :items="model_name_list" item-title="MDLNM" item-value="MDLNM" v-model="chn_modelname" :rules="ChangeModelRules" s></v-autocomplete> -->
+                  </v-col>
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">Lot Size เปลี่ยน:</div>
+                    <v-number-input
+                      variant="outlined"
+                      rounded="md"
+                      v-model="lots_chn"
+                      :min="0"
+                      :rules="LotsRules"
+                    />
+                  </v-col>
+                  <v-col cols="6" md="3" v-if="!prs_check">
+                    <div class="mt-3 font-semibold">Process: (CP) เปลี่ยน</div>
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="procs_cp_chn"
+                      :rules="ProcessRules"
+                    >
+                      <v-radio label="CP" value="CP" color="info"></v-radio>
+                      <v-radio label="RF" value="RF" color="info"></v-radio>
+                    </v-radio-group>
+                  </v-col>
+                  <v-col cols="6" md="3" v-if="prs_check">
+                    <div class="mt-3 font-semibold">Process: (RF) เปลี่ยน</div>
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="procs_rf_chn"
+                      :rules="ProcessRules"
+                    >
+                      <v-radio label="CP" value="CP" color="info"></v-radio>
+                      <v-radio label="RF1" value="RF1" color="info"></v-radio>
+                      <v-radio label="RF2" value="RF2" color="info"></v-radio>
+                      <v-radio label="RF" value="RF" color="info"></v-radio>
+                    </v-radio-group>
+                  </v-col>
+                </v-row>
+                <v-row no-gutters class="gap-6"> </v-row>
+                <v-row no-gutters class="gap-3">
+                  <v-col cols="4" md="5">
+                    <div class="mt-3 font-semibold">ECN Control :</div>
+                    <v-radio-group
+                      inline
+                      class="gap-4"
+                      v-model="ecn"
+                      :rules="ecnContolRules"
+                    >
+                      <v-radio label="No Have" value="No Have" color="info"></v-radio>
+                      <v-radio label="Have" value="Have" color="info"></v-radio>
+                    </v-radio-group>
+                  </v-col>
+                  <v-col cols="4" md="3">
+                    <div class="mt-3 font-semibold" v-if="have_ecn">ECN Number :</div>
+                    <v-text-field
+                      v-if="have_ecn"
+                      variant="outlined"
+                      density="compact"
+                      v-model="ecn_num"
+                    />
+                  </v-col>
+                  <v-col cols="4" md="3">
+                    <div class="mt-3 font-semibold" v-if="have_ecn">REV :</div>
+                    <v-text-field
+                      v-if="have_ecn"
+                      variant="outlined"
+                      density="compact"
+                      v-model="ecn_rev"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row no-gutters class="gap-3">
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">Program Name :</div>
+                    <v-text-field
+                      variant="outlined"
+                      density="compact"
+                      v-model="prog_name"
+                      :rules="programNameRules"
+                    />
+                  </v-col>
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">PCB No.:</div>
+                    <v-text-field
+                      variant="outlined"
+                      density="compact"
+                      v-model="prog_rev"
+                      :rules="revInputRules"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row no-gutters class="gap-3">
+                  <v-col cols="6" md="5">
+                    <div class="mt-3 font-semibold">Customer Name :</div>
+                    <v-select
+                      v-model="customer"
+                      variant="outlined"
+                      rounded="md"
+                      :items="customer_list"
+                      item-title="BGCD"
+                      :rules="customerRules"
+                    ></v-select>
+                  </v-col>
+                </v-row>
+                <v-row no-gutters class="justify-center mt-10">
+                  <v-btn color="green" width="200" rounded="md" type="submit">
+                    <template #prepend>
+                      <v-icon icon="mdi mdi-content-save-check"></v-icon>
+                    </template>
+                    <h1 class="text-md">Save</h1>
+                  </v-btn>
+                </v-row>
+              </v-form>
+            </v-tabs-window-item>
+
+            <v-tabs-window-item value="two">
+              <v-card-title class="d-flex align-center pe-2">
+                <i class="fa fa-box fa-lg"></i> &nbsp; ค้นหาข้อมูล Model Change
+
+                <v-spacer></v-spacer>
+
+>>>>>>> 703d431e6e79d992523794da6a822621f8681a27
                 <v-text-field
                   v-model="search"
                   density="compact"
@@ -409,6 +618,7 @@
               <td class="px-2 py-1 border">{{ details.OPR_HREC_ISSUENO }}</td>
             </tr>
             <tr>
+<<<<<<< HEAD
               <th class="px-2 py-1 text-left border">เอกสาร Process:</th>
               <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS }}</td>
             </tr>
@@ -508,6 +718,91 @@
               <h1>Edit (แก้ไข)</h1>
             </v-btn>
 
+=======
+              <th class="px-2 py-1 text-left border">Process:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS }}</td>
+            </tr>
+            <tr v-if="details.OPR_HREC_PROCS === 'RF'">
+              <th class="px-2 py-1 text-left border">Process RF ของเดิม:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS_RF }}</td>
+            </tr>
+            <tr v-if="details.OPR_HREC_PROCS === 'RF'">
+              <th class="px-2 py-1 text-left border">Process RF ของใหม่:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_PROCS_RF_CHN }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">สถานะการเปลี่ยน Model:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_STATUSMDL }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">WO# เดิม:</th>
+              <td class="px-2 py-1 bg-red-200 border">
+                {{ details.OPR_HREC_WON_CURRENT }}
+              </td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Model เดิม:</th>
+              <td class="px-2 py-1 bg-red-200 border">{{ details.OPR_HREC_CURMDLNM }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">WO# ใหม่:</th>
+              <td class="px-2 py-1 bg-green-200 border">
+                {{ details.OPR_HREC_WON_CHANGE }}
+              </td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Model ใหม่:</th>
+              <td class="px-2 py-1 bg-green-200 border">
+                {{ details.OPR_HREC_CHNMDLNM }}
+              </td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Lot Size เดิม:</th>
+              <td class="px-2 py-1 bg-red-200 border">{{ details.OPR_HREC_LOTS }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Lot Size ใหม่:</th>
+              <td class="px-2 py-1 bg-green-200 border">
+                {{ details.OPR_HREC_LOTS_CHN }}
+              </td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">ECN Control (Have or No Have):</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_CONTECN }}</td>
+            </tr>
+            <tr v-if="details.OPR_HREC_CONTECN === 'Have'">
+              <th class="px-2 py-1 text-left border">ECN Number:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_HAVECONTECN_NO }}</td>
+            </tr>
+            <tr v-if="details.OPR_HREC_CONTECN === 'Have'">
+              <th class="px-2 py-1 text-left border">ECN Revision:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_HAVECONTECN_REV }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Program Name:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_PRGMNM }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Revision:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_PRGMREV }}</td>
+            </tr>
+            <tr>
+              <th class="px-2 py-1 text-left border">Customer:</th>
+              <td class="px-2 py-1 border">{{ details.OPR_HREC_CUS }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="flex justify-start mt-3 align-center ms-3">
+          <div class="flex justify-between gap-3">
+            <v-btn rounded @click="goToEdit(details)" color="warning">
+              <template #prepend>
+                <v-icon icon="mdi mdi-pencil-box"></v-icon>
+              </template>
+              <h1>Edit (แก้ไข)</h1>
+            </v-btn>
+
+>>>>>>> 703d431e6e79d992523794da6a822621f8681a27
             <v-btn rounded @click="Approve(details.OPR_HREC_ID)" color="success">
               <template #prepend>
                 <v-icon icon="mdi mdi-check-underline-circle"></v-icon>
@@ -648,7 +943,11 @@ const handleSubmitForm = async () => {
         status: status.value,
         lots: lots.value,
         prog_name: prog_name.value,
+<<<<<<< HEAD
         prog_rev: prog_rev.value,
+=======
+        prog_rev: prog_name.value,
+>>>>>>> 703d431e6e79d992523794da6a822621f8681a27
         empno: empno.value,
         cur_modelname: cur_modelname.value,
         chn_modelname: chn_modelname.value,
@@ -720,7 +1019,11 @@ const handleSubmitForm = async () => {
         status: status.value,
         lots: lots.value,
         prog_name: prog_name.value,
+<<<<<<< HEAD
         prog_rev: prog_rev.value,
+=======
+        prog_rev: prog_name.value,
+>>>>>>> 703d431e6e79d992523794da6a822621f8681a27
         empno: empno.value,
         cur_modelname: cur_modelname.value,
         chn_modelname: chn_modelname.value,
@@ -892,8 +1195,11 @@ const SelectWonChn = async (value: string) => {
     // console.log('Select Won and Model: ', check_model.value)
     res.data.map((mo: any) => {
       chn_modelname.value = mo.MDLCD;
+<<<<<<< HEAD
       const model = chn_modelname.value.trim();
       prog_name.value = `${model}_`;
+=======
+>>>>>>> 703d431e6e79d992523794da6a822621f8681a27
     });
   } catch (error) {
     console.log(error);
