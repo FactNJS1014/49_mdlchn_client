@@ -2,15 +2,69 @@
   <!-- Template PDF hidden -->
   <div ref="pdfTemplate" class="hidden pa-2">
     <p class="flex justify-center text-lg font-bold align-center">
-      MODEL CHANGE RECORD SMT PROCESS : {{ dataItem?.OPR_HREC_PROCS }}
+      MODEL CHANGE RECORD SMT PROCESS : {{ cpItem?.OPR_HREC_PROCS }}
     </p>
+    <div class="flex justify-end p-3 mt-3 mb-3">
+      <table class="border border-black border-collapse">
+        <thead>
+          <tr>
+            <th width="120px" class="text-center border border-black px-2 py-2">QC</th>
+            <th width="120px" class="text-center border border-black px-2 py-2">
+              LEADER
+            </th>
+            <th width="120px" class="text-center border border-black px-2 py-2">
+              SUB LEADER
+            </th>
+            <th width="120px" class="text-center border border-black px-2 py-2">
+              TECHNICIAN
+            </th>
+            <th width="120px" class="text-center border border-black px-2 py-2">
+              OPERATOR
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td height="45px" class="text-center border border-black">
+              {{
+                cpItem?.levels[3]?.empapp == 0
+                  ? "ยังไม่อนุมัติ"
+                  : findUserName(cpItem?.levels[3]?.empapp)
+              }}
+            </td>
+            <td height="45px" class="text-center border border-black">
+              {{
+                cpItem?.levels[2]?.empapp == 0
+                  ? "ยังไม่อนุมัติ"
+                  : findUserName(cpItem?.levels[2]?.empapp)
+              }}
+            </td>
+            <td height="45px" class="text-center border border-black">
+              {{
+                cpItem?.levels[1]?.empapp == 0
+                  ? "ยังไม่อนุมัติ"
+                  : findUserName(cpItem?.levels[1]?.empapp)
+              }}
+            </td>
+            <td height="45px" class="text-center border border-black">
+              {{ findUserName(cpItem?.TEC_CPHREC_EMPNO) }}
+            </td>
+            <td height="45px" class="text-center border border-black">
+              {{ findUserName(cpItem?.OPR_HREC_EMPNO) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="pa-3 border border-black w-[800px] bg-white mt-3 mb-5 space-y-2">
       <div class="grid grid-cols-3 gap-4">
-        <div><strong>Line:</strong> {{ dataItem?.OPR_HREC_LINE }}</div>
-        <div><strong>Date:</strong> {{ dateFormat(dataItem?.OPR_HREC_DATEREC) }}</div>
+        <div><strong>Line:</strong> {{ cpItem?.OPR_HREC_LINE }}</div>
+        <div><strong>Date:</strong> {{ dateFormat(cpItem?.OPR_HREC_DATEREC) }}</div>
         <div>
           <strong>Document No.:</strong>
-          {{ dataItem?.OPR_HREC_ISSUENO.split("-").pop().slice(-3) }}
+          {{ cpItem?.OPR_HREC_ISSUENO.split("-").pop().slice(-3) }}
         </div>
       </div>
       <div class="grid grid-cols-1 gap-4">
@@ -19,50 +73,50 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.OPR_HREC_STATUSMDL === 'Urgent'"
+            :checked="cpItem?.OPR_HREC_STATUSMDL === 'Urgent'"
           />
           <span>Urgent</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.OPR_HREC_STATUSMDL === 'Normal'"
+            :checked="cpItem?.OPR_HREC_STATUSMDL === 'Normal'"
           />
           <span>Normal</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.OPR_HREC_STATUSMDL === 'New Line'"
+            :checked="cpItem?.OPR_HREC_STATUSMDL === 'New Line'"
           />
           <span>New Line</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.OPR_HREC_STATUSMDL === 'New model'"
+            :checked="cpItem?.OPR_HREC_STATUSMDL === 'New model'"
           />
           <span>New model</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.OPR_HREC_STATUSMDL === 'Over Plan'"
+            :checked="cpItem?.OPR_HREC_STATUSMDL === 'Over Plan'"
           />
           <span>Over Plan</span>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div><strong>Current Model Code:</strong> {{ dataItem?.OPR_HREC_CURMDLNM }}</div>
-        <div><strong>Change Model Code:</strong> {{ dataItem?.OPR_HREC_CHNMDLNM }}</div>
+        <div><strong>Current Model Code:</strong> {{ cpItem?.OPR_HREC_CURMDLNM }}</div>
+        <div><strong>Change Model Code:</strong> {{ cpItem?.OPR_HREC_CHNMDLNM }}</div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <div>
-          <strong>WO#:</strong> {{ dataItem?.OPR_HREC_WON_CURRENT }}
-          <strong class="ms-3">Lot Size:</strong> {{ dataItem?.OPR_HREC_LOTS }} pcs.
-          <strong class="ms-3">Process:</strong> {{ dataItem?.OPR_HREC_PROCSCP }}
+          <strong>WO#:</strong> {{ cpItem?.OPR_HREC_WON_CURRENT }}
+          <strong class="ms-3">Lot Size:</strong> {{ cpItem?.OPR_HREC_LOTS }} pcs.
+          <strong class="ms-3">Process:</strong> {{ cpItem?.OPR_HREC_PROCSCP }}
         </div>
         <div>
-          <strong>WO#:</strong> {{ dataItem?.OPR_HREC_WON_CHANGE }}
-          <strong class="ms-3">Lot Size:</strong> {{ dataItem?.OPR_HREC_LOTS_CHN }} pcs.
-          <strong class="ms-3">Process:</strong> {{ dataItem?.OPR_HREC_PROCSCP_CHN }}
+          <strong>WO#:</strong> {{ cpItem?.OPR_HREC_WON_CHANGE }}
+          <strong class="ms-3">Lot Size:</strong> {{ cpItem?.OPR_HREC_LOTS_CHN }} pcs.
+          <strong class="ms-3">Process:</strong> {{ cpItem?.OPR_HREC_PROCSCP_CHN }}
         </div>
       </div>
 
@@ -72,35 +126,35 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.OPR_HREC_CONTECN === 'No Have'"
+            :checked="cpItem?.OPR_HREC_CONTECN === 'No Have'"
           />
           <span>No Have</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.OPR_HREC_CONTECN === 'Have'"
+            :checked="cpItem?.OPR_HREC_CONTECN === 'Have'"
           />
           <span>Have</span>
 
           <div class="ms-3">
             <strong>ECN Number:</strong>
             <span>{{
-              dataItem?.OPR_HREC_CONTECN === "No Have"
+              cpItem?.OPR_HREC_CONTECN === "No Have"
                 ? "ไม่มี"
-                : dataItem?.OPR_HREC_HAVECONTECN_NO
+                : cpItem?.OPR_HREC_HAVECONTECN_NO
             }}</span>
             <strong class="ms-3">ECN REV:</strong>
             <span>{{
-              dataItem?.OPR_HREC_CONTECN === "No Have"
+              cpItem?.OPR_HREC_CONTECN === "No Have"
                 ? "ไม่มี"
-                : dataItem?.OPR_HREC_HAVECONTECN_REV
+                : cpItem?.OPR_HREC_HAVECONTECN_REV
             }}</span>
           </div>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div><strong>Program name:</strong> {{ dataItem?.OPR_HREC_PRGMNM }}</div>
-        <div><strong>REV.:</strong> {{ dataItem?.OPR_HREC_PRGMREV }}</div>
+        <div><strong>Program name:</strong> {{ cpItem?.OPR_HREC_PRGMNM }}</div>
+        <div><strong>REV.:</strong> {{ cpItem?.OPR_HREC_PRGMREV }}</div>
       </div>
     </div>
 
@@ -111,13 +165,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_LOADINP === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_LOADINP === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_LOADINP === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_LOADINP === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -128,19 +182,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_LOADINPPITCH === '10 mm.'"
+            :checked="cpItem?.TEC_CPHREC_LOADINPPITCH === '10 mm.'"
           />
           <span>10 mm.</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_LOADINPPITCH === '20 mm.'"
+            :checked="cpItem?.TEC_CPHREC_LOADINPPITCH === '20 mm.'"
           />
           <span>20 mm.</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_LOADINPPITCH === '30 mm.'"
+            :checked="cpItem?.TEC_CPHREC_LOADINPPITCH === '30 mm.'"
           />
           <span>30 mm.</span>
         </div>
@@ -152,13 +206,13 @@
         <input
           type="checkbox"
           class="w-4 h-4 mt-3"
-          :checked="dataItem?.TEC_CPHREC_STACK === 'Use'"
+          :checked="cpItem?.TEC_CPHREC_STACK === 'Use'"
         />
         <span>Use</span>
         <input
           type="checkbox"
           class="w-4 h-4 mt-3"
-          :checked="dataItem?.TEC_CPHREC_STACK === 'Not Use'"
+          :checked="cpItem?.TEC_CPHREC_STACK === 'Not Use'"
         />
         <span>Not Use</span>
       </div>
@@ -169,13 +223,13 @@
         <input
           type="checkbox"
           class="w-4 h-4 mt-3"
-          :checked="dataItem?.TEC_CPHREC_TRACEINP === 'Use'"
+          :checked="cpItem?.TEC_CPHREC_TRACEINP === 'Use'"
         />
         <span>Use</span>
         <input
           type="checkbox"
           class="w-4 h-4 mt-3"
-          :checked="dataItem?.TEC_CPHREC_TRACEINP === 'Not Use'"
+          :checked="cpItem?.TEC_CPHREC_TRACEINP === 'Not Use'"
         />
         <span>Not Use</span>
       </div>
@@ -187,13 +241,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLEAN === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_PCBCLEAN === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLEAN === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_PCBCLEAN === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -204,32 +258,30 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLNFUNC === 'Air blow'"
+            :checked="cpItem?.TEC_CPHREC_PCBCLNFUNC === 'Air blow'"
           />
           <span>Air blow</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLNFUNC === 'Sticky'"
+            :checked="cpItem?.TEC_CPHREC_PCBCLNFUNC === 'Sticky'"
           />
           <span>Sticky</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLNFUNC === 'lonizer'"
+            :checked="cpItem?.TEC_CPHREC_PCBCLNFUNC === 'lonizer'"
           />
           <span>lonizer</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLNFUNC === 'etc'"
+            :checked="cpItem?.TEC_CPHREC_PCBCLNFUNC === 'etc'"
           />
           <span>Etc.</span>
         </div>
         <span>{{
-          dataItem?.TEC_CPHREC_PCBCLNFUNC === "etc"
-            ? dataItem?.TEC_CPHREC_PCBLNETC_DTL
-            : ""
+          cpItem?.TEC_CPHREC_PCBCLNFUNC === "etc" ? cpItem?.TEC_CPHREC_PCBLNETC_DTL : ""
         }}</span>
       </div>
     </div>
@@ -240,13 +292,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUE === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_GLUE === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUE === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_GLUE === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -258,9 +310,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUEPROG === dataItem?.OPR_HREC_PRGMNM"
+            :checked="cpItem?.TEC_CPHREC_GLUEPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -270,7 +322,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Glue Number: </strong>
-          <span>{{ dataItem?.TEC_CPHREC_GLUENUM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_GLUENUM }}</span>
         </div>
       </div>
     </div>
@@ -283,19 +336,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.1'"
+            :checked="cpItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.1'"
           />
           <span>Head no.1</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.2'"
+            :checked="cpItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.2'"
           />
           <span>Head no.2</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.3'"
+            :checked="cpItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.3'"
           />
           <span>Head no.3</span>
         </div>
@@ -311,12 +364,12 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESTDOK === 'OK'"
+            :checked="cpItem?.TEC_CPHREC_GLUESTDOK === 'OK'"
           />
           <span>Confirm OK</span>
         </div>
         <span>{{
-          dataItem?.TEC_CPHREC_GLUESTDOK === null ? dataItem?.TEC_CPHREC_GLUESTDNOT : ""
+          cpItem?.TEC_CPHREC_GLUESTDOK === null ? cpItem?.TEC_CPHREC_GLUESTDNOT : ""
         }}</span>
       </div>
     </div>
@@ -327,13 +380,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESND === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_GLUESND === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESND === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_GLUESND === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -345,9 +398,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDPROG === dataItem?.OPR_HREC_PRGMNM"
+            :checked="cpItem?.TEC_CPHREC_GLUESNDPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -358,7 +411,7 @@
         <div class="flex items-center gap-2">
           <strong> Glue Number: </strong>
 
-          <span>{{ dataItem?.TEC_CPHREC_GLUENUM }}</span>
+          <span>{{ cpItem?.TEC_CPHREC_GLUESNDNUM }}</span>
         </div>
       </div>
     </div>
@@ -371,19 +424,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.1'"
+            :checked="cpItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.1'"
           />
           <span>Head no.1</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.2'"
+            :checked="cpItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.2'"
           />
           <span>Head no.2</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.3'"
+            :checked="cpItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.3'"
           />
           <span>Head no.3</span>
         </div>
@@ -399,12 +452,12 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDOK === 'OK'"
+            :checked="cpItem?.TEC_CPHREC_GLUESNDOK === 'OK'"
           />
           <span>Confirm OK</span>
         </div>
         <span>{{
-          dataItem?.TEC_CPHREC_GLUESNDOK === null ? dataItem?.TEC_CPHREC_GLUESNDNOT : ""
+          cpItem?.TEC_CPHREC_GLUESNDOK === null ? cpItem?.TEC_CPHREC_GLUESNDNOT : ""
         }}</span>
       </div>
     </div>
@@ -415,13 +468,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTF === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTF === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTF === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTF === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -433,11 +486,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="
-              dataItem?.TEC_CPHREC_MNTFPROG === 'Referent Assembly chart part list for AM'
-            "
+            :checked="cpItem?.TEC_CPHREC_MNTFPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>Referent Assembly chart part list for AM</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -450,13 +501,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFNOZ === 'Automatic'"
+            :checked="cpItem?.TEC_CPHREC_MNTFNOZ === 'Automatic'"
           />
           <span>Automatic</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFNNOZ === 'Manual'"
+            :checked="cpItem?.TEC_CPHREC_MNTFNNOZ === 'Manual'"
           />
           <span>Manual</span>
         </div>
@@ -471,19 +522,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Pin'"
+            :checked="cpItem?.TEC_CPHREC_MNTFSUPT === 'Pin'"
           />
           <span>Pin</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Magnet'"
+            :checked="cpItem?.TEC_CPHREC_MNTFSUPT === 'Magnet'"
           />
           <span>Magnet</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Sponge'"
+            :checked="cpItem?.TEC_CPHREC_MNTFSUPT === 'Sponge'"
           />
           <span>Sponge</span>
         </div>
@@ -496,13 +547,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSN === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTSN === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSN === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTSN === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -514,9 +565,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNPROG === dataItem?.OPR_HREC_PRGMNM"
+            :checked="cpItem?.TEC_CPHREC_MNTSNPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -529,13 +580,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNNOZ === 'Automatic'"
+            :checked="cpItem?.TEC_CPHREC_MNTSNNOZ === 'Automatic'"
           />
           <span>Automatic</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNNOZ === 'Manual'"
+            :checked="cpItem?.TEC_CPHREC_MNTSNNOZ === 'Manual'"
           />
           <span>Manual</span>
         </div>
@@ -550,19 +601,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Pin'"
+            :checked="cpItem?.TEC_CPHREC_MNTSNSUPT === 'Pin'"
           />
           <span>Pin</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Magnet'"
+            :checked="cpItem?.TEC_CPHREC_MNTSNSUPT === 'Magnet'"
           />
           <span>Magnet</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Sponge'"
+            :checked="cpItem?.TEC_CPHREC_MNTSNSUPT === 'Sponge'"
           />
           <span>Sponge</span>
         </div>
@@ -575,13 +626,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTR === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTTR === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTR === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTTR === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -593,9 +644,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRPROG === dataItem?.OPR_HREC_PRGMNM"
+            :checked="cpItem?.TEC_CPHREC_MNTTRPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -608,13 +659,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRNOZ === 'Automatic'"
+            :checked="cpItem?.TEC_CPHREC_MNTTRNOZ === 'Automatic'"
           />
           <span>Automatic</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRNOZ === 'Manual'"
+            :checked="cpItem?.TEC_CPHREC_MNTTRNOZ === 'Manual'"
           />
           <span>Manual</span>
         </div>
@@ -629,19 +680,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Pin'"
+            :checked="cpItem?.TEC_CPHREC_MNTTRSUPT === 'Pin'"
           />
           <span>Pin</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Magnet'"
+            :checked="cpItem?.TEC_CPHREC_MNTTRSUPT === 'Magnet'"
           />
           <span>Magnet</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Sponge'"
+            :checked="cpItem?.TEC_CPHREC_MNTTRSUPT === 'Sponge'"
           />
           <span>Sponge</span>
         </div>
@@ -654,13 +705,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFO === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTFO === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFO === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTFO === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -672,9 +723,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFOPROG === dataItem?.OPR_HREC_PRGMNM"
+            :checked="cpItem?.TEC_CPHREC_MNTFOPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -687,13 +738,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFONOZ === 'Automatic'"
+            :checked="cpItem?.TEC_CPHREC_MNTFONOZ === 'Automatic'"
           />
           <span>Automatic</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFONOZ === 'Manual'"
+            :checked="cpItem?.TEC_CPHREC_MNTFONOZ === 'Manual'"
           />
           <span>Manual</span>
         </div>
@@ -708,19 +759,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Pin'"
+            :checked="cpItem?.TEC_CPHREC_MNTFOSUPT === 'Pin'"
           />
           <span>Pin</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Magnet'"
+            :checked="cpItem?.TEC_CPHREC_MNTFOSUPT === 'Magnet'"
           />
           <span>Magnet</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Sponge'"
+            :checked="cpItem?.TEC_CPHREC_MNTFOSUPT === 'Sponge'"
           />
           <span>Sponge</span>
         </div>
@@ -733,13 +784,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTINSP === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTINSP === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTINSP === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_MNTINSP === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -751,9 +802,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTINSPPROG === dataItem?.OPR_HREC_PRGMNM"
+            :checked="cpItem?.TEC_CPHREC_MNTINSPPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -764,13 +815,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLOW === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_REFLOW === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLOW === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_REFLOW === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -782,9 +833,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLPROG === dataItem?.OPR_HREC_PRGMNM"
+            :checked="cpItem?.TEC_CPHREC_REFLPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -797,16 +848,16 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLOXYGEN === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_REFLOXYGEN === 'Use'"
           />
           <span>Use</span>
           <span>{{
-            dataItem?.TEC_CPHREC_REFLOXYGEN === "Use" ? dataItem?.TEC_CPHREC_REFLOO : ""
+            cpItem?.TEC_CPHREC_REFLOXYGEN === "Use" ? cpItem?.TEC_CPHREC_REFLOO : ""
           }}</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3 ms-3"
-            :checked="dataItem?.TEC_CPHREC_REFLOXYGEN === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_REFLOXYGEN === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -821,14 +872,14 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLPCBSUPT === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_REFLPCBSUPT === 'Use'"
           />
           <span>Use</span>
 
           <input
             type="checkbox"
             class="w-4 h-4 mt-3 ms-3"
-            :checked="dataItem?.TEC_CPHREC_REFLPCBSUPT === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_REFLPCBSUPT === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -843,14 +894,14 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'Pass'"
+            :checked="cpItem?.TEC_CPHREC_REFLTEMP === 'Pass'"
           />
           <span>Use</span>
 
           <input
             type="checkbox"
             class="w-4 h-4 mt-3 ms-3"
-            :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'No pass'"
+            :checked="cpItem?.TEC_CPHREC_REFLTEMP === 'No pass'"
           />
           <span>Not Use</span>
         </div>
@@ -864,13 +915,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCOOL === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_PCBCOOL === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCOOL === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_PCBCOOL === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -883,13 +934,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_AUTO === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_AUTO === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_AUTO === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_AUTO === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -901,9 +952,9 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_AUTOPROG === dataItem?.OPR_HREC_PRGMNM"
+            :checked="cpItem?.TEC_CPHREC_AUTOPROG === cpItem?.OPR_HREC_PRGMNM"
           />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
         </div>
       </div>
     </div>
@@ -914,13 +965,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCK === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_NGSTCK === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCK === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_NGSTCK === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -932,19 +983,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '10 mm.'"
+            :checked="cpItem?.TEC_CPHREC_NGSTCKPITCH === '10 mm.'"
           />
           <span>10 mm.</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '20 mm.'"
+            :checked="cpItem?.TEC_CPHREC_NGSTCKPITCH === '20 mm.'"
           />
           <span>20 mm.</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '30 mm.'"
+            :checked="cpItem?.TEC_CPHREC_NGSTCKPITCH === '30 mm.'"
           />
           <span>30 mm.</span>
         </div>
@@ -957,13 +1008,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_TRACE === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_TRACE === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_TRACE === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_TRACE === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -976,13 +1027,13 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADER === 'Use'"
+            :checked="cpItem?.TEC_CPHREC_UNLOADER === 'Use'"
           />
           <span>Use</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADER === 'Not Use'"
+            :checked="cpItem?.TEC_CPHREC_UNLOADER === 'Not Use'"
           />
           <span>Not Use</span>
         </div>
@@ -994,19 +1045,19 @@
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '10 mm.'"
+            :checked="cpItem?.TEC_CPHREC_UNLOADERPITCH === '10 mm.'"
           />
           <span>10 mm.</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '20 mm.'"
+            :checked="cpItem?.TEC_CPHREC_UNLOADERPITCH === '20 mm.'"
           />
           <span>20 mm.</span>
           <input
             type="checkbox"
             class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '30 mm.'"
+            :checked="cpItem?.TEC_CPHREC_UNLOADERPITCH === '30 mm.'"
           />
           <span>30 mm.</span>
         </div>
@@ -1017,20 +1068,21 @@
 
 <script lang="ts" setup>
 import { ref, watch, nextTick, defineProps } from "vue";
-
+import axios from "axios";
 import dayjs from "dayjs";
 
 const props = defineProps<{
-  dataItem: any;
+  cpItem: any;
 }>();
 
 const pdfTemplate = ref<HTMLElement | null>(null);
+const employees = ref<string[]>([]);
 
 const dateFormat = (date: string) => dayjs(date).format("DD/MM/YYYY");
 
-// Watch เมื่อ props.dataItem เปลี่ยน -> สร้าง PDF ทันที
+// Watch เมื่อ props.cpItem เปลี่ยน -> สร้าง PDF ทันที
 watch(
-  () => props.dataItem,
+  () => props.cpItem,
   async (newVal) => {
     if (!newVal) return;
     await nextTick();
@@ -1038,6 +1090,23 @@ watch(
   },
   { immediate: true }
 );
+
+const GetUsersWeb = async () => {
+  const res = await axios.get(
+    "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/users"
+  );
+  // console.log(res.data)
+  employees.value = res.data.ALL;
+};
+
+const findUserName = (empId: string) => {
+  const emp = employees.value.find((e) => e.MUSR_ID == empId);
+  return emp ? emp.MUSR_NAME : "ไม่พบชื่อ";
+};
+
+onMounted(async () => {
+  await GetUsersWeb();
+});
 
 const generatePdf = async () => {
   if (!pdfTemplate.value) return;
