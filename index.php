@@ -3,7 +3,7 @@
 // Loader สำหรับ Nuxt SPA - forward params ไป Laravel เพื่อให้ browser ได้ cookie session  
 
 $laravelBase = 'http://172.22.64.11/49_modelchange/49_mdlchn_api/session/user';
-$frontendBase = 'http://web-server/49_modelchange/49_mdlchn_frontend/';
+$frontendBase = 'http://172.22.64.11/49_modelchange/49_mdlchn_frontend/';
 
 // ชื่อ cookie Laravel
 $laravelSessionCookieName = 'laravel_session';
