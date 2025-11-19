@@ -255,34 +255,12 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong>Function: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_PCBCLNFUNC === 'Air blow'"
-          />
-          <span>Air blow</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_PCBCLNFUNC === 'Sticky'"
-          />
-          <span>Sticky</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_PCBCLNFUNC === 'lonizer'"
-          />
-          <span>lonizer</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_PCBCLNFUNC === 'etc'"
-          />
-          <span>Etc.</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_PCBCLNFUNC }}</span>
+          <strong>ETC: </strong>
+
+          <span>{{ cpItem?.TEC_CPHREC_PCBLNETC_DTL }}</span>
         </div>
-        <span>{{
-          cpItem?.TEC_CPHREC_PCBCLNFUNC === "etc" ? cpItem?.TEC_CPHREC_PCBLNETC_DTL : ""
-        }}</span>
       </div>
     </div>
     <div class="grid grid-cols-2">
@@ -307,12 +285,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_GLUEPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_GLUEPROG }}</span>
         </div>
       </div>
     </div>
@@ -395,12 +369,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_GLUESNDPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_GLUESNDPROG }}</span>
         </div>
       </div>
     </div>
@@ -483,12 +453,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_MNTFPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_MNTFPROG }}</span>
         </div>
       </div>
     </div>
@@ -562,12 +528,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_MNTSNPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_MNTSNPROG }}</span>
         </div>
       </div>
     </div>
@@ -641,12 +603,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_MNTTRPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_MNTTRPROG }}</span>
         </div>
       </div>
     </div>
@@ -720,12 +678,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_MNTFOPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_MNTFOPROG }}</span>
         </div>
       </div>
     </div>
@@ -799,12 +753,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_MNTINSPPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_MNTINSPPROG }}</span>
         </div>
       </div>
     </div>
@@ -830,12 +780,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_REFLPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_REFLPROG }}</span>
         </div>
       </div>
     </div>
@@ -949,12 +895,8 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="cpItem?.TEC_CPHREC_AUTOPROG === cpItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ cpItem?.OPR_HREC_PRGMNM }}</span>
+
+          <span>{{ cpItem?.TEC_CPHREC_AUTOPROG }}</span>
         </div>
       </div>
     </div>
