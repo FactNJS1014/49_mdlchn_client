@@ -80,6 +80,8 @@ const headers = ref([
   { title: "Date Rec", key: "OPR_HREC_DATEREC" },
   { title: "Line", key: "OPR_HREC_LINE" },
   { title: "Process", key: "OPR_HREC_PROCS" },
+  { title: "WON Change", key: "OPR_HREC_WON_CHANGE" },
+  { title: "Model Change", key: "OPR_HREC_CHNMDLNM" },
   { title: "", key: "timeline" }, // ปุ่มกด
   { title: "", key: "view" }, // ปุ่มกด
 ]);

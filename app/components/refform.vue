@@ -183,7 +183,7 @@
         </v-radio-group>
       </v-col>
 
-      <v-col cols="12" md="20" v-if="solder_user_std">
+      <v-col cols="12" md="4" v-if="solder_user_std">
         <div class="mt-3 font-semibold">Program name</div>
         <v-text-field
           variant="outlined"
@@ -425,16 +425,15 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="ng_stock_rf_std_use">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">Pitch Setting</div>
-          <v-radio-group inline class="gap-4" v-model="ng_stock_rf_pitch">
-            <v-radio label="10 mm." value="10 mm."></v-radio>
-            <v-radio label="20 mm." value="20 mm."></v-radio>
-            <v-radio label="30 mm." value="30 mm."></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="ng_stock_rf_std_use">
+        <div class="mt-3 font-semibold">Pitch Setting</div>
+        <v-radio-group inline class="gap-4" v-model="ng_stock_rf_pitch">
+          <v-radio label="10 mm." value="10 mm."></v-radio>
+          <v-radio label="20 mm." value="20 mm."></v-radio>
+          <v-radio label="30 mm." value="30 mm."></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
@@ -453,16 +452,15 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="unloader_rf_std_use">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">Pitch Setting</div>
-          <v-radio-group inline class="gap-4" v-model="unloader_rf_pitch">
-            <v-radio label="10 mm." value="10 mm."></v-radio>
-            <v-radio label="20 mm." value="20 mm."></v-radio>
-            <v-radio label="30 mm." value="30 mm."></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="unloader_rf_std_use">
+        <div class="mt-3 font-semibold">Pitch Setting</div>
+        <v-radio-group inline class="gap-4" v-model="unloader_rf_pitch">
+          <v-radio label="10 mm." value="10 mm."></v-radio>
+          <v-radio label="20 mm." value="20 mm."></v-radio>
+          <v-radio label="30 mm." value="30 mm."></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
     <v-row no-gutters class="justify-center mt-10">
       <v-btn width="200" rounded="md" type="submit">
