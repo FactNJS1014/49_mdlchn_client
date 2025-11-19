@@ -67,8 +67,9 @@
       </v-col>
       <v-col cols="6" md="4" v-if="func_std">
         <div class="mt-3 font-semibold">Function</div>
-        <v-select v-model="func" :items="funcPCB" item-title="name" item-value="name" variant="outlined" label=""
-          multiple chips clearable />
+        <v-select v-model="func" :items="funcPCB" item-title="name" item-value="name" chips multiple clearable
+          @update:model-value="func = func.filter((v) => v !== '')" />
+
         <!-- <p>{{ func }}</p> -->
         <v-text-field variant="outlined" density="compact" v-model="etc_details" label="Etc." />
       </v-col>
@@ -119,7 +120,7 @@
         </v-radio-group>
       </v-col>
       <div v-if="glue_ref_use">
-        <v-col cols="12" lg="20">
+        <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">6.1 Program name</div>
 
           <v-text-field variant="outlined" density="compact" v-model="glue_prg" :label="props.prgnm"
