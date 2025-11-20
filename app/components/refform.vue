@@ -305,6 +305,7 @@
             <v-radio label="Not Pass" value="Not Pass"></v-radio>
           </v-radio-group>
         </v-col>
+      </div>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
