@@ -1,6 +1,6 @@
 <?php
 $laravelBase = 'http://172.22.64.11/49_modelchange/49_mdlchn_api/session/user';
-$frontendBase = 'http://172.22.64.11/49_modelchange/49_mdlchn_frontend';
+$frontendBase = 'http://172.22.64.11/49_modelchange/49_frontend';
 $laravelSessionCookieName = 'laravel_session';
 
 $hasLaravelCookie = isset($_COOKIE[$laravelSessionCookieName]) && !empty($_COOKIE[$laravelSessionCookieName]);
