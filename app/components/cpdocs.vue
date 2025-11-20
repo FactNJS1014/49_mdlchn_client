@@ -201,814 +201,751 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong>Function: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLNFUNC === 'Air blow'"
-          />
-          <span>Air blow</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLNFUNC === 'Sticky'"
-          />
-          <span>Sticky</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLNFUNC === 'lonizer'"
-          />
-          <span>lonizer</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCLNFUNC === 'etc'"
-          />
-          <span>Etc.</span>
-        </div>
-        <span>{{
-          dataItem?.TEC_CPHREC_PCBCLNFUNC === "etc"
-            ? dataItem?.TEC_CPHREC_PCBLNETC_DTL
-            : ""
-        }}</span>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>5) Glue (M/C #1): </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUE === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUE === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUEPROG === dataItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+          <span>{{ dataItem?.TEC_CPHREC_PCBCLNFUNC }}</span>
+          <strong>ETC: </strong>
+          <span>{{ dataItem?.TEC_CPHREC_PCBLNETC_DTL }}</span>
         </div>
       </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>5) Glue (M/C #1): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUE === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUE === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Glue Number: </strong>
-          <span>{{ dataItem?.TEC_CPHREC_GLUENUM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Head unit: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.1'"
-          />
-          <span>Head no.1</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.2'"
-          />
-          <span>Head no.2</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.3'"
-          />
-          <span>Head no.3</span>
+            <span>{{ dataItem?.TEC_CPHREC_GLUEPROG }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Backup pin standard no.: </strong>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Glue Number: </strong>
+            <span>{{ dataItem?.TEC_CPHREC_GLUENUM }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
 
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESTDOK === 'OK'"
-          />
-          <span>Confirm OK</span>
-        </div>
-        <span>{{
-          dataItem?.TEC_CPHREC_GLUESTDOK === null ? dataItem?.TEC_CPHREC_GLUESTDNOT : ""
-        }}</span>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>6) Glue (M/C #2): </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESND === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESND === 'Not Use'"
-          />
-          <span>Not Use</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Head unit: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.1'"
+            />
+            <span>Head no.1</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.2'"
+            />
+            <span>Head no.2</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUEHUNIT === 'Head no.3'"
+            />
+            <span>Head no.3</span>
+          </div>
         </div>
       </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDPROG === dataItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Backup pin standard no.: </strong>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Glue Number: </strong>
-
-          <span>{{ dataItem?.TEC_CPHREC_GLUENUM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Head unit: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.1'"
-          />
-          <span>Head no.1</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.2'"
-          />
-          <span>Head no.2</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.3'"
-          />
-          <span>Head no.3</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Backup pin standard no.: </strong>
-
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_GLUESNDOK === 'OK'"
-          />
-          <span>Confirm OK</span>
-        </div>
-        <span>{{
-          dataItem?.TEC_CPHREC_GLUESNDOK === null ? dataItem?.TEC_CPHREC_GLUESNDNOT : ""
-        }}</span>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>7) Mounter (M/C #1): </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTF === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTF === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="
-              dataItem?.TEC_CPHREC_MNTFPROG === 'Referent Assembly chart part list for AM'
-            "
-          />
-          <span>Referent Assembly chart part list for AM</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Nozzle Setting: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFNOZ === 'Automatic'"
-          />
-          <span>Automatic</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFNNOZ === 'Manual'"
-          />
-          <span>Manual</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Pin'"
-          />
-          <span>Pin</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Magnet'"
-          />
-          <span>Magnet</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Sponge'"
-          />
-          <span>Sponge</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>8) Mounter (M/C #2): </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSN === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSN === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNPROG === dataItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Nozzle Setting: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNNOZ === 'Automatic'"
-          />
-          <span>Automatic</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNNOZ === 'Manual'"
-          />
-          <span>Manual</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Pin'"
-          />
-          <span>Pin</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Magnet'"
-          />
-          <span>Magnet</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Sponge'"
-          />
-          <span>Sponge</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>9) Mounter (M/C #3): </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTR === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTR === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRPROG === dataItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Nozzle Setting: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRNOZ === 'Automatic'"
-          />
-          <span>Automatic</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRNOZ === 'Manual'"
-          />
-          <span>Manual</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Pin'"
-          />
-          <span>Pin</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Magnet'"
-          />
-          <span>Magnet</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Sponge'"
-          />
-          <span>Sponge</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>10) Mounter (M/C #4): </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFO === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFO === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFOPROG === dataItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Nozzle Setting: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFONOZ === 'Automatic'"
-          />
-          <span>Automatic</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFONOZ === 'Manual'"
-          />
-          <span>Manual</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Pin'"
-          />
-          <span>Pin</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Magnet'"
-          />
-          <span>Magnet</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Sponge'"
-          />
-          <span>Sponge</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>11) Mounter Inspector: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTINSP === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTINSP === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_MNTINSPPROG === dataItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>12) Reflow: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLOW === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLOW === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLPROG === dataItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Oxygen: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLOXYGEN === 'Use'"
-          />
-          <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUESTDOK === 'OK'"
+            />
+            <span>Confirm OK</span>
+          </div>
           <span>{{
-            dataItem?.TEC_CPHREC_REFLOXYGEN === "Use" ? dataItem?.TEC_CPHREC_REFLOO : ""
+            dataItem?.TEC_CPHREC_GLUESTDOK === null ? dataItem?.TEC_CPHREC_GLUESTDNOT : ""
           }}</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3 ms-3"
-            :checked="dataItem?.TEC_CPHREC_REFLOXYGEN === 'Not Use'"
-          />
-          <span>Not Use</span>
         </div>
       </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>6) Glue (M/C #2): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUESND === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUESND === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> PCB Supporter: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLPCBSUPT === 'Use'"
-          />
-          <span>Use</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
 
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3 ms-3"
-            :checked="dataItem?.TEC_CPHREC_REFLPCBSUPT === 'Not Use'"
-          />
-          <span>Not Use</span>
+            <span>{{ dataItem?.TEC_CPHREC_GLUESNDPROG }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Temperature profile: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'Pass'"
-          />
-          <span>Use</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Glue Number: </strong>
 
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3 ms-3"
-            :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'No pass'"
-          />
-          <span>Not Use</span>
+            <span>{{ dataItem?.TEC_CPHREC_GLUENUM }}</span>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
 
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>13) PCB Cooling: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCOOL === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_PCBCOOL === 'Not Use'"
-          />
-          <span>Not Use</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Head unit: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.1'"
+            />
+            <span>Head no.1</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.2'"
+            />
+            <span>Head no.2</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUESNDHUNIT === 'Head no.3'"
+            />
+            <span>Head no.3</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>14) Auto Optic Inspection: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_AUTO === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_AUTO === 'Not Use'"
-          />
-          <span>Not Use</span>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Backup pin standard no.: </strong>
+
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_GLUESNDOK === 'OK'"
+            />
+            <span>Confirm OK</span>
+          </div>
+          <span>{{
+            dataItem?.TEC_CPHREC_GLUESNDOK === null ? dataItem?.TEC_CPHREC_GLUESNDNOT : ""
+          }}</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>7) Mounter (M/C #1): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTF === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTF === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+
+            <span>{{ dataItem?.TEC_CPHREC_MNTFPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Nozzle Setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFNOZ === 'Automatic'"
+            />
+            <span>Automatic</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFNNOZ === 'Manual'"
+            />
+            <span>Manual</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Pin'"
+            />
+            <span>Pin</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Magnet'"
+            />
+            <span>Magnet</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFSUPT === 'Sponge'"
+            />
+            <span>Sponge</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>8) Mounter (M/C #2): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTSN === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTSN === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+
+            <span>{{ dataItem?.TEC_CPHREC_MNTSNPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Nozzle Setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTSNNOZ === 'Automatic'"
+            />
+            <span>Automatic</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTSNNOZ === 'Manual'"
+            />
+            <span>Manual</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Pin'"
+            />
+            <span>Pin</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Magnet'"
+            />
+            <span>Magnet</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTSNSUPT === 'Sponge'"
+            />
+            <span>Sponge</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>9) Mounter (M/C #3): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTTR === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTTR === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+
+            <span>{{ dataItem?.TEC_CPHREC_MNTTRPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Nozzle Setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTTRNOZ === 'Automatic'"
+            />
+            <span>Automatic</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTTRNOZ === 'Manual'"
+            />
+            <span>Manual</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Pin'"
+            />
+            <span>Pin</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Magnet'"
+            />
+            <span>Magnet</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTTRSUPT === 'Sponge'"
+            />
+            <span>Sponge</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>10) Mounter (M/C #4): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFO === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFO === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+
+            <span>{{ dataItem?.TEC_CPHREC_MNTFOPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Nozzle Setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFONOZ === 'Automatic'"
+            />
+            <span>Automatic</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFONOZ === 'Manual'"
+            />
+            <span>Manual</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Pin'"
+            />
+            <span>Pin</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Magnet'"
+            />
+            <span>Magnet</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTFOSUPT === 'Sponge'"
+            />
+            <span>Sponge</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>11) Mounter Inspector: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTINSP === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_MNTINSP === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+
+            <span>{{ dataItem?.TEC_CPHREC_MNTINSPPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>12) Reflow: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_REFLOW === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_REFLOW === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+
+            <span>{{ dataItem?.TEC_CPHREC_REFLPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Oxygen: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_REFLOXYGEN === 'Use'"
+            />
+            <span>Use</span>
+            <span>{{
+              dataItem?.TEC_CPHREC_REFLOXYGEN === "Use" ? dataItem?.TEC_CPHREC_REFLOO : ""
+            }}</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3 ms-3"
+              :checked="dataItem?.TEC_CPHREC_REFLOXYGEN === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> PCB Supporter: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_REFLPCBSUPT === 'Use'"
+            />
+            <span>Use</span>
+
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3 ms-3"
+              :checked="dataItem?.TEC_CPHREC_REFLPCBSUPT === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Temperature profile: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'Pass'"
+            />
+            <span>Use</span>
+
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3 ms-3"
+              :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'No pass'"
+            />
+            <span>Not Use</span>
+          </div>
         </div>
       </div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_AUTOPROG === dataItem?.OPR_HREC_PRGMNM"
-          />
-          <span>{{ dataItem?.OPR_HREC_PRGMNM }}</span>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>13) PCB Cooling: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_PCBCOOL === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_PCBCOOL === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>15) NG Stocker: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCK === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCK === 'Not Use'"
-          />
-          <span>Not Use</span>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>14) Auto Optic Inspection: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_AUTO === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_AUTO === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
         </div>
-      </div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Pitch setting: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '10 mm.'"
-          />
-          <span>10 mm.</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '20 mm.'"
-          />
-          <span>20 mm.</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '30 mm.'"
-          />
-          <span>30 mm.</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>16) Traceability Input: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_TRACE === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_TRACE === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>17) Unloader Input: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADER === 'Use'"
-          />
-          <span>Use</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADER === 'Not Use'"
-          />
-          <span>Not Use</span>
-        </div>
-      </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Pitch setting: </strong>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '10 mm.'"
-          />
-          <span>10 mm.</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '20 mm.'"
-          />
-          <span>20 mm.</span>
-          <input
-            type="checkbox"
-            class="w-4 h-4 mt-3"
-            :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '30 mm.'"
-          />
-          <span>30 mm.</span>
+            <span>{{ dataItem?.TEC_CPHREC_AUTOPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>15) NG Stocker: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_NGSTCK === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_NGSTCK === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Pitch setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '10 mm.'"
+            />
+            <span>10 mm.</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '20 mm.'"
+            />
+            <span>20 mm.</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_NGSTCKPITCH === '30 mm.'"
+            />
+            <span>30 mm.</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>16) Traceability Input: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_TRACE === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_TRACE === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>17) Unloader Input: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_UNLOADER === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_UNLOADER === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Pitch setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '10 mm.'"
+            />
+            <span>10 mm.</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '20 mm.'"
+            />
+            <span>20 mm.</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="dataItem?.TEC_CPHREC_UNLOADERPITCH === '30 mm.'"
+            />
+            <span>30 mm.</span>
+          </div>
         </div>
       </div>
     </div>

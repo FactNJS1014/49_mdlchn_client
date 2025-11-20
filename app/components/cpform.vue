@@ -10,8 +10,11 @@
       <div class="flex gap-2 align-center">
         <h1>Employee ID :</h1>
         <span>
-          <input type="text" class="w-full px-3 py-2 border border-gray-800 rounded-lg focus:outline-none"
-            v-model="empno" />
+          <input
+            type="text"
+            class="w-full px-3 py-2 border border-gray-800 rounded-lg focus:outline-none"
+            v-model="empno"
+          />
         </span>
       </div>
 
@@ -69,13 +72,24 @@
       </v-col>
       <v-col cols="6" md="4" v-if="func_std">
         <div class="mt-3 font-semibold">Function</div>
-        <v-radio-group inline class="gap-4" v-model="func">
-          <v-radio label="Air blow" value="Air blow"></v-radio>
-          <v-radio label="Sticky" value="Sticky"></v-radio>
-          <v-radio label="lonizer" value="lonizer"></v-radio>
-          <v-radio label="Etc." value="etc"> </v-radio>
-        </v-radio-group>
-        <v-text-field variant="outlined" density="compact" v-model="etc_details" v-if="etc_std" />
+        <v-select
+          v-model="func"
+          :items="funcPCB"
+          item-title="name"
+          item-value="name"
+          chips
+          multiple
+          clearable
+          @update:model-value="func = func.filter((v) => v !== '')"
+        />
+
+        <!-- <p>{{ func }}</p> -->
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="etc_details"
+          label="Etc."
+        />
       </v-col>
     </v-row>
 
@@ -87,26 +101,48 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="glu_std">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">5.1 Prgram name</div>
-          <v-radio-group inline class="gap-4" v-model="prg_nm">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-          </v-radio-group>
-          <div class="mt-1 font-semibold">5.2 Glue Number</div>
-          <v-select v-model="glu_num" variant="outlined" rounded="md" :items="db_glue" item-title="SAG_SUBMATNUM">
-          </v-select>
-          <div class="mt-1 font-semibold">5.3 Head Unit</div>
-          <v-radio-group inline class="gap-4" v-model="headunit">
-            <v-radio label="Head no.1" value="Head no.1"></v-radio>
-            <v-radio label="Head no.2" value="Head no.2"></v-radio>
-            <v-radio label="Head no.3" value="Head no.3"></v-radio>
-          </v-radio-group>
-          <div class="mt-1 font-semibold">5.4 Backup pin standard no.</div>
-          <v-text-field variant="outlined" density="compact" v-model="bpst_detail" v-if="confirm_bpst_std" />
-          <v-switch v-model="confirm_bpst" color="primary" label="Confirm OK" value="OK" hide-details></v-switch>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="glu_std">
+        <div class="mt-3 font-semibold">5.1 Prgram name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg_nm"
+          :value="props.prgnm"
+        />
+        <!-- <v-radio-group inline class="gap-4" v-model="prg_nm">
+            <v-radio  :value="props.prgnm"></v-radio>
+          </v-radio-group> -->
+        <div class="mt-1 font-semibold">5.2 Glue Number</div>
+        <v-select
+          v-model="glu_num"
+          variant="outlined"
+          rounded="md"
+          :items="db_glue"
+          item-title="SAG_SUBMATNUM"
+        >
+        </v-select>
+        <div class="mt-1 font-semibold">5.3 Head Unit</div>
+        <v-radio-group inline class="gap-4" v-model="headunit">
+          <v-radio label="Head no.1" value="Head no.1"></v-radio>
+          <v-radio label="Head no.2" value="Head no.2"></v-radio>
+          <v-radio label="Head no.3" value="Head no.3"></v-radio>
+        </v-radio-group>
+        <div class="mt-1 font-semibold">5.4 Backup pin standard no.</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="bpst_detail"
+          v-if="confirm_bpst_std"
+        />
+        <v-switch
+          v-model="confirm_bpst"
+          color="primary"
+          label="Confirm OK"
+          value="OK"
+          hide-details
+        ></v-switch>
+      </v-col>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
@@ -116,54 +152,82 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="glu2_std">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">6.1 Prgram name</div>
-          <v-radio-group inline class="gap-4" v-model="prg2_nm">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-          </v-radio-group>
-          <div class="mt-1 font-semibold">6.2 Glue Number</div>
-          <v-select v-model="glu2_num" variant="outlined" rounded="md" :items="db_glue" item-title="SAG_SUBMATNUM">
-          </v-select>
-          <div class="mt-1 font-semibold">6.3 Head Unit</div>
-          <v-radio-group inline class="gap-4" v-model="headunit2">
-            <v-radio label="Head no.1" value="Head no.1"></v-radio>
-            <v-radio label="Head no.2" value="Head no.2"></v-radio>
-            <v-radio label="Head no.3" value="Head no.3"></v-radio>
-          </v-radio-group>
-          <div class="mt-1 font-semibold">6.4 Backup pin standard no.</div>
-          <v-text-field variant="outlined" density="compact" v-model="bpst2_detail" v-if="confirm_bpst2_std" />
-          <v-switch v-model="confirm_bpst2" color="primary" label="Confirm OK" value="OK" hide-details></v-switch>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="glu2_std">
+        <div class="mt-3 font-semibold">6.1 Prgram name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg2_nm"
+          :value="props.prgnm"
+        />
+        <!-- <v-radio-group inline class="gap-4" v-model="prg2_nm">
+            <v-radio  :value="props.prgnm"></v-radio>
+          </v-radio-group> -->
+        <div class="mt-1 font-semibold">6.2 Glue Number</div>
+        <v-select
+          v-model="glu2_num"
+          variant="outlined"
+          rounded="md"
+          :items="db_glue"
+          item-title="SAG_SUBMATNUM"
+        >
+        </v-select>
+        <div class="mt-1 font-semibold">6.3 Head Unit</div>
+        <v-radio-group inline class="gap-4" v-model="headunit2">
+          <v-radio label="Head no.1" value="Head no.1"></v-radio>
+          <v-radio label="Head no.2" value="Head no.2"></v-radio>
+          <v-radio label="Head no.3" value="Head no.3"></v-radio>
+        </v-radio-group>
+        <div class="mt-1 font-semibold">6.4 Backup pin standard no.</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="bpst2_detail"
+          v-if="confirm_bpst2_std"
+        />
+        <v-switch
+          v-model="confirm_bpst2"
+          color="primary"
+          label="Confirm OK"
+          value="OK"
+          hide-details
+        ></v-switch>
+      </v-col>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
         <div class="mt-3 font-semibold">7) Mounter (M/C #1)</div>
+
         <v-radio-group inline class="gap-4" v-model="mounter_inp">
           <v-radio label="Use" value="Use"></v-radio>
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="mounter_inp_std">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">7.1 Program name</div>
-          <v-radio-group inline class="gap-4" v-model="prg_mount1">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">7.2 Nozzle setting</div>
-          <v-radio-group inline class="gap-4" v-model="noz_mount1">
-            <v-radio label="Automatic" value="Automatic"></v-radio>
-            <v-radio label="Manual" value="Manual"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">7.3 Support PCB</div>
-          <v-radio-group inline class="gap-4" v-model="sup_mount1">
-            <v-radio label="Pin" value="Pin"></v-radio>
-            <v-radio label="Magnet" value="Magnet"></v-radio>
-            <v-radio label="Sponge" value="Sponge"></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="mounter_inp_std">
+        <div class="mt-3 font-semibold">7.1 Program name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg_mount1"
+          :value="props.prgnm"
+        />
+        <!-- <v-radio-group inline class="gap-4" v-model="prg_mount1">
+            <v-radio  :value="props.prgnm"></v-radio>
+          </v-radio-group> -->
+        <div class="mt-3 font-semibold">7.2 Nozzle setting</div>
+        <v-radio-group inline class="gap-4" v-model="noz_mount1">
+          <v-radio label="Automatic" value="Automatic"></v-radio>
+          <v-radio label="Manual" value="Manual"></v-radio>
+        </v-radio-group>
+        <div class="mt-3 font-semibold">7.3 Support PCB</div>
+        <v-radio-group inline class="gap-4" v-model="sup_mount1">
+          <v-radio label="Pin" value="Pin"></v-radio>
+          <v-radio label="Magnet" value="Magnet"></v-radio>
+          <v-radio label="Sponge" value="Sponge"></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
 
     <v-row no-gutters>
@@ -174,25 +238,30 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="mounter2_inp_std">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">8.1 Program name</div>
-          <v-radio-group inline class="gap-4" v-model="prg_mount2">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">8.2 Nozzle setting</div>
-          <v-radio-group inline class="gap-4" v-model="noz_mount2">
-            <v-radio label="Automatic" value="Automatic"></v-radio>
-            <v-radio label="Manual" value="Manual"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">8.3 Support PCB</div>
-          <v-radio-group inline class="gap-4" v-model="sup_mount2">
-            <v-radio label="Pin" value="Pin"></v-radio>
-            <v-radio label="Magnet" value="Magnet"></v-radio>
-            <v-radio label="Sponge" value="Sponge"></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="mounter2_inp_std">
+        <div class="mt-3 font-semibold">8.1 Program name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg_mount2"
+          :value="props.prgnm"
+        />
+        <!-- <v-radio-group inline class="gap-4" v-model="prg_mount2">
+            <v-radio  :value="props.prgnm"></v-radio>
+          </v-radio-group> -->
+        <div class="mt-3 font-semibold">8.2 Nozzle setting</div>
+        <v-radio-group inline class="gap-4" v-model="noz_mount2">
+          <v-radio label="Automatic" value="Automatic"></v-radio>
+          <v-radio label="Manual" value="Manual"></v-radio>
+        </v-radio-group>
+        <div class="mt-3 font-semibold">8.3 Support PCB</div>
+        <v-radio-group inline class="gap-4" v-model="sup_mount2">
+          <v-radio label="Pin" value="Pin"></v-radio>
+          <v-radio label="Magnet" value="Magnet"></v-radio>
+          <v-radio label="Sponge" value="Sponge"></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
@@ -202,25 +271,30 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="mounter3_inp_std">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">9.1 Program name</div>
-          <v-radio-group inline class="gap-4" v-model="prg_mount3">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">9.2 Nozzle setting</div>
-          <v-radio-group inline class="gap-4" v-model="noz_mount3">
-            <v-radio label="Automatic" value="Automatic"></v-radio>
-            <v-radio label="Manual" value="Manual"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">9.3 Support PCB</div>
-          <v-radio-group inline class="gap-4" v-model="sup_mount3">
-            <v-radio label="Pin" value="Pin"></v-radio>
-            <v-radio label="Magnet" value="Magnet"></v-radio>
-            <v-radio label="Sponge" value="Sponge"></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="mounter3_inp_std">
+        <div class="mt-3 font-semibold">9.1 Program name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg_mount3"
+          :value="props.prgnm"
+        />
+        <!-- <v-radio-group inline class="gap-4" v-model="prg_mount3">
+            <v-radio  :value="props.prgnm"></v-radio>
+          </v-radio-group> -->
+        <div class="mt-3 font-semibold">9.2 Nozzle setting</div>
+        <v-radio-group inline class="gap-4" v-model="noz_mount3">
+          <v-radio label="Automatic" value="Automatic"></v-radio>
+          <v-radio label="Manual" value="Manual"></v-radio>
+        </v-radio-group>
+        <div class="mt-3 font-semibold">9.3 Support PCB</div>
+        <v-radio-group inline class="gap-4" v-model="sup_mount3">
+          <v-radio label="Pin" value="Pin"></v-radio>
+          <v-radio label="Magnet" value="Magnet"></v-radio>
+          <v-radio label="Sponge" value="Sponge"></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
@@ -230,27 +304,53 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="mounter4_inp_std">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">10.1 Program name</div>
-          <v-radio-group inline class="gap-4" v-model="prg_mount4">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">10.2 Nozzle setting</div>
-          <v-radio-group inline class="gap-4" v-model="noz_mount4">
-            <v-radio label="Automatic" value="Automatic"></v-radio>
-            <v-radio label="Manual" value="Manual"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">10.3 Support PCB</div>
-          <v-radio-group inline class="gap-4" v-model="sup_mount4">
-            <v-radio label="Pin" value="Pin"></v-radio>
-            <v-radio label="Magnet" value="Magnet"></v-radio>
-            <v-radio label="Sponge" value="Sponge"></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="mounter4_inp_std">
+        <div class="mt-3 font-semibold">10.1 Program name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg_mount4"
+          :value="props.prgnm"
+        />
+        <!-- <v-radio-group inline class="gap-4" v-model="prg_mount4">
+            <v-radio  :value="props.prgnm"></v-radio>
+          </v-radio-group> -->
+        <div class="mt-3 font-semibold">10.2 Nozzle setting</div>
+        <v-radio-group inline class="gap-4" v-model="noz_mount4">
+          <v-radio label="Automatic" value="Automatic"></v-radio>
+          <v-radio label="Manual" value="Manual"></v-radio>
+        </v-radio-group>
+        <div class="mt-3 font-semibold">10.3 Support PCB</div>
+        <v-radio-group inline class="gap-4" v-model="sup_mount4">
+          <v-radio label="Pin" value="Pin"></v-radio>
+          <v-radio label="Magnet" value="Magnet"></v-radio>
+          <v-radio label="Sponge" value="Sponge"></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
     <v-row no-gutters>
+      <v-col cols="6" md="4">
+        <div class="mt-3 font-semibold">11) Mounter Inspector</div>
+        <v-radio-group inline class="gap-4" v-model="mount_inps">
+          <v-radio label="Use" value="Use" />
+          <v-radio label="Not Use" value="Not Use" />
+        </v-radio-group>
+      </v-col>
+
+      <!-- ทำให้เหมือน Mounter#04 -->
+      <v-col cols="12" md="4" v-if="mount_inps_std">
+        <div class="mt-3 font-semibold">11.1 Program name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg_inspct"
+          :value="props.prgnm"
+        />
+      </v-col>
+    </v-row>
+
+    <!-- <v-row no-gutters>
       <v-col cols="6" md="4">
         <div class="mt-3 font-semibold">11) Mounter Inspector</div>
         <v-radio-group inline class="gap-4" v-model="mount_inps">
@@ -261,13 +361,11 @@
       <div v-if="mount_inps_std">
         <v-col cols="12" md="20">
           <div class="mt-3 font-semibold">11.1 Program name</div>
-          <v-radio-group inline class="gap-4" v-model="prg_inspct">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-            <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
-          </v-radio-group>
+          <v-text-field variant="outlined" density="compact" v-model="prg_inspct" 
+            :value="props.prgnm" />
         </v-col>
       </div>
-    </v-row>
+    </v-row> -->
     <v-row no-gutters>
       <v-col cols="6" md="4">
         <div class="mt-3 font-semibold">12) Reflow</div>
@@ -276,31 +374,38 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="reflow_use_std">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">12.1 Program name</div>
-          <v-radio-group inline class="gap-4" v-model="prg_reflow">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-            <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
-          </v-radio-group>
-          <div class="mt-3 font-semibold">12.2 Oxygen</div>
-          <v-radio-group inline class="gap-4" v-model="oxygen_reflow_std">
-            <v-radio label="Use" value="Use"></v-radio>
-            <v-radio label="Not Use" value="Not Use"></v-radio>
-          </v-radio-group>
-          <v-text-field variant="outlined" density="compact" v-model="oxygen_use" v-if="oxygen_std_use" />
-          <div class="mt-3 font-semibold">12.3 PCB Supporter</div>
-          <v-radio-group inline class="gap-4" v-model="sup_reflow_std">
-            <v-radio label="Use" value="Use"></v-radio>
-            <v-radio label="Not Use" value="Not Use"></v-radio>
-          </v-radio-group>
-          <div class="mt-3 font-semibold">12.4 Temperature profile</div>
-          <v-radio-group inline class="gap-4" v-model="temp_std">
-            <v-radio label="Pass" value="Pass"></v-radio>
-            <v-radio label="No pass" value="No pass"></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="reflow_use_std">
+        <div class="mt-3 font-semibold">12.1 Program name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg_reflow"
+          :value="props.prgnm"
+        />
+
+        <div class="mt-3 font-semibold">12.2 Oxygen</div>
+        <v-radio-group inline class="gap-4" v-model="oxygen_reflow_std">
+          <v-radio label="Use" value="Use"></v-radio>
+          <v-radio label="Not Use" value="Not Use"></v-radio>
+        </v-radio-group>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="oxygen_use"
+          v-if="oxygen_std_use"
+        />
+        <div class="mt-3 font-semibold">12.3 PCB Supporter</div>
+        <v-radio-group inline class="gap-4" v-model="sup_reflow_std">
+          <v-radio label="Use" value="Use"></v-radio>
+          <v-radio label="Not Use" value="Not Use"></v-radio>
+        </v-radio-group>
+        <div class="mt-3 font-semibold">12.4 Temperature profile</div>
+        <v-radio-group inline class="gap-4" v-model="temp_std">
+          <v-radio label="Pass" value="Pass"></v-radio>
+          <v-radio label="No pass" value="No pass"></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
@@ -319,15 +424,16 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="auto_inps_std">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">Program name</div>
-          <v-radio-group inline class="gap-4" v-model="prg_auto">
-            <v-radio :label="props.prgnm" :value="props.prgnm"></v-radio>
-            <!-- <v-radio label="Not Use" value="Not Use"></v-radio> -->
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="auto_inps_std">
+        <div class="mt-3 font-semibold">Program name</div>
+        <v-text-field
+          variant="outlined"
+          density="compact"
+          v-model="prg_auto"
+          :value="props.prgnm"
+        />
+      </v-col>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
@@ -337,16 +443,15 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="ng_stock_std_use">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">Pitch Setting</div>
-          <v-radio-group inline class="gap-4" v-model="ng_stock_pitch">
-            <v-radio label="10 mm." value="10 mm."></v-radio>
-            <v-radio label="20 mm." value="20 mm."></v-radio>
-            <v-radio label="30 mm." value="30 mm."></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="ng_stock_std_use">
+        <div class="mt-3 font-semibold">Pitch Setting</div>
+        <v-radio-group inline class="gap-4" v-model="ng_stock_pitch">
+          <v-radio label="10 mm." value="10 mm."></v-radio>
+          <v-radio label="20 mm." value="20 mm."></v-radio>
+          <v-radio label="30 mm." value="30 mm."></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
     <v-row no-gutters>
       <v-col cols="6" md="4">
@@ -365,16 +470,15 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
       </v-col>
-      <div v-if="unloader_std_use">
-        <v-col cols="12" md="20">
-          <div class="mt-3 font-semibold">Pitch Setting</div>
-          <v-radio-group inline class="gap-4" v-model="unloader_pitch">
-            <v-radio label="10 mm." value="10 mm."></v-radio>
-            <v-radio label="20 mm." value="20 mm."></v-radio>
-            <v-radio label="30 mm." value="30 mm."></v-radio>
-          </v-radio-group>
-        </v-col>
-      </div>
+
+      <v-col cols="12" md="4" v-if="unloader_std_use">
+        <div class="mt-3 font-semibold">Pitch Setting</div>
+        <v-radio-group inline class="gap-4" v-model="unloader_pitch">
+          <v-radio label="10 mm." value="10 mm."></v-radio>
+          <v-radio label="20 mm." value="20 mm."></v-radio>
+          <v-radio label="30 mm." value="30 mm."></v-radio>
+        </v-radio-group>
+      </v-col>
     </v-row>
     <v-row no-gutters class="justify-center mt-10">
       <v-btn width="200" rounded="md" type="submit">
@@ -411,7 +515,7 @@ const load_inp = ref<string>("");
 const pitch = ref<string>("");
 const stack_inp = ref<string>("");
 const trace_inp = ref<string>("");
-const func = ref<string>("");
+const func = ref<string[]>([]);
 const cln_inp = ref<string>("");
 const etc_details = ref<string>("");
 const prg_nm = ref<string>("");
@@ -459,13 +563,21 @@ const trace_inp_std = ref<string>("");
 const unloader_std = ref<string>("");
 const unloader_pitch = ref<string>("");
 
+const funcPCB = ref<{ name: string }[]>([
+  { name: "Air blow" },
+  { name: "Sticky" },
+  { name: "Lonizer" },
+]);
+
+const db_glue = ref<string[]>([]);
+
 // ใช้ string หรือ boolean ที่แน่นอน
 /**
  * TODO: สร้างตัวแปรรับค่าสถานะการเลือกให้แสดงข้อมูล input
  */
 const pitch_std = computed<boolean>(() => load_inp.value === "Use");
 const func_std = computed<boolean>(() => cln_inp.value === "Use");
-const etc_std = computed<boolean>(() => func.value === "etc");
+// const etc_std = computed<boolean>(() => func.value === "etc");
 const confirm_bpst_std = computed<boolean>(() => !confirm_bpst.value);
 const glu_std = computed<boolean>(() => glu_inp.value === "Use");
 const confirm_bpst2_std = computed<boolean>(() => !confirm_bpst2.value);
@@ -594,7 +706,7 @@ const dataEdit = (obj: any) => {
   trace_inp.value = obj.TEC_CPHREC_TRACEINP || "";
   cln_inp.value = obj.TEC_CPHREC_PCBCLEAN || "";
   func.value = obj.TEC_CPHREC_PCBCLNFUNC || "";
-  etc_details.value = obj.TEC_CPHREC_PCBLNETC_DL || "";
+  etc_details.value = obj.TEC_CPHREC_PCBLNETC_DTL || "";
   glu_inp.value = obj.TEC_CPHREC_GLUE || "";
   prg_nm.value = obj.TEC_CPHREC_GLUEPROG || "";
   glu_num.value = obj.TEC_CPHREC_GLUENUM || "";
@@ -647,7 +759,7 @@ watch(load_inp, (newVal) => {
 });
 watch(cln_inp, (newVal) => {
   if (newVal === "Not Use") {
-    func.value = "";
+    func.value = [];
     etc_details.value = "";
   }
 });
@@ -733,7 +845,7 @@ const fetchDB = async () => {
     "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/get/settings"
   );
   db_glue.value = res.data.glue;
-  db_solder.value = res.data.solder;
+  // db_solder.value = res.data.solder;
   console.log(res.data.glue);
   console.log(res.data.solder);
 };
@@ -742,5 +854,6 @@ onMounted(() => {
   /**   TODO: กำหนดค่าเริ่มต้นให้กับตัวแปรจาก props.data_edit เมื่อมีการแก้ไขข้อมูล
    */
   dataEdit(obj);
+  fetchDB();
 });
 </script>

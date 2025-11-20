@@ -1,17 +1,8 @@
 <template>
   <v-navigation-drawer app permanent color="blue-lighten-5">
     <v-list density="comfortable" nav>
-      <v-list-item
-        v-for="m in filteredMenu"
-        :key="m.id"
-        :to="m.to"
-        router
-        exact
-        :active="activemenu === m.to"
-        @click="toggleMenu(m.to)"
-        :color="activemenu === m.to ? 'light-blue-darken-4' : undefined"
-        variant="tonal"
-      >
+      <v-list-item v-for="m in filteredMenu" :key="m.id" :to="m.to" router exact :active="activemenu === m.to"
+        @click="toggleMenu(m.to)" :color="activemenu === m.to ? 'light-blue-darken-4' : undefined" variant="tonal">
         <template #prepend>
           <v-icon :icon="m.icon"></v-icon>
         </template>
@@ -111,9 +102,12 @@ const permission = ref<number>(0);
 // ✅ เรียกข้อมูล session ผู้ใช้งาน
 const sessionUser = async () => {
   try {
-    const res = await axios.get(`${config.apiBase}/session/user`, {
-      withCredentials: true,
-    });
+    const res = await axios.get(
+      `http://172.22.64.11/49_modelchange/49_mdlchn_api/session/user`,
+      {
+        withCredentials: true,
+      }
+    );
 
     user.value = res.data;
     permission.value = user.value?.permission || 0;
