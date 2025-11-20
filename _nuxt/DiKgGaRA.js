@@ -1,0 +1,1 @@
+import{aq as s,o as e,x as o,A as n,am as c,ab as r,y as i}from"#entry";const m={__name:"[id]",setup(u){const{id:a}=s().params,t=async()=>{await r.get};return e(()=>{t()}),(p,_)=>(i(),o("div",null," ID: "+n(c(a)),1))}};export{m as default};
