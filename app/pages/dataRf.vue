@@ -27,7 +27,12 @@
       <template v-slot:default="{ items }">
         <v-container class="pa-2" fluid>
           <v-row dense>
-            <v-col v-for="item in items" :key="item.raw.OPR_HREC_ID" cols="auto" md="6">
+            <v-col
+              v-for="item in items"
+              :key="item.raw.OPR_HREC_ID"
+              cols="auto"
+              md="6"
+            >
               <v-card class="pb-3" border flat>
                 <v-list-item class="mb-2 font-weight-bold">
                   <template v-slot:title>
@@ -41,8 +46,12 @@
                     <table class="border border-blue-800">
                       <tbody>
                         <tr class="border">
-                          <th class="w-40 text-left border pa-2 text-sky-800">LINE:</th>
-                          <td class="px-2 text-sky-800">{{ item.raw.OPR_HREC_LINE }}</td>
+                          <th class="w-40 text-left border pa-2 text-sky-800">
+                            LINE:
+                          </th>
+                          <td class="px-2 text-sky-800">
+                            {{ item.raw.OPR_HREC_LINE }}
+                          </td>
                         </tr>
                         <tr class="border">
                           <th class="text-left border text-sky-800 w-30 pa-2">
@@ -83,7 +92,9 @@
                     <v-icon icon="mdi mdi-file-pdf-box" class="mr-2"></v-icon>
                     View PDF
                   </v-btn>
-                  <div class="d-flex align-center text-caption text-medium-emphasis me-1">
+                  <div
+                    class="d-flex align-center text-caption text-medium-emphasis me-1"
+                  >
                     <!-- ถ้า permission = 1 -->
                     <v-btn
                       v-if="
@@ -98,21 +109,6 @@
                     >
                       <v-icon icon="mdi-check-bold" class="mr-2"></v-icon>
                       ยืนยันส่งอนุมัติ
-                    </v-btn>
-                    <v-btn
-                      v-if="
-                        user?.permission == 1 ||
-                        user?.permission == 2 ||
-                        user?.permission == 7
-                      "
-                      variant="flat"
-                      color="warning"
-                      rounded="lg"
-                      @click="gotoEdit(item.raw)"
-                      class="ms-2"
-                    >
-                      <v-icon icon="mdi mdi-text-box-edit" class="mr-2"></v-icon>
-                      แก้ไขข้อมูล
                     </v-btn>
 
                     <!-- ถ้า permission = 9 -->
@@ -137,7 +133,10 @@
                         color="green-darken-3"
                         @click="updateAppr(item.raw)"
                       >
-                        <v-icon icon="mdi-check-bold" class="mr-3 pa-3"></v-icon>
+                        <v-icon
+                          icon="mdi-check-bold"
+                          class="mr-3 pa-3"
+                        ></v-icon>
 
                         <h1 class="text-[16px] font-medium">อนุมัติ</h1>
                       </v-btn>
@@ -148,7 +147,10 @@
                         color="red-darken-3"
                         @click="RejectedData(item.raw)"
                       >
-                        <v-icon icon="mdi-keyboard-return" class="mr-3 pa-3"></v-icon>
+                        <v-icon
+                          icon="mdi-keyboard-return"
+                          class="mr-3 pa-3"
+                        ></v-icon>
 
                         <h1 class="text-[16px] font-medium">ส่งกลับไปแก้ไข</h1>
                       </v-btn>
@@ -167,13 +169,22 @@
                   </div>
                   <v-dialog v-model="deletedDialog" max-width="400" persistent>
                     <v-card class="pa-3">
-                      <div class="mt-3 font-semibold">กรอกเหตุผลในการลบข้อมูล :</div>
-                      <v-text-field variant="outlined" rounded="md" v-model="remark">
+                      <div class="mt-3 font-semibold">
+                        กรอกเหตุผลในการลบข้อมูล :
+                      </div>
+                      <v-text-field
+                        variant="outlined"
+                        rounded="md"
+                        v-model="remark"
+                      >
                       </v-text-field>
                       <template v-slot:actions>
                         <v-spacer></v-spacer>
 
-                        <v-btn @click="deletedDialog = false" class="font-semibold">
+                        <v-btn
+                          @click="deletedDialog = false"
+                          class="font-semibold"
+                        >
                           Close
                         </v-btn>
 
@@ -205,7 +216,9 @@
             @click="prevPage"
           ></v-btn>
 
-          <div class="mx-2 text-caption">Page {{ page }} of {{ pageCount }}</div>
+          <div class="mx-2 text-caption">
+            Page {{ page }} of {{ pageCount }}
+          </div>
 
           <v-btn
             :disabled="page >= pageCount"
@@ -312,7 +325,12 @@ const GetAllData = async () => {
         ? appItem.APP_REC_EMPNO.split(",")
         : [appItem.APP_REC_EMPNO];
 
-      console.log("🔍 Checking APP_REC_EMPNO:", empID, "for empno:", empno.value);
+      console.log(
+        "🔍 Checking APP_REC_EMPNO:",
+        empID,
+        "for empno:",
+        empno.value
+      );
 
       if (empID.includes(empno.value)) {
         OPR_HREC_ID.value.push(appItem.OPR_HREC_ID);

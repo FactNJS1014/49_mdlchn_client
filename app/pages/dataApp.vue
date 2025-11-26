@@ -4,9 +4,16 @@
       <template v-slot:header>
         <v-toolbar class="px-2 bg-blue-lighten-2">
           <div class="flex justify-between align-center w-[500px]">
-            <v-text-field v-model="search" density="comfortable" placeholder="Search"
-              prepend-inner-icon="mdi mdi-magnify" style="max-width: 300px" variant="solo" clearable
-              hide-details></v-text-field>
+            <v-text-field
+              v-model="search"
+              density="comfortable"
+              placeholder="Search"
+              prepend-inner-icon="mdi mdi-magnify"
+              style="max-width: 300px"
+              variant="solo"
+              clearable
+              hide-details
+            ></v-text-field>
             <v-text class="text-xl font-weight-bold"> Process: CP </v-text>
           </div>
           <!-- <p class="text-sm text-gray-500">
@@ -18,13 +25,20 @@
       <template v-slot:default="{ items }">
         <v-container class="pa-2" fluid>
           <v-row dense>
-            <v-col v-for="item in items" :key="item.raw.OPR_HREC_ID" cols="auto" md="6">
+            <v-col
+              v-for="item in items"
+              :key="item.raw.OPR_HREC_ID"
+              cols="auto"
+              md="6"
+            >
               <v-card class="pb-3" border flat>
                 <v-list-item class="mb-2 font-weight-bold">
                   <template v-slot:title>
-                    <strong class="mb-2 text-h6">Document No. :{{
-                      item.raw.OPR_HREC_ISSUENO.split("-").pop().slice(-3)
-                    }}</strong>
+                    <strong class="mb-2 text-h6"
+                      >Document No. :{{
+                        item.raw.OPR_HREC_ISSUENO.split("-").pop().slice(-3)
+                      }}</strong
+                    >
                     <!-- <p class="mb-2 text-h6 text-red" v-if="item.raw.OPR_HREC_SENDAPP_STD == 0">
                       ยังไม่ได้ยืนยันส่งข้อมูลจากผู้สร้าง
                     </p> -->
@@ -33,7 +47,9 @@
                     <table class="border border-blue-800">
                       <tbody>
                         <tr class="border">
-                          <th class="w-40 text-left border pa-2 text-sky-800">LINE:</th>
+                          <th class="w-40 text-left border pa-2 text-sky-800">
+                            LINE:
+                          </th>
                           <td class="px-2 text-sky-800">
                             {{ item.raw.OPR_HREC_LINE }}
                           </td>
@@ -69,47 +85,84 @@
                 </v-list-item>
 
                 <div class="px-4 d-flex justify-space-between">
-                  <v-btn variant="flat" color="primary" rounded="lg" @click="togglePDF(item.raw)">
+                  <v-btn
+                    variant="flat"
+                    color="primary"
+                    rounded="lg"
+                    @click="togglePDF(item.raw)"
+                  >
                     <v-icon icon="mdi mdi-file-pdf-box" class="mr-2"></v-icon>
                     View PDF
                   </v-btn>
-                  <div class="d-flex align-center text-caption text-medium-emphasis me-1">
+                  <div
+                    class="d-flex align-center text-caption text-medium-emphasis me-1"
+                  >
                     <!-- ถ้า permission = 1 -->
-                    <v-btn v-if="
-                      user?.permission == 1 ||
-                      user?.permission == 2 ||
-                      user?.permission == 7
-                    " variant="flat" color="success" rounded="lg" @click="goAppr(item.raw)">
+                    <v-btn
+                      v-if="
+                        user?.permission == 1 ||
+                        user?.permission == 2 ||
+                        user?.permission == 7
+                      "
+                      variant="flat"
+                      color="success"
+                      rounded="lg"
+                      @click="goAppr(item.raw)"
+                    >
                       <v-icon icon="mdi-check-bold" class="mr-2"></v-icon>
                       ยืนยันส่งอนุมัติ
                     </v-btn>
-                    <v-btn v-if="
-                      user?.permission == 1 ||
-                      user?.permission == 2 ||
-                      user?.permission == 7
-                    " variant="flat" color="warning" rounded="lg" @click="gotoEdit(item.raw)" class="ms-2">
-                      <v-icon icon="mdi mdi-text-box-edit" class="mr-2"></v-icon>
-                      แก้ไขข้อมูล
-                    </v-btn>
 
                     <!-- ถ้า permission = 9 -->
-                    <v-speed-dial location="left bottom" transition="fade-transition" v-if="user?.permission == 9">
+                    <v-speed-dial
+                      location="left bottom"
+                      transition="fade-transition"
+                      v-if="user?.permission == 9"
+                    >
                       <template v-slot:activator="{ props: activatorProps }">
-                        <v-fab v-bind="activatorProps" color="blue-accent-3" icon="mdi-dots-vertical"
-                          rounded="xl"></v-fab>
+                        <v-fab
+                          v-bind="activatorProps"
+                          color="blue-accent-3"
+                          icon="mdi-dots-vertical"
+                          rounded="xl"
+                        ></v-fab>
                       </template>
 
-                      <v-btn key="1" rounded="lg" variant="flat" color="green-darken-3" @click="updateAppr(item.raw)">
-                        <v-icon icon="mdi-check-bold" class="mr-3 pa-3"></v-icon>
+                      <v-btn
+                        key="1"
+                        rounded="lg"
+                        variant="flat"
+                        color="green-darken-3"
+                        @click="updateAppr(item.raw)"
+                      >
+                        <v-icon
+                          icon="mdi-check-bold"
+                          class="mr-3 pa-3"
+                        ></v-icon>
 
                         <h1 class="text-[16px] font-medium">อนุมัติ</h1>
                       </v-btn>
-                      <v-btn key="2" rounded="lg" variant="flat" color="red-darken-3" @click="RejectedData(item.raw)">
-                        <v-icon icon="mdi-keyboard-return" class="mr-3 pa-3"></v-icon>
+                      <v-btn
+                        key="2"
+                        rounded="lg"
+                        variant="flat"
+                        color="red-darken-3"
+                        @click="RejectedData(item.raw)"
+                      >
+                        <v-icon
+                          icon="mdi-keyboard-return"
+                          class="mr-3 pa-3"
+                        ></v-icon>
 
                         <h1 class="text-[16px] font-medium">ส่งกลับไปแก้ไข</h1>
                       </v-btn>
-                      <v-btn key="3" rounded="lg" variant="flat" color="red-accent-4" @click="Deleted">
+                      <v-btn
+                        key="3"
+                        rounded="lg"
+                        variant="flat"
+                        color="red-accent-4"
+                        @click="Deleted"
+                      >
                         <v-icon icon="mdi-trash-can" class="mr-3 pa-3"></v-icon>
 
                         <h1 class="text-[16px] font-medium">ลบทิ้ง</h1>
@@ -118,17 +171,29 @@
                   </div>
                   <v-dialog v-model="deletedDialog" max-width="400" persistent>
                     <v-card class="pa-3">
-                      <div class="mt-3 font-semibold">กรอกเหตุผลในการลบข้อมูล :</div>
-                      <v-text-field variant="outlined" rounded="md" v-model="remark">
+                      <div class="mt-3 font-semibold">
+                        กรอกเหตุผลในการลบข้อมูล :
+                      </div>
+                      <v-text-field
+                        variant="outlined"
+                        rounded="md"
+                        v-model="remark"
+                      >
                       </v-text-field>
                       <template v-slot:actions>
                         <v-spacer></v-spacer>
 
-                        <v-btn @click="deletedDialog = false" class="font-semibold">
+                        <v-btn
+                          @click="deletedDialog = false"
+                          class="font-semibold"
+                        >
                           Close
                         </v-btn>
 
-                        <v-btn @click="SubmitDeleted(item.raw.OPR_HREC_ID)" class="font-semibold">
+                        <v-btn
+                          @click="SubmitDeleted(item.raw.OPR_HREC_ID)"
+                          class="font-semibold"
+                        >
                           ยืนยันลบข้อมูล
                         </v-btn>
                       </template>
@@ -146,13 +211,27 @@
 
       <template v-slot:footer="{ page, pageCount, prevPage, nextPage }">
         <div class="justify-center d-flex align-center pa-4">
-          <v-btn :disabled="page === 1" density="comfortable" icon="mdi mdi-menu-left" variant="tonal" rounded
-            @click="prevPage"></v-btn>
+          <v-btn
+            :disabled="page === 1"
+            density="comfortable"
+            icon="mdi mdi-menu-left"
+            variant="tonal"
+            rounded
+            @click="prevPage"
+          ></v-btn>
 
-          <div class="mx-2 text-caption">Page {{ page }} of {{ pageCount }}</div>
+          <div class="mx-2 text-caption">
+            Page {{ page }} of {{ pageCount }}
+          </div>
 
-          <v-btn :disabled="page >= pageCount" density="comfortable" icon="mdi mdi-menu-right" variant="tonal" rounded
-            @click="nextPage"></v-btn>
+          <v-btn
+            :disabled="page >= pageCount"
+            density="comfortable"
+            icon="mdi mdi-menu-right"
+            variant="tonal"
+            rounded
+            @click="nextPage"
+          ></v-btn>
         </div>
       </template>
     </v-data-iterator>
@@ -258,7 +337,12 @@ const GetAllData = async () => {
         ? appItem.APP_REC_EMPNO.split(",")
         : [appItem.APP_REC_EMPNO];
 
-      console.log("🔍 Checking APP_REC_EMPNO:", empID, "for empno:", empno.value);
+      console.log(
+        "🔍 Checking APP_REC_EMPNO:",
+        empID,
+        "for empno:",
+        empno.value
+      );
 
       if (empID.includes(empno.value)) {
         OPR_HREC_ID.value.push(appItem.OPR_HREC_ID);
@@ -390,10 +474,10 @@ const togglePDF = async (item: DataItem) => {
 
 const selected_data = ref<any>(null);
 
-const gotoEdit = (data: any) => {
-  localStorage.setItem("data", JSON.stringify(data));
-  navigateTo("/tech_record");
-};
+// const gotoEdit = (data: any) => {
+//   localStorage.setItem("data", JSON.stringify(data));
+//   navigateTo("/tech_record");
+// };
 
 /**
  * TODO:ฟังก์ชันส่งข้อมูลอนุมัติไปยังผู้อนุมัติ

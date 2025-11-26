@@ -4,10 +4,12 @@
     <p class="flex justify-center text-lg font-bold align-center">
       MODEL CHANGE RECORD SMT PROCESS : {{ dataItem?.OPR_HREC_PROCS }}
     </p>
-    <div class="pa-3 border border-black w-[800px] bg-white mt-3 mb-5 space-y-2">
+    <div class="pa-3 border border-black w-[800px] bg-white mt-3 space-y-2">
       <div class="grid grid-cols-3 gap-4">
         <div><strong>Line:</strong> {{ dataItem?.OPR_HREC_LINE }}</div>
-        <div><strong>Date:</strong> {{ dateFormat(dataItem?.OPR_HREC_DATEREC) }}</div>
+        <div>
+          <strong>Date:</strong> {{ dateFormat(dataItem?.OPR_HREC_DATEREC) }}
+        </div>
         <div>
           <strong>Document No.:</strong>
           {{ dataItem?.OPR_HREC_ISSUENO.split("-").pop().slice(-3) }}
@@ -49,20 +51,28 @@
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div><strong>Current Model Code:</strong> {{ dataItem?.OPR_HREC_CURMDLNM }}</div>
-        <div><strong>Change Model Code:</strong> {{ dataItem?.OPR_HREC_CHNMDLNM }}</div>
+        <div>
+          <strong>Current Model Code:</strong> {{ dataItem?.OPR_HREC_CURMDLNM }}
+        </div>
+        <div>
+          <strong>Change Model Code:</strong> {{ dataItem?.OPR_HREC_CHNMDLNM }}
+        </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <div>
           <strong>WO#:</strong> {{ dataItem?.OPR_HREC_WON_CURRENT }}
-          <strong class="ms-3">Lot Size:</strong> {{ dataItem?.OPR_HREC_LOTS }} pcs.
-          <strong class="ms-3">Process:</strong> {{ dataItem?.OPR_HREC_PROCSCP }}
+          <strong class="ms-3">Lot Size:</strong>
+          {{ dataItem?.OPR_HREC_LOTS }} pcs.
+          <strong class="ms-3">Process:</strong>
+          {{ dataItem?.OPR_HREC_PROCSCP }}
         </div>
         <div>
           <strong>WO#:</strong> {{ dataItem?.OPR_HREC_WON_CHANGE }}
-          <strong class="ms-3">Lot Size:</strong> {{ dataItem?.OPR_HREC_LOTS_CHN }} pcs.
-          <strong class="ms-3">Process:</strong> {{ dataItem?.OPR_HREC_PROCSCP_CHN }}
+          <strong class="ms-3">Lot Size:</strong>
+          {{ dataItem?.OPR_HREC_LOTS_CHN }} pcs.
+          <strong class="ms-3">Process:</strong>
+          {{ dataItem?.OPR_HREC_PROCSCP_CHN }}
         </div>
       </div>
 
@@ -99,12 +109,16 @@
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div><strong>Program name:</strong> {{ dataItem?.OPR_HREC_PRGMNM }}</div>
+        <div>
+          <strong>Program name:</strong> {{ dataItem?.OPR_HREC_PRGMNM }}
+        </div>
         <div><strong>REV.:</strong> {{ dataItem?.OPR_HREC_PRGMREV }}</div>
       </div>
     </div>
 
-    <div class="grid grid-cols-2">
+    <div
+      class="grid grid-cols-2 border border-gray-400 px-3 py-4 avoid-break-inside"
+    >
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong>1) Loader Input: </strong>
@@ -146,7 +160,9 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1">
+    <div
+      class="grid grid-cols-1 border border-black px-3 py-4 avoid-break-inside"
+    >
       <div class="flex items-center gap-2">
         <strong>2) Stacker: </strong>
         <input
@@ -163,7 +179,9 @@
         <span>Not Use</span>
       </div>
     </div>
-    <div class="grid grid-cols-1">
+    <div
+      class="grid grid-cols-1 border border-black px-3 py-4 avoid-break-inside"
+    >
       <div class="flex items-center gap-2">
         <strong>3) Traceabiliy Input: </strong>
         <input
@@ -180,7 +198,9 @@
         <span>Not Use</span>
       </div>
     </div>
-    <div class="grid grid-cols-2">
+    <div
+      class="grid grid-cols-2 border border-black px-3 py-4 avoid-break-inside"
+    >
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong>4) PCB Cleaning: </strong>
@@ -207,6 +227,9 @@
           <span>{{ dataItem?.TEC_CPHREC_PCBLNETC_DTL }}</span>
         </div>
       </div>
+    </div>
+
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -286,10 +309,14 @@
             <span>Confirm OK</span>
           </div>
           <span>{{
-            dataItem?.TEC_CPHREC_GLUESTDOK === null ? dataItem?.TEC_CPHREC_GLUESTDNOT : ""
+            dataItem?.TEC_CPHREC_GLUESTDOK === null
+              ? dataItem?.TEC_CPHREC_GLUESTDNOT
+              : ""
           }}</span>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -370,10 +397,14 @@
             <span>Confirm OK</span>
           </div>
           <span>{{
-            dataItem?.TEC_CPHREC_GLUESNDOK === null ? dataItem?.TEC_CPHREC_GLUESNDNOT : ""
+            dataItem?.TEC_CPHREC_GLUESNDOK === null
+              ? dataItem?.TEC_CPHREC_GLUESNDNOT
+              : ""
           }}</span>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -449,6 +480,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -524,6 +557,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -599,6 +634,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -674,6 +711,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -701,6 +740,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -741,7 +782,9 @@
             />
             <span>Use</span>
             <span>{{
-              dataItem?.TEC_CPHREC_REFLOXYGEN === "Use" ? dataItem?.TEC_CPHREC_REFLOO : ""
+              dataItem?.TEC_CPHREC_REFLOXYGEN === "Use"
+                ? dataItem?.TEC_CPHREC_REFLOO
+                : ""
             }}</span>
             <input
               type="checkbox"
@@ -778,25 +821,114 @@
         <div class="flex flex-col"></div>
 
         <div class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <strong> Temperature profile: </strong>
-            <input
-              type="checkbox"
-              class="w-4 h-4 mt-3"
-              :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'Pass'"
-            />
-            <span>Use</span>
+          <strong>Temperature profile:</strong>
 
-            <input
-              type="checkbox"
-              class="w-4 h-4 mt-3 ms-3"
-              :checked="dataItem?.TEC_CPHREC_REFLTEMP === 'No pass'"
-            />
-            <span>Not Use</span>
-          </div>
+          <table class="min-w-max text-sm table-auto">
+            <thead>
+              <tr>
+                <th class="p-2 text-left w-24 break-words">Channel</th>
+                <th class="p-2 text-left break-words">TOP Side</th>
+                <th class="p-2 text-left break-words">BOTTOM Side</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="p-2 break-words">CH-1</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH1 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH1 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-2</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH2 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH2 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-3</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH3 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH3 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-4</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH4 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH4 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-5</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH5 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH5 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-6</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH6 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH6 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-7</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH7 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH7 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-8</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH8 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH8 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-9</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH9 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH9 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-10</td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_TOP_TEMPCH10 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ dataItem?.TEC_CPHREC_BTM_TEMPCH10 }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -816,6 +948,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -843,6 +977,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -886,6 +1022,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -905,6 +1043,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
       <div class="grid grid-cols-2">
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
@@ -1046,7 +1186,10 @@ const generatePdf = async () => {
       if (elementTopPx >= canvasY) {
         // 1. ตรวจสอบการถูกตัดครึ่ง: ถ้า Element เริ่มต้นในหน้านี้ (elementTopPx < pageBreakPointPx)
         //    แต่ส่วนล่างเลยจุดตัดไป (elementBottomPx > pageBreakPointPx)
-        if (elementTopPx < pageBreakPointPx && elementBottomPx > pageBreakPointPx) {
+        if (
+          elementTopPx < pageBreakPointPx &&
+          elementBottomPx > pageBreakPointPx
+        ) {
           // ให้คำนวณความสูงใหม่ โดยตัดที่ขอบบนของ Element นี้
           finalSliceHeightPx = elementTopPx - canvasY;
           breakFound = true;
@@ -1059,7 +1202,10 @@ const generatePdf = async () => {
         const remainingSpacePx = pageBreakPointPx - elementTopPx;
         const elementHeightPx = elementBottomPx - elementTopPx;
 
-        if (elementHeightPx > remainingSpacePx || remainingSpacePx < SAFETY_MARGIN_PX) {
+        if (
+          elementHeightPx > remainingSpacePx ||
+          remainingSpacePx < SAFETY_MARGIN_PX
+        ) {
           // ให้คำนวณความสูงใหม่ โดยตัดที่ขอบบนของ Element นี้ (ยกไปหน้าถัดไป)
           finalSliceHeightPx = elementTopPx - canvasY;
           breakFound = true;

@@ -432,7 +432,7 @@
               <th class="px-2 py-1 text-left border">Lot Size เดิม:</th>
               <td class="px-2 py-1 bg-red-200 border">{{ details.OPR_HREC_LOTS }}</td>
             </tr>
-            <tr>
+            <tr v-if="details.OPR_HREC_PROCS !== 'RF'">
               <th class="px-2 py-1 text-left border">Process CP เดิม:</th>
               <td class="px-2 py-1 bg-red-200 border">
                 {{ details.OPR_HREC_PROCSCP }}
@@ -462,7 +462,7 @@
                 {{ details.OPR_HREC_LOTS_CHN }}
               </td>
             </tr>
-            <tr>
+            <tr v-if="details.OPR_HREC_PROCS !== 'RF'">
               <th class="px-2 py-1 text-left border">Process CP เปลี่ยน:</th>
               <td class="px-2 py-1 bg-green-200 border">
                 {{ details.OPR_HREC_PROCSCP_CHN }}

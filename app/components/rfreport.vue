@@ -8,7 +8,9 @@
       <table class="border border-black border-collapse">
         <thead>
           <tr>
-            <th width="120px" class="text-center border border-black px-2 py-2">QC</th>
+            <th width="120px" class="text-center border border-black px-2 py-2">
+              QC
+            </th>
             <th width="120px" class="text-center border border-black px-2 py-2">
               LEADER
             </th>
@@ -60,7 +62,9 @@
     <div class="pa-3 border border-black w-[800px] bg-white mt-3 space-y-2">
       <div class="grid grid-cols-3 gap-4">
         <div><strong>Line:</strong> {{ rfItem?.OPR_HREC_LINE }}</div>
-        <div><strong>Date:</strong> {{ dateFormat(rfItem?.OPR_HREC_DATEREC) }}</div>
+        <div>
+          <strong>Date:</strong> {{ dateFormat(rfItem?.OPR_HREC_DATEREC) }}
+        </div>
         <div>
           <strong>Document No.:</strong>
           {{ rfItem?.OPR_HREC_ISSUENO.split("-").pop().slice(-3) }}
@@ -69,47 +73,97 @@
       <div class="grid grid-cols-1 gap-4">
         <div class="flex items-center gap-2">
           <strong>Status:</strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_STATUSMDL === 'Urgent'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.OPR_HREC_STATUSMDL === 'Urgent'"
+          />
           <span>Urgent</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_STATUSMDL === 'Normal'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.OPR_HREC_STATUSMDL === 'Normal'"
+          />
           <span>Normal</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_STATUSMDL === 'New Line'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.OPR_HREC_STATUSMDL === 'New Line'"
+          />
           <span>New Line</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_STATUSMDL === 'New model'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.OPR_HREC_STATUSMDL === 'New model'"
+          />
           <span>New model</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_STATUSMDL === 'Over Plan'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.OPR_HREC_STATUSMDL === 'Over Plan'"
+          />
           <span>Over Plan</span>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div><strong>Current Model Code:</strong> {{ rfItem?.OPR_HREC_CURMDLNM }}</div>
-        <div><strong>Change Model Code:</strong> {{ rfItem?.OPR_HREC_CHNMDLNM }}</div>
+        <div>
+          <strong>Current Model Code:</strong> {{ rfItem?.OPR_HREC_CURMDLNM }}
+        </div>
+        <div>
+          <strong>Change Model Code:</strong> {{ rfItem?.OPR_HREC_CHNMDLNM }}
+        </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <div>
           <strong>WO#:</strong> {{ rfItem?.OPR_HREC_WON_CURRENT }}
-          <strong class="ms-3">Lot Size:</strong> {{ rfItem?.OPR_HREC_LOTS }} pcs.
+          <strong class="ms-3">Lot Size:</strong>
+          {{ rfItem?.OPR_HREC_LOTS }} pcs.
           <div class="flex items-center gap-2">
             <strong class="mr-2">Process:</strong>
-            <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_PROCS_RF === 'CP'" />
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.OPR_HREC_PROCS_RF === 'CP'"
+            />
             <span>CP</span>
-            <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_PROCS_RF === 'RF1'" />
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.OPR_HREC_PROCS_RF === 'RF1'"
+            />
             <span>RF1</span>
-            <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_PROCS_RF === 'RF2'" />
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.OPR_HREC_PROCS_RF === 'RF2'"
+            />
             <span>RF2</span>
           </div>
         </div>
         <div>
           <strong>WO#:</strong> {{ rfItem?.OPR_HREC_WON_CHANGE }}
-          <strong class="ms-3">Lot Size:</strong> {{ rfItem?.OPR_HREC_LOTS_CHN }} pcs.
+          <strong class="ms-3">Lot Size:</strong>
+          {{ rfItem?.OPR_HREC_LOTS_CHN }} pcs.
           <div class="flex items-center gap-2">
             <strong class="mr-2">Process:</strong>
-            <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_PROCS_RF_CHN === 'CP'" />
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.OPR_HREC_PROCS_RF_CHN === 'CP'"
+            />
             <span>CP</span>
-            <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_PROCS_RF_CHN === 'RF1'" />
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.OPR_HREC_PROCS_RF_CHN === 'RF1'"
+            />
             <span>RF1</span>
-            <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_PROCS_RF_CHN === 'RF2'" />
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.OPR_HREC_PROCS_RF_CHN === 'RF2'"
+            />
             <span>RF2</span>
           </div>
         </div>
@@ -118,9 +172,17 @@
       <div class="grid grid-cols-1 gap-4">
         <div class="flex items-center gap-2">
           <strong>ECN Control:</strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_CONTECN === 'No Have'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.OPR_HREC_CONTECN === 'No Have'"
+          />
           <span>No Have</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.OPR_HREC_CONTECN === 'Have'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.OPR_HREC_CONTECN === 'Have'"
+          />
           <span>Have</span>
 
           <div class="ms-3">
@@ -145,53 +207,109 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-2">
+    <div
+      class="grid grid-cols-2 border border-gray-400 px-3 py-4 avoid-break-inside"
+    >
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong>1) Loader Input: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_LOADINP === 'Use'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.TEC_RFHREC_LOADINP === 'Use'"
+          />
           <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_LOADINP === 'Not Use'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.TEC_RFHREC_LOADINP === 'Not Use'"
+          />
           <span>Not Use</span>
         </div>
       </div>
+
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong>Pitching: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_LOADINPPITCH === '10 mm.'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.TEC_RFHREC_LOADINPPITCH === '10 mm.'"
+          />
           <span>10 mm.</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_LOADINPPITCH === '20 mm.'" />
+
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.TEC_RFHREC_LOADINPPITCH === '20 mm.'"
+          />
           <span>20 mm.</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_LOADINPPITCH === '30 mm.'" />
+
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.TEC_RFHREC_LOADINPPITCH === '30 mm.'"
+          />
           <span>30 mm.</span>
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1">
+
+    <div
+      class="grid grid-cols-1 avoid-break-inside px-3 py-4 border border-black"
+    >
       <div class="flex items-center gap-2">
         <strong>2) Stacker: </strong>
-        <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_STACK === 'Use'" />
+        <input
+          type="checkbox"
+          class="w-4 h-4 mt-3"
+          :checked="rfItem?.TEC_RFHREC_STACK === 'Use'"
+        />
         <span>Use</span>
-        <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_STACK === 'Not Use'" />
+        <input
+          type="checkbox"
+          class="w-4 h-4 mt-3"
+          :checked="rfItem?.TEC_RFHREC_STACK === 'Not Use'"
+        />
         <span>Not Use</span>
       </div>
     </div>
-    <div class="grid grid-cols-1">
+    <div
+      class="grid grid-cols-1 avoid-break-inside px-3 py-4 border border-black"
+    >
       <div class="flex items-center gap-2">
         <strong>3) Traceabiliy Input: </strong>
-        <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_TRACEINP === 'Use'" />
+        <input
+          type="checkbox"
+          class="w-4 h-4 mt-3"
+          :checked="rfItem?.TEC_RFHREC_TRACEINP === 'Use'"
+        />
         <span>Use</span>
-        <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_TRACEINP === 'Not Use'" />
+        <input
+          type="checkbox"
+          class="w-4 h-4 mt-3"
+          :checked="rfItem?.TEC_RFHREC_TRACEINP === 'Not Use'"
+        />
         <span>Not Use</span>
       </div>
     </div>
-    <div class="grid grid-cols-2">
+    <div
+      class="grid grid-cols-2 avoid-break-inside px-3 py-4 border border-black"
+    >
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
           <strong>4) PCB Cleaning: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PCBCLEAN === 'Use'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.TEC_RFHREC_PCBCLEAN === 'Use'"
+          />
           <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PCBCLEAN === 'Not Use'" />
+          <input
+            type="checkbox"
+            class="w-4 h-4 mt-3"
+            :checked="rfItem?.TEC_RFHREC_PCBCLEAN === 'Not Use'"
+          />
           <span>Not Use</span>
         </div>
       </div>
@@ -205,490 +323,853 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>5) Printer: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PRINT === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PRINT === 'Not Use'" />
-          <span>Not Use</span>
+
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>5) Printer: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_PRINT === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_PRINT === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+
+            <span>{{ rfItem?.TEC_RFHREC_PRINTPROG }}</span>
+          </div>
         </div>
       </div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
 
-          <span>{{ rfItem?.TEC_RFHREC_PRINTPROG }}</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Metal Mask: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_PRINTMM === 'Referent PCB Number'"
+            />
+            <span>Referent PCB Number</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_PRINTREF === 'REF'"
+            />
+            <span>REF#</span>
+            <span class="ms-2">{{
+              rfItem?.TEC_RFHREC_PRINTMM === "REF"
+                ? rfItem?.TEC_RFHREC_PRINTREF
+                : ""
+            }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Squeegee: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_SQUE === 'Good condition'"
+            />
+            <span>Good condition</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_PRINTSUPT === 'Backup plate'"
+            />
+            <span>Backup plate</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_PRINTSUPT === 'Backup pin'"
+            />
+            <span>Backup pin</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Solder plate number: </strong>
+
+            <span>{{ rfItem?.TEC_RFHREC_PRINTSOLDER }}</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>6) Glue: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_GLUE === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_GLUE === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Metal Mask: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PRINTMM === 'Referent PCB Number'" />
-          <span>Referent PCB Number</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PRINTREF === 'REF'" />
-          <span>REF#</span>
-          <span class="ms-2">{{
-            rfItem?.TEC_RFHREC_PRINTMM === "REF" ? rfItem?.TEC_RFHREC_PRINTREF : ""
-          }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Squeegee: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_SQUE === 'Good condition'" />
-          <span>Good condition</span>
+            <span>{{ rfItem?.TEC_RFHREC_GLUEPROG }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PRINTSUPT === 'Backup plate'" />
-          <span>Backup plate</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PRINTSUPT === 'Backup pin'" />
-          <span>Backup pin</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Solder plate number: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_PRINTSOLDER === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>6) Glue: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_GLUE === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_GLUE === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_GLUEPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Glue Number: </strong>
-          <span>{{ rfItem?.TEC_RFHREC_GLUENUM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>7) Solder plate inspection: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_SOLDERINSP === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_SOLDERINSP === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_SOLDERPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>8) Mounter (M/C #1): </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTF === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTF === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_MNTFPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Nozzle Setting: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFNOZ === 'Automatic'" />
-          <span>Automatic</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFNOZ === 'Manual'" />
-          <span>Manual</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFSUPT === 'Pin'" />
-          <span>Pin</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFSUPT === 'Magnet'" />
-          <span>Magnet</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFSUPT === 'Sponge'" />
-          <span>Sponge</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>9) Mounter (M/C #2): </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTSN === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTSN === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_MNTSNPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Nozzle Setting: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTSNNOZ === 'Automatic'" />
-          <span>Automatic</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTSNNOZ === 'Manual'" />
-          <span>Manual</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTSNSUPT === 'Pin'" />
-          <span>Pin</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTSNSUPT === 'Magnet'" />
-          <span>Magnet</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTSNSUPT === 'Sponge'" />
-          <span>Sponge</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>10) Mounter (M/C #3): </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTTR === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTTR === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_MNTTRPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Nozzle Setting: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTTRNOZ === 'Automatic'" />
-          <span>Automatic</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTTRNOZ === 'Manual'" />
-          <span>Manual</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTTRSUPT === 'Pin'" />
-          <span>Pin</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTTRSUPT === 'Magnet'" />
-          <span>Magnet</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTTRSUPT === 'Sponge'" />
-          <span>Sponge</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>11) Mounter (M/C #4): </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFO === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFO === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_MNTFOPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Nozzle Setting: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFONOZ === 'Automatic'" />
-          <span>Automatic</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFONOZ === 'Manual'" />
-          <span>Manual</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Support PCB: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFOSUPT === 'Pin'" />
-          <span>Pin</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFOSUPT === 'Magnet'" />
-          <span>Magnet</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTFOSUPT === 'Sponge'" />
-          <span>Sponge</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>12) Mounter Inspector: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTINSP === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_MNTINSP === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_MNTINSPPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>13) Reflow: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_REFLOW === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_REFLOW === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_REFLPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Oxygen: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_REFLOXYGEN === 'Use'" />
-          <span>Use</span>
-          <span>{{
-            rfItem?.TEC_RFHREC_REFLOXYGEN === "Use" ? rfItem?.TEC_RFHREC_REFLOO : ""
-          }}</span>
-          <input type="checkbox" class="w-4 h-4 mt-3 ms-3" :checked="rfItem?.TEC_RFHREC_REFLOXYGEN === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> PCB Supporter: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_REFLPCBSUPT === 'Use'" />
-          <span>Use</span>
-
-          <input type="checkbox" class="w-4 h-4 mt-3 ms-3" :checked="rfItem?.TEC_RFHREC_REFLPCBSUPT === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col"></div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Temperature profile: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_REFLTEMP === 'Pass'" />
-          <span>Pass</span>
-
-          <input type="checkbox" class="w-4 h-4 mt-3 ms-3" :checked="rfItem?.TEC_RFHREC_REFLTEMP === 'No pass'" />
-          <span>Not Pass</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>14) PCB Cooling: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PCBCOOL === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_PCBCOOL === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>15) Auto Optic Inspection: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_AUTO === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_AUTO === 'Not Use'" />
-          <span>Not Use</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Program name: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3"
-            :checked="rfItem?.TEC_RFHREC_AUTOPROG === rfItem?.OPR_HREC_PRGMNM" />
-          <span>{{ rfItem?.OPR_HREC_PRGMNM }}</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Glue Number: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_GLUENUM }}</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>16) NG Stocker: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_NGSTCK === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_NGSTCK === 'Not Use'" />
-          <span>Not Use</span>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>7) Solder plate inspection: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_SOLDERINSP === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_SOLDERINSP === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
         </div>
-      </div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Pitch setting: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_NGSTCKPITCH === '10 mm.'" />
-          <span>10 mm.</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_NGSTCKPITCH === '20 mm.'" />
-          <span>20 mm.</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_NGSTCKPITCH === '30 mm.'" />
-          <span>30 mm.</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_SOLDERPROG }}</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>17) Traceability Input: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_TRACE === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_TRACE === 'Not Use'" />
-          <span>Not Use</span>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>8) Mounter (M/C #1): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTF === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTF === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_MNTFPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Nozzle Setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFNOZ === 'Automatic'"
+            />
+            <span>Automatic</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFNOZ === 'Manual'"
+            />
+            <span>Manual</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFSUPT === 'Pin'"
+            />
+            <span>Pin</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFSUPT === 'Magnet'"
+            />
+            <span>Magnet</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFSUPT === 'Sponge'"
+            />
+            <span>Sponge</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2">
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong>18) Unloader Input: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_UNLOADER === 'Use'" />
-          <span>Use</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_UNLOADER === 'Not Use'" />
-          <span>Not Use</span>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>9) Mounter (M/C #2): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTSN === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTSN === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_MNTSNPROG }}</span>
+          </div>
         </div>
       </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
 
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2">
-          <strong> Pitch setting: </strong>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_UNLOADERPITCH === '10 mm.'" />
-          <span>10 mm.</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_UNLOADERPITCH === '20 mm.'" />
-          <span>20 mm.</span>
-          <input type="checkbox" class="w-4 h-4 mt-3" :checked="rfItem?.TEC_RFHREC_UNLOADERPITCH === '30 mm.'" />
-          <span>30 mm.</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Nozzle Setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTSNNOZ === 'Automatic'"
+            />
+            <span>Automatic</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTSNNOZ === 'Manual'"
+            />
+            <span>Manual</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTSNSUPT === 'Pin'"
+            />
+            <span>Pin</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTSNSUPT === 'Magnet'"
+            />
+            <span>Magnet</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTSNSUPT === 'Sponge'"
+            />
+            <span>Sponge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>10) Mounter (M/C #3): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTTR === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTTR === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_MNTTRPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Nozzle Setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTTRNOZ === 'Automatic'"
+            />
+            <span>Automatic</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTTRNOZ === 'Manual'"
+            />
+            <span>Manual</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTTRSUPT === 'Pin'"
+            />
+            <span>Pin</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTTRSUPT === 'Magnet'"
+            />
+            <span>Magnet</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTTRSUPT === 'Sponge'"
+            />
+            <span>Sponge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>11) Mounter (M/C #4): </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFO === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFO === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_MNTFOPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Nozzle Setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFONOZ === 'Automatic'"
+            />
+            <span>Automatic</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFONOZ === 'Manual'"
+            />
+            <span>Manual</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Support PCB: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFOSUPT === 'Pin'"
+            />
+            <span>Pin</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFOSUPT === 'Magnet'"
+            />
+            <span>Magnet</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTFOSUPT === 'Sponge'"
+            />
+            <span>Sponge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>12) Mounter Inspector: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTINSP === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_MNTINSP === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_MNTINSPPROG }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>13) Reflow: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_REFLOW === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_REFLOW === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_REFLPROG }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Oxygen: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_REFLOXYGEN === 'Use'"
+            />
+            <span>Use</span>
+            <span>{{
+              rfItem?.TEC_RFHREC_REFLOXYGEN === "Use"
+                ? rfItem?.TEC_RFHREC_REFLOO
+                : ""
+            }}</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3 ms-3"
+              :checked="rfItem?.TEC_RFHREC_REFLOXYGEN === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> PCB Supporter: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_REFLPCBSUPT === 'Use'"
+            />
+            <span>Use</span>
+
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3 ms-3"
+              :checked="rfItem?.TEC_RFHREC_REFLPCBSUPT === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col"></div>
+
+        <div class="flex flex-col">
+          <strong>Temperature profile:</strong>
+
+          <table class="min-w-max text-sm table-auto">
+            <thead>
+              <tr>
+                <th class="p-2 text-left w-24 break-words">Channel</th>
+                <th class="p-2 text-left break-words">TOP Side</th>
+                <th class="p-2 text-left break-words">BOTTOM Side</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="p-2 break-words">CH-1</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH1 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH1 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-2</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH2 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH2 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-3</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH3 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH3 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-4</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH4 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH4 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-5</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH5 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH5 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-6</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH6 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH6 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-7</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH7 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH7 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-8</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH8 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH8 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-9</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH9 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH9 }}
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 break-words">CH-10</td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_TOP_TEMPCH10 }}
+                </td>
+                <td class="p-2 break-words">
+                  {{ rfItem?.TEC_RFHREC_BTM_TEMPCH10 }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>14) PCB Cooling: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_PCBCOOL === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_PCBCOOL === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>15) Auto Optic Inspection: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_AUTO === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_AUTO === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Program name: </strong>
+            <span>{{ rfItem?.TEC_RFHREC_AUTOPROG }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>16) NG Stocker: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_NGSTCK === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_NGSTCK === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Pitch setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_NGSTCKPITCH === '10 mm.'"
+            />
+            <span>10 mm.</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_NGSTCKPITCH === '20 mm.'"
+            />
+            <span>20 mm.</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_NGSTCKPITCH === '30 mm.'"
+            />
+            <span>30 mm.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>17) Traceability Input: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_TRACE === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_TRACE === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-black px-3 py-4 avoid-break-inside">
+      <div class="grid grid-cols-2">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong>18) Unloader Input: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_UNLOADER === 'Use'"
+            />
+            <span>Use</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_UNLOADER === 'Not Use'"
+            />
+            <span>Not Use</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <strong> Pitch setting: </strong>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_UNLOADERPITCH === '10 mm.'"
+            />
+            <span>10 mm.</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_UNLOADERPITCH === '20 mm.'"
+            />
+            <span>20 mm.</span>
+            <input
+              type="checkbox"
+              class="w-4 h-4 mt-3"
+              :checked="rfItem?.TEC_RFHREC_UNLOADERPITCH === '30 mm.'"
+            />
+            <span>30 mm.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -807,7 +1288,10 @@ const generatePdf = async () => {
       if (elementTopPx >= canvasY) {
         // 1. ตรวจสอบการถูกตัดครึ่ง: ถ้า Element เริ่มต้นในหน้านี้ (elementTopPx < pageBreakPointPx)
         //    แต่ส่วนล่างเลยจุดตัดไป (elementBottomPx > pageBreakPointPx)
-        if (elementTopPx < pageBreakPointPx && elementBottomPx > pageBreakPointPx) {
+        if (
+          elementTopPx < pageBreakPointPx &&
+          elementBottomPx > pageBreakPointPx
+        ) {
           // ให้คำนวณความสูงใหม่ โดยตัดที่ขอบบนของ Element นี้
           finalSliceHeightPx = elementTopPx - canvasY;
           breakFound = true;
@@ -820,7 +1304,10 @@ const generatePdf = async () => {
         const remainingSpacePx = pageBreakPointPx - elementTopPx;
         const elementHeightPx = elementBottomPx - elementTopPx;
 
-        if (elementHeightPx > remainingSpacePx || remainingSpacePx < SAFETY_MARGIN_PX) {
+        if (
+          elementHeightPx > remainingSpacePx ||
+          remainingSpacePx < SAFETY_MARGIN_PX
+        ) {
           // ให้คำนวณความสูงใหม่ โดยตัดที่ขอบบนของ Element นี้ (ยกไปหน้าถัดไป)
           finalSliceHeightPx = elementTopPx - canvasY;
           breakFound = true;

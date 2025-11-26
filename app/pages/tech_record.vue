@@ -36,8 +36,8 @@
               </div>
               <div class="mt-3">
                 <h1 class="text-xl text-red-500">
-                  <i class="mr-2 fa-solid fa-circle-info"></i>ส่วนนี้จะเป็นของ Technichian
-                  หรือ Model Change ที่จะต้องบันทึก
+                  <i class="mr-2 fa-solid fa-circle-info"></i>ส่วนนี้จะเป็นของ
+                  Technichian หรือ Model Change ที่จะต้องบันทึก
                   <span class="font-semibold"
                     ><mark class="text-red-500"
                       >(ข้อมูลที่ได้รับในการมาบันทึกนั้น ต้องหลังจาก Operator
@@ -49,8 +49,8 @@
                 </h1>
                 <p class="text-lg text-amber-500">
                   <i class="mr-2 fa-solid fa-circle-info"></i
-                  >ตรวจสอบชื่อโปรแกรมบนหน้าจอเครื่องจักร ต้องตรงกับ Assembly chart part
-                  list เท่านั้น
+                  >ตรวจสอบชื่อโปรแกรมบนหน้าจอเครื่องจักร ต้องตรงกับ Assembly
+                  chart part list เท่านั้น
                 </p>
               </div>
               <v-switch
@@ -190,7 +190,7 @@ const sessionUser = async () => {
  * TODO: สร้างตัวแปรรับค่าจาก v-model on template
  */
 
-const prs = ref<string>("CP");
+const prs = ref<string>("");
 const dialog = ref<boolean>(false);
 const tab = ref<string>("one");
 const search = ref<string>("");

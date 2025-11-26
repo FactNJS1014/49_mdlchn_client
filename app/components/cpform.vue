@@ -104,12 +104,7 @@
 
       <v-col cols="12" md="4" v-if="glu_std">
         <div class="mt-3 font-semibold">5.1 Prgram name</div>
-        <v-text-field
-          variant="outlined"
-          density="compact"
-          v-model="prg_nm"
-          :value="props.prgnm"
-        />
+        <v-text-field variant="outlined" density="compact" v-model="prg_nm" />
         <!-- <v-radio-group inline class="gap-4" v-model="prg_nm">
             <v-radio  :value="props.prgnm"></v-radio>
           </v-radio-group> -->
@@ -155,12 +150,7 @@
 
       <v-col cols="12" md="4" v-if="glu2_std">
         <div class="mt-3 font-semibold">6.1 Prgram name</div>
-        <v-text-field
-          variant="outlined"
-          density="compact"
-          v-model="prg2_nm"
-          :value="props.prgnm"
-        />
+        <v-text-field variant="outlined" density="compact" v-model="prg2_nm" />
         <!-- <v-radio-group inline class="gap-4" v-model="prg2_nm">
             <v-radio  :value="props.prgnm"></v-radio>
           </v-radio-group> -->
@@ -211,7 +201,6 @@
           variant="outlined"
           density="compact"
           v-model="prg_mount1"
-          :value="props.prgnm"
         />
         <!-- <v-radio-group inline class="gap-4" v-model="prg_mount1">
             <v-radio  :value="props.prgnm"></v-radio>
@@ -245,7 +234,6 @@
           variant="outlined"
           density="compact"
           v-model="prg_mount2"
-          :value="props.prgnm"
         />
         <!-- <v-radio-group inline class="gap-4" v-model="prg_mount2">
             <v-radio  :value="props.prgnm"></v-radio>
@@ -278,7 +266,6 @@
           variant="outlined"
           density="compact"
           v-model="prg_mount3"
-          :value="props.prgnm"
         />
         <!-- <v-radio-group inline class="gap-4" v-model="prg_mount3">
             <v-radio  :value="props.prgnm"></v-radio>
@@ -345,7 +332,6 @@
           variant="outlined"
           density="compact"
           v-model="prg_inspct"
-          :value="props.prgnm"
         />
       </v-col>
     </v-row>
@@ -380,8 +366,7 @@
         <v-text-field
           variant="outlined"
           density="compact"
-          v-model="prg_reflow"
-          :value="props.prgnm"
+          v-model="prog_reflow"
         />
 
         <div class="mt-3 font-semibold">12.2 Oxygen</div>
@@ -401,10 +386,144 @@
           <v-radio label="Not Use" value="Not Use"></v-radio>
         </v-radio-group>
         <div class="mt-3 font-semibold">12.4 Temperature profile</div>
-        <v-radio-group inline class="gap-4" v-model="temp_std">
-          <v-radio label="Pass" value="Pass"></v-radio>
-          <v-radio label="No pass" value="No pass"></v-radio>
-        </v-radio-group>
+        <div class="flex justify-between gap-3">
+          <div class="mt-2">
+            <div>TOP Side</div>
+            <div class="mt-3">CH-1</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch1"
+            />
+            <div class="mt-2">CH-2</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch2"
+            />
+            <div class="mt-2">CH-3</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch3"
+            />
+            <div class="mt-2">CH-4</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch4"
+            />
+            <div class="mt-2">CH-5</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch5"
+            />
+            <div class="mt-2">CH-6</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch6"
+            />
+            <div class="mt-2">CH-7</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch7"
+            />
+            <div class="mt-2">CH-8</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch8"
+            />
+            <div class="mt-2">CH-9</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch9"
+            />
+            <div class="mt-2">CH-10</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_top_ch10"
+            />
+          </div>
+          <div class="mt-2">
+            <div>BOTTOM Side</div>
+            <div class="mt-3">CH-1</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch1"
+              :class="diffColorch1"
+            />
+            <div class="mt-2">CH-2</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch2"
+              :class="diffColorch2"
+            />
+            <div class="mt-2">CH-3</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch3"
+              :class="diffColorch3"
+            />
+            <div class="mt-2">CH-4</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch4"
+              :class="diffColorch4"
+            />
+            <div class="mt-2">CH-5</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch5"
+              :class="diffColorch5"
+            />
+            <div class="mt-2">CH-6</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch6"
+              :class="diffColorch6"
+            />
+            <div class="mt-2">CH-7</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch7"
+              :class="diffColorch7"
+            />
+            <div class="mt-2">CH-8</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch8"
+              :class="diffColorch8"
+            />
+            <div class="mt-2">CH-9</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch9"
+              :class="diffColorch9"
+            />
+            <div class="mt-2">CH-10</div>
+            <v-number-input
+              variant="outlined"
+              density="compact"
+              v-model="temp_btm_ch10"
+              :class="diffColorch10"
+            />
+          </div>
+        </div>
       </v-col>
     </v-row>
     <v-row no-gutters>
@@ -427,12 +546,7 @@
 
       <v-col cols="12" md="4" v-if="auto_inps_std">
         <div class="mt-3 font-semibold">Program name</div>
-        <v-text-field
-          variant="outlined"
-          density="compact"
-          v-model="prg_auto"
-          :value="props.prgnm"
-        />
+        <v-text-field variant="outlined" density="compact" v-model="prg_auto" />
       </v-col>
     </v-row>
     <v-row no-gutters>
@@ -500,13 +614,14 @@ const props = defineProps({
   won_chn: String,
   model_chn: String,
   empno: String,
-  data_edit: Object,
   prgnm: String,
   cus: String,
 });
 
 const hrec_cp_id = ref<string>("");
 const id_cp = ref<string>("");
+
+// console.log(props.prgnm);
 
 /**
  * TODO: สร้างตัวแปรรับค่าจาก Input Form
@@ -518,11 +633,11 @@ const trace_inp = ref<string>("");
 const func = ref<string[]>([]);
 const cln_inp = ref<string>("");
 const etc_details = ref<string>("");
-const prg_nm = ref<string>("");
+const prg_nm = ref<string>(props.prgnm || "");
 const glu_num = ref<string>("");
 const headunit = ref<string>("");
 const bpst_detail = ref<string>("");
-const prg2_nm = ref<string>("");
+const prg2_nm = ref<string>(props.prgnm || "");
 const glu2_num = ref<string>("");
 const headunit2 = ref<string>("");
 const bpst2_detail = ref<string>("");
@@ -534,29 +649,49 @@ const mounter_inp = ref<string>("");
 const mounter2_inp = ref<string>("");
 const mounter3_inp = ref<string>("");
 const mounter4_inp = ref<string>("");
-const prg_mount1 = ref<string>("");
+const prg_mount1 = ref<string>(props.prgnm || "");
 const noz_mount1 = ref<string>("");
 const sup_mount1 = ref<string>("");
-const prg_mount2 = ref<string>("");
+const prg_mount2 = ref<string>(props.prgnm || "");
 const noz_mount2 = ref<string>("");
 const sup_mount2 = ref<string>("");
-const prg_mount3 = ref<string>("");
+const prg_mount3 = ref<string>(props.prgnm || "");
 const noz_mount3 = ref<string>("");
 const sup_mount3 = ref<string>("");
-const prg_mount4 = ref<string>("");
+const prg_mount4 = ref<string>(props.prgnm || "");
 const noz_mount4 = ref<string>("");
 const sup_mount4 = ref<string>("");
 const mount_inps = ref<string>("");
-const prg_inspct = ref<string>("");
+const prg_inspct = ref<string>(props.prgnm || "");
 const reflow_std = ref<string>("");
-const prg_reflow = ref<string>("");
+const prog_reflow = ref<string>(props.prgnm || "");
 const oxygen_reflow_std = ref<string>("");
 const oxygen_use = ref<string>("");
 const sup_reflow_std = ref<string>("");
-const temp_std = ref<string>("");
+const temp_top_ch1 = ref<number>(0);
+const temp_top_ch2 = ref<number>(0);
+const temp_top_ch3 = ref<number>(0);
+const temp_top_ch4 = ref<number>(0);
+const temp_top_ch5 = ref<number>(0);
+const temp_top_ch6 = ref<number>(0);
+const temp_top_ch7 = ref<number>(0);
+const temp_top_ch8 = ref<number>(0);
+const temp_top_ch9 = ref<number>(0);
+const temp_top_ch10 = ref<number>(0);
+const temp_btm_ch1 = ref<number>(0);
+const temp_btm_ch2 = ref<number>(0);
+const temp_btm_ch3 = ref<number>(0);
+const temp_btm_ch4 = ref<number>(0);
+const temp_btm_ch5 = ref<number>(0);
+const temp_btm_ch6 = ref<number>(0);
+const temp_btm_ch7 = ref<number>(0);
+const temp_btm_ch8 = ref<number>(0);
+const temp_btm_ch9 = ref<number>(0);
+const temp_btm_ch10 = ref<number>(0);
+
 const cooling_std = ref<string>("");
 const auto_inps = ref<string>("");
-const prg_auto = ref<string>("");
+const prg_auto = ref<string>(props.prgnm || "");
 const ng_stock_std = ref<string>("");
 const ng_stock_pitch = ref<string>("");
 const trace_inp_std = ref<string>("");
@@ -568,6 +703,21 @@ const funcPCB = ref<{ name: string }[]>([
   { name: "Sticky" },
   { name: "Lonizer" },
 ]);
+
+watch(
+  () => props.prgnm,
+  (newValue) => {
+    prog_reflow.value = newValue || "";
+    prg_nm.value = newValue || "";
+    prg2_nm.value = newValue || "";
+    prg_inspct.value = newValue || "";
+    prg_auto.value = newValue || "";
+    prg_mount1.value = newValue || "";
+    prg_mount2.value = newValue || "";
+    prg_mount3.value = newValue || "";
+    prg_mount4.value = newValue || "";
+  }
+);
 
 const db_glue = ref<string[]>([]);
 
@@ -588,16 +738,69 @@ const mounter3_inp_std = computed<boolean>(() => mounter3_inp.value === "Use");
 const mounter4_inp_std = computed<boolean>(() => mounter4_inp.value === "Use");
 const mount_inps_std = computed<boolean>(() => mount_inps.value === "Use");
 const reflow_use_std = computed<boolean>(() => reflow_std.value === "Use");
-const oxygen_std_use = computed<boolean>(() => oxygen_reflow_std.value === "Use");
+const oxygen_std_use = computed<boolean>(
+  () => oxygen_reflow_std.value === "Use"
+);
 const auto_inps_std = computed<boolean>(() => auto_inps.value === "Use");
 const ng_stock_std_use = computed<boolean>(() => ng_stock_std.value === "Use");
 const unloader_std_use = computed<boolean>(() => unloader_std.value === "Use");
 const empno = computed<string>(() => props.empno || "");
 
-const obj = props.data_edit || {};
-
-id_cp.value = obj.TEC_CPHREC_ID || "";
+id_cp.value = props.id || "";
 // console.log(obj.TEC_CPHREC_ID);
+
+// คำนวณค่าผลต่าง
+const diff = computed(() => temp_top_ch1.value - temp_btm_ch1.value);
+const diff2 = computed(() => temp_top_ch2.value - temp_btm_ch2.value);
+const diff3 = computed(() => temp_top_ch3.value - temp_btm_ch3.value);
+const diff4 = computed(() => temp_top_ch4.value - temp_btm_ch4.value);
+const diff5 = computed(() => temp_top_ch5.value - temp_btm_ch5.value);
+const diff6 = computed(() => temp_top_ch6.value - temp_btm_ch6.value);
+const diff7 = computed(() => temp_top_ch7.value - temp_btm_ch7.value);
+const diff8 = computed(() => temp_top_ch8.value - temp_btm_ch8.value);
+const diff9 = computed(() => temp_top_ch9.value - temp_btm_ch9.value);
+const diff10 = computed(() => temp_top_ch10.value - temp_btm_ch10.value);
+
+// เช็คสีตามเงื่อนไข
+const diffColorch1 = computed(() =>
+  diff.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch2 = computed(() =>
+  diff2.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch3 = computed(() =>
+  diff3.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch4 = computed(() =>
+  diff4.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch5 = computed(() =>
+  diff5.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch6 = computed(() =>
+  diff6.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch7 = computed(() =>
+  diff7.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch8 = computed(() =>
+  diff8.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch9 = computed(() =>
+  diff9.value > 5 ? "text-red-500" : "text-green-500"
+);
+
+const diffColorch10 = computed(() =>
+  diff10.value > 5 ? "text-red-500" : "text-green-500"
+);
 
 /**
  * TODO: สร้างฟังก์ชันส่งข้อมูลไปยัง api
@@ -644,11 +847,10 @@ const handleCPSubmit = async () => {
       mount_inps: mount_inps.value,
       prg_inspct: prg_inspct.value,
       reflow_std: reflow_std.value,
-      prg_reflow: prg_reflow.value,
+      prg_reflow: prog_reflow.value,
       oxygen_reflow_std: oxygen_reflow_std.value,
       oxygen_use: oxygen_use.value,
       sup_reflow_std: sup_reflow_std.value,
-      temp_std: temp_std.value,
       cooling_std: cooling_std.value,
       auto_inps: auto_inps.value,
       prg_auto: prg_auto.value,
@@ -657,188 +859,49 @@ const handleCPSubmit = async () => {
       trace_inp_std: trace_inp_std.value,
       unloader_std: unloader_std.value,
       unloader_pitch: unloader_pitch.value,
+      temp_top_ch1: temp_top_ch1.value,
+      temp_top_ch2: temp_top_ch2.value,
+      temp_top_ch3: temp_top_ch3.value,
+      temp_top_ch4: temp_top_ch4.value,
+      temp_top_ch5: temp_top_ch5.value,
+      temp_top_ch6: temp_top_ch6.value,
+      temp_top_ch7: temp_top_ch7.value,
+      temp_top_ch8: temp_top_ch8.value,
+      temp_top_ch9: temp_top_ch9.value,
+      temp_top_ch10: temp_top_ch10.value,
+      temp_btm_ch1: temp_btm_ch1.value,
+      temp_btm_ch2: temp_btm_ch2.value,
+      temp_btm_ch3: temp_btm_ch3.value,
+      temp_btm_ch4: temp_btm_ch4.value,
+      temp_btm_ch5: temp_btm_ch5.value,
+      temp_btm_ch6: temp_btm_ch6.value,
+      temp_btm_ch7: temp_btm_ch7.value,
+      temp_btm_ch8: temp_btm_ch8.value,
+      temp_btm_ch9: temp_btm_ch9.value,
+      temp_btm_ch10: temp_btm_ch10.value,
       empno: empno.value,
       id: props.id,
     };
 
-    if (id_cp.value === "") {
-      const res = await axios.post(
-        "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/cpinsert",
-        payload
-      );
+    const res = await axios.post(
+      "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/cpinsert",
+      payload
+    );
 
-      if (res.data.status === true) {
-        Swal.fire({
-          icon: "success",
-          title: "บันทึกข้อมูลสำเร็จ",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    } else {
-      const res = await axios.put(
-        "http://172.22.64.11/49_modelchange/49_mdlchn_api/api/cpupdate/" + id_cp.value,
-        payload
-      );
-
-      if (res.data.status === true) {
-        Swal.fire({
-          icon: "success",
-          title: "อัปเดตข้อมูลสำเร็จ",
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(() => {
-          localStorage.removeItem("data");
-          location.reload();
-          //   clearForm();
-        });
-      }
+    if (res.data.status === true) {
+      Swal.fire({
+        icon: "success",
+        title: "บันทึกข้อมูลสำเร็จ",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
+
+    console.log(payload);
   } catch (error) {
     console.log(error);
   }
 };
-
-const dataEdit = (obj: any) => {
-  load_inp.value = obj.TEC_CPHREC_LOADINP || "";
-  pitch.value = obj.TEC_CPHREC_LOADINPPITCH;
-  stack_inp.value = obj.TEC_CPHREC_STACK || "";
-  trace_inp.value = obj.TEC_CPHREC_TRACEINP || "";
-  cln_inp.value = obj.TEC_CPHREC_PCBCLEAN || "";
-  func.value = obj.TEC_CPHREC_PCBCLNFUNC || "";
-  etc_details.value = obj.TEC_CPHREC_PCBLNETC_DTL || "";
-  glu_inp.value = obj.TEC_CPHREC_GLUE || "";
-  prg_nm.value = obj.TEC_CPHREC_GLUEPROG || "";
-  glu_num.value = obj.TEC_CPHREC_GLUENUM || "";
-  headunit.value = obj.TEC_CPHREC_GLUEHUNIT || "";
-  bpst_detail.value = obj.TEC_CPHREC_GLUESTDNOT || "";
-  confirm_bpst.value = obj.TEC_CPHREC_GLUESTDOK || "";
-  glu2_inp.value = obj.TEC_CPHREC_GLUESND || "";
-  prg2_nm.value = obj.TEC_CPHREC_GLUESNDPROG || "";
-  glu2_num.value = obj.TEC_CPHREC_GLUESNDNUM || "";
-  headunit2.value = obj.TEC_CPHREC_GLUESNDHUNIT || "";
-  bpst2_detail.value = obj.TEC_CPHREC_GLUESNDNOT || "";
-  confirm_bpst2.value = obj.TEC_CPHREC_GLUESNDOK || "";
-  mounter_inp.value = obj.TEC_CPHREC_MNTF || "";
-  prg_mount1.value = obj.TEC_CPHREC_MNTFPROG || "";
-  noz_mount1.value = obj.TEC_CPHREC_MNTFNOZ || "";
-  sup_mount1.value = obj.TEC_CPHREC_MNTFSUPT || "";
-  mounter2_inp.value = obj.TEC_CPHREC_MNTSN || "";
-  prg_mount2.value = obj.TEC_CPHREC_MNTSNPROG || "";
-  noz_mount2.value = obj.TEC_CPHREC_MNTSNNOZ || "";
-  sup_mount2.value = obj.TEC_CPHREC_MNTSNSUPT || "";
-  mounter3_inp.value = obj.TEC_CPHREC_MNTTR || "";
-  prg_mount3.value = obj.TEC_CPHREC_MNTTRPROG || "";
-  noz_mount3.value = obj.TEC_CPHREC_MNTTRNOZ || "";
-  sup_mount3.value = obj.TEC_CPHREC_MNTTRSUPT || "";
-  mounter4_inp.value = obj.TEC_CPHREC_MNTFO || "";
-  prg_mount4.value = obj.TEC_CPHREC_MNTFOPROG || "";
-  noz_mount4.value = obj.TEC_CPHREC_MNTFONOZ || "";
-  sup_mount4.value = obj.TEC_CPHREC_MNTFOSUPT || "";
-  mount_inps.value = obj.TEC_CPHREC_MNTINSP || "";
-  prg_inspct.value = obj.TEC_CPHREC_MNTINSPPROG || "";
-  reflow_std.value = obj.TEC_CPHREC_REFLOW || "";
-  prg_reflow.value = obj.TEC_CPHREC_REFLPROG || "";
-  oxygen_reflow_std.value = obj.TEC_CPHREC_REFLOXYGEN || "";
-  oxygen_use.value = obj.TEC_CPHREC_REFLUSEOO || "";
-  sup_reflow_std.value = obj.TEC_CPHREC_REFLPCBSUPT || "";
-  temp_std.value = obj.TEC_CPHREC_REFLTEMP || "";
-  cooling_std.value = obj.TEC_CPHREC_PCBCOOL || "";
-  auto_inps.value = obj.TEC_CPHREC_AUTO || "";
-  prg_auto.value = obj.TEC_CPHREC_AUTOPROG || "";
-  ng_stock_std.value = obj.TEC_CPHREC_NGSTCK || "";
-  ng_stock_pitch.value = obj.TEC_CPHREC_NGSTCKPITCH || "";
-  trace_inp_std.value = obj.TEC_CPHREC_TRACE || "";
-  unloader_std.value = obj.TEC_CPHREC_UNLOADER || "";
-  unloader_pitch.value = obj.TEC_CPHREC_UNLOADERPITCH || "";
-};
-watch(load_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    pitch.value = "";
-  }
-});
-watch(cln_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    func.value = [];
-    etc_details.value = "";
-  }
-});
-watch(glu_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_nm.value = "";
-    glu_num.value = "";
-    headunit.value = "";
-    bpst_detail.value = "";
-    confirm_bpst.value = "";
-  }
-});
-watch(glu2_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg2_nm.value = "";
-    glu2_num.value = "";
-    headunit2.value = "";
-    bpst2_detail.value = "";
-    confirm_bpst2.value = "";
-  }
-});
-watch(mounter_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_mount1.value = "";
-    noz_mount1.value = "";
-    sup_mount1.value = "";
-  }
-});
-watch(mounter2_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_mount2.value = "";
-    noz_mount2.value = "";
-    sup_mount2.value = "";
-  }
-});
-watch(mounter3_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_mount3.value = "";
-    noz_mount3.value = "";
-    sup_mount3.value = "";
-  }
-});
-watch(mounter4_inp, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_mount4.value = "";
-    noz_mount4.value = "";
-    sup_mount4.value = "";
-  }
-});
-watch(mount_inps, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_inspct.value = "";
-  }
-});
-watch(reflow_std, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_reflow.value = "";
-    oxygen_reflow_std.value = "";
-    oxygen_use.value = "";
-    sup_reflow_std.value = "";
-    temp_std.value = "";
-  }
-});
-watch(ng_stock_std, (newVal) => {
-  if (newVal === "Not Use") {
-    ng_stock_pitch.value = "";
-  }
-});
-
-watch(auto_inps, (newVal) => {
-  if (newVal === "Not Use") {
-    prg_auto.value = "";
-  }
-});
-watch(unloader_std, (newVal) => {
-  if (newVal === "Not Use") {
-    unloader_pitch.value = "";
-  }
-});
 
 const fetchDB = async () => {
   const res = await axios.get(
@@ -853,7 +916,7 @@ const fetchDB = async () => {
 onMounted(() => {
   /**   TODO: กำหนดค่าเริ่มต้นให้กับตัวแปรจาก props.data_edit เมื่อมีการแก้ไขข้อมูล
    */
-  dataEdit(obj);
+
   fetchDB();
 });
 </script>
